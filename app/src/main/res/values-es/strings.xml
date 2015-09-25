@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- PANTALLA 1 -->
+    <string name="app_name">AHR</string>
+    <string name="hello_world">Heola Mundo</string>
+    <string name="action_settings">Configuraciones</string>
+
+
+    <string name="menu_home">INICIO</string>
+    <string name="menu_autodromo">AUTODROMO</string>
+    <string name="menu_noticias">NOTICIAS</string>
+    <string name="menu_horarios">HORARIOS</string>
+    <string name="menu_resultados">RESULTADOS</string>
+    <string name="menu_pilotos">PILOTOS</string>
+    <string name="menu_pasion">PASIÓN F1</string>
+    <string name="menu_cd_mexico">CIUDAD DE MÉXICO</string>
+    <string name="menu_social_hub">SOCIAL HUB</string>
+    <!--string name="trash_string">Trash</string>
+    <string name="all_mail_string">All mails</string>
+    <string name="spam_string">Spams</string-->
+    <string name="closeDrawer">Navigation View</string>
+    <string name="openDrawer">Navigation View Closed</string>
+
+    <string name="activa_gps">ACTIVA TU GPS PARA OBTENER TU UBICACIÓN EXACTA</string>
+    <string name="ubicar_puntos">ESTA FUNCIÓN TE PERMITE UBICAR PUNTOS IMPORTANTES DURANTE TODA TU EXPERIENCIA EN EL GRAN PREMIO DE MÉXICO</string>
+    <string name="activa_gps_ahora">ACTIVAR LOCALIZACIÓN</string>
+    <string name="siguiente">SIGUIENTE</string>
+
+    <string name="dias">DÍAS</string>
+    <string name="horas">HORAS</string>
+    <string name="minutos">MINUTOS</string>
+    <string name="segundos">SEGUNDOS</string>
+
+
+    <!-- TIPOS DE NOTIFICACIONES - PANTALLA 2-->
+    <string name="tipo_notificaciones">¿QUÉ TIPO DE NOTIFICACIONES QUIERES RECIBIR?</string>
+    <string name="todas">TODAS</string>
+    <string name="resultados">RESULTADOS</string>
+    <string name="equipos_pilotos">EQUIPOS Y PILOTOS</string>
+    <string name="eventos">EVENTOS</string>
+    <string name="noticias">NOTICIAS</string>
+    <string name="anterior">ANTERIOR</string>
+
+    <string name="drawer_open">Abrir navigation drawer</string>
+    <string name="drawer_close">Cerrar navigation drawer</string>
+    <!-- NOTIFICACIONES DE EQUIPOS - PANTALLA HOME-->
+    <string name="vive_el_mexicogp">VIVE EL #MÉXICOGP EN:</string>
+    <!-- ELEMENTOS DE MENÚ -->
+    <string-array name="MenuItems">
+        <item>INICIO</item>
+        <item>AUTODROMO</item>
+        <item>NOTICIAS</item>
+        <item>RESULTADOS</item>
+        <item>PASIÓN F1</item>
+        <item>CIUDAD DE MÉXICO</item>
+        <item>SOCIAL HUB</item>
+    </string-array>
+
+
+    <string name="enterate_demuchos_eventos">¿Enterate de muchos eventos más!</string>
+    <string name="compartir_usando">Compartir usando...</string>
+    <string name="imgDescargada">¡Imagen descargada!</string>
+
+    <string name="terminos">TÉRMINOS Y CONDICIONES</string>
+    <string name="terminos_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et iaculis mi, non posuere quam. Ut non venenatis nulla. Phasellus eleifend sit amet metus quis ornare. Quisque auctor imperdiet sem, nec dapibus felis ornare sed. Etiam et tortor et nulla eleifend vestibulum non eget lorem. Suspendisse eu convallis massa. Nullam euismod gravida dui ac tempus.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et iaculis mi, non posuere quam. Ut non venenatis nulla. Phasellus eleifend sit amet metus quis ornare. Quisque auctor imperdiet sem, nec dapibus felis ornare sed. Etiam et tortor et nulla eleifend vestibulum non eget lorem. Suspendisse eu convallis massa. Nullam euismod gravida dui ac tempus.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et iaculis mi, non posuere quam. Ut non venenatis nulla. Phasellus eleifend sit amet metus quis ornare. Quisque auctor imperdiet sem, nec dapibus felis ornare sed. Etiam et tortor et nulla eleifend vestibulum non eget lorem. Suspendisse eu convallis massa. Nullam euismod gravida dui ac tempus.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et iaculis mi, non posuere quam. Ut non venenatis nulla. Phasellus eleifend sit amet metus quis ornare. Quisque auctor imperdiet sem, nec dapibus felis ornare sed. Etiam et tortor et nulla eleifend vestibulum non eget lorem. Suspendisse eu convallis massa. Nullam euismod gravida dui ac tempus.</string>
+    <string name="politicas">POLÍTICAS DE PRIVACIDAD</string>
+    <string name="ppolicy_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et iaculis mi, non posuere quam. Ut non venenatis nulla. Phasellus eleifend sit amet metus quis ornare. Quisque auctor imperdiet sem, nec dapibus felis ornare sed. Etiam et tortor et nulla eleifend vestibulum non eget lorem. Suspendisse eu convallis massa. Nullam euismod gravida dui ac tempus.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et iaculis mi, non posuere quam. Ut non venenatis nulla. Phasellus eleifend sit amet metus quis ornare. Quisque auctor imperdiet sem, nec dapibus felis ornare sed. Etiam et tortor et nulla eleifend vestibulum non eget lorem. Suspendisse eu convallis massa. Nullam euismod gravida dui ac tempus.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et iaculis mi, non posuere quam. Ut non venenatis nulla. Phasellus eleifend sit amet metus quis ornare. Quisque auctor imperdiet sem, nec dapibus felis ornare sed. Etiam et tortor et nulla eleifend vestibulum non eget lorem. Suspendisse eu convallis massa. Nullam euismod gravida dui ac tempus.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et iaculis mi, non posuere quam. Ut non venenatis nulla. Phasellus eleifend sit amet metus quis ornare. Quisque auctor imperdiet sem, nec dapibus felis ornare sed. Etiam et tortor et nulla eleifend vestibulum non eget lorem. Suspendisse eu convallis massa. Nullam euismod gravida dui ac tempus.</string>
+    <string name="ok">OK</string>
+
+    <string name="share">Compartir</string>
+    <string name="save_to_gallery">Imagen guardada en la galería</string>
+    <string name="select_picture">Seleccionar imagen existente</string>
+
+
+</resources>

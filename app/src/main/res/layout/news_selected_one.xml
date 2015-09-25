@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    >
+
+    <LinearLayout
+        android:id="@+id/top_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="200dp">
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/imagen_principal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/white"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:layout_gravity="top" />
+            <RelativeLayout
+                android:layout_alignParentRight="true"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/container_title_premio"
+                android:paddingBottom="20dp"
+                >
+
+                <!--ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="5dp"
+                    android:onClick="shareNews"
+                    android:background="@drawable/share_icon"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true" /-->
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_content"
+        android:layout_alignParentLeft="true"
+        android:padding="20dp">
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/titulo"
+                android:textSize="20dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal|top"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:textStyle="italic"
+                android:textColor="@color/red_background"
+                android:id="@+id/subtitulo"
+                android:textSize="16dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_horizontal|top"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@id/titulo"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:textColor="@color/black"
+                android:id="@+id/descripcion"
+                android:textSize="14dp"
+                android:layout_below="@id/subtitulo"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

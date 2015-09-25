@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/home"
+            android:checked="false"
+            android:icon="@drawable/icon_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/autodromo"
+            android:checked="false"
+            android:icon="@drawable/icon_autodromo"
+            android:title="@string/menu_autodromo" />
+        <item
+            android:id="@+id/horarios"
+            android:checked="false"
+            android:icon="@drawable/icon_horarios"
+            android:title="@string/menu_horarios" />
+        <item
+            android:id="@+id/noticias"
+            android:checked="false"
+            android:icon="@drawable/icon_noticias"
+            android:title="@string/menu_noticias" />
+        <item
+            android:id="@+id/resultados"
+            android:checked="false"
+            android:icon="@drawable/icon_resultados"
+            android:title="@string/menu_resultados" />
+        <item
+            android:id="@+id/pilotos"
+            android:checked="false"
+            android:icon="@drawable/icon_pilotos"
+            android:title="@string/menu_pilotos" />
+        <item
+            android:id="@+id/pasion"
+            android:checked="false"
+            android:icon="@drawable/icon_pasion"
+            android:title="@string/menu_pasion" />
+        <item
+            android:id="@+id/mexico"
+            android:checked="false"
+            android:icon="@drawable/icon_ciudad_mexico"
+            android:title="@string/menu_cd_mexico" />
+        <item
+            android:id="@+id/social_hub"
+            android:checked="false"
+            android:icon="@drawable/icon_social_hub"
+            android:title="@string/menu_social_hub" />
+    </group>
+</menu>
