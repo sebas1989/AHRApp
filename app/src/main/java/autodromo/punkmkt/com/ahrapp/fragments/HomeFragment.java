@@ -1,15 +1,17 @@
 package autodromo.punkmkt.com.ahrapp.fragments;
 
 
-import android.app.Activity;
-import android.app.Application;
 import android.app.Dialog;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.CountDownTimer;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
 import android.support.v4.app.Fragment;
+//import android.support.v4.app.FragmentTransaction;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentActivity;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,12 +20,14 @@ import android.view.ViewGroup;
 import android.content.Context;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.text.format.Time;
 import java.lang.String;
 
+import autodromo.punkmkt.com.ahrapp.CiudadMexicoDetalleActivity;
 import autodromo.punkmkt.com.ahrapp.R;
 
 
@@ -44,7 +48,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import autodromo.punkmkt.com.ahrapp.R;
 /**
  * Created by sebastianmendezgiron on 19/09/15.
  */
@@ -92,10 +95,13 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         configuracionEvento();
-        getCurrentWeather();
+        IniciarPassion();
+        IniciarSocialHub();
+        getLatestNews();
+        /*getCurrentWeather();
         getLatestNews();
         termsAndConditions();
-        privacyPolicy();
+        privacyPolicy();*/
 
         RelativeLayout relativeFirstNew =(RelativeLayout) getActivity().findViewById(R.id.container_main_view);
         relativeFirstNew.setOnClickListener(new View.OnClickListener(){
@@ -174,7 +180,7 @@ public class HomeFragment extends Fragment {
                 String fHoras = getResources().getString(R.string.horas);
                 String fMinutos = getResources().getString(R.string.minutos);
                 String fSegundos = getResources().getString(R.string.segundos);
-                mLabels.setText("   " + fDias + "    " + fHoras + "    " + fMinutos + "    " + fSegundos);
+                mLabels.setText(fDias+"\u00A0"+"\u00A0 \u00A0 \u00A0"+fHoras+"\u00A0"+"\u00A0 \u00A0"+fMinutos+"\u00A0"+"\u00A0 \u00A0"+fSegundos);
             }
             @Override
             public void onFinish() {
@@ -198,84 +204,52 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private void getCurrentWeather(){
-        if(NetworkUtils.haveNetworkConnection(getActivity())) {
+    public void IniciarPassion(){
 
-            JsonObjectRequest jsonRequest = new JsonObjectRequest
-                    (Request.Method.GET, CURRENT_WEAHTER_STATUS, null, new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
+        ImageButton button = (ImageButton) getActivity().findViewById(R.id.quickLinkToPassion);
 
-                                JSONArray JSONWeatherArray = response.getJSONArray("weather");
-                                String descripcion = JSONWeatherArray.getJSONObject(0).optString("description").toString();
-                                String iconCode = JSONWeatherArray.getJSONObject(0).optString("icon").toString();
+        // add button listener
+        button.setOnClickListener(new View.OnClickListener() {
 
-                                RelativeLayout weatherRelative = (RelativeLayout) getActivity().findViewById(R.id.conWeather);
+            @Override
+            public void onClick(View arg0) {
 
-                                if (iconCode.equals("01d") || iconCode.equals("01n")){
-                                    weatherRelative.setBackgroundResource(R.drawable.clear_weather_f1);
-                                }
-                                else if (iconCode.equals("02d") || iconCode.equals("02n")){
-                                    weatherRelative.setBackgroundResource(R.drawable.few_clouds_weather_f1);
-                                }
-                                else if (iconCode.equals("04d") || iconCode.equals("04n")){
-                                    weatherRelative.setBackgroundResource(R.drawable.broken_clouds_weather_f1);
-                                }
-                                else if (iconCode.equals("50d") || iconCode.equals("50n")){
-                                    weatherRelative.setBackgroundResource(R.drawable.mist_weather_f1);
-                                }
-                                else if (iconCode.equals("10d") || iconCode.equals("10n")){
-                                    weatherRelative.setBackgroundResource(R.drawable.cloudy_rain_weather_f1);
-                                }
-                                else if (iconCode.equals("03d") || iconCode.equals("03n")){
-                                    weatherRelative.setBackgroundResource(R.drawable.cloudy_weather_f1);
-                                }
-                                else if (iconCode.equals("13d") || iconCode.equals("13n")){
-                                    weatherRelative.setBackgroundResource(R.drawable.snow_weather_f1);
-                                }
-                                else if (iconCode.equals("09d") || iconCode.equals("09n")){
-                                    weatherRelative.setBackgroundResource(R.drawable.sunny_rain_weather_f1);
-                                }
-                                else if (iconCode.equals("11d") || iconCode.equals("11n")){
-                                    weatherRelative.setBackgroundResource(R.drawable.thunder_weather_f1);
-                                }
+                Toast.makeText(getActivity(),"pasion",Toast.LENGTH_SHORT).show();
+                Fragment fP = new PassionFragment();
+                android.support.v4.app.FragmentTransaction ftP = getFragmentManager().beginTransaction();
+                ftP.replace(R.id.frame, fP); // f1_container is your FrameLayout container
+                ftP.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                ftP.addToBackStack(null);
+                ftP.commit();
+            }
+        });
+    }
+    public void IniciarSocialHub(){
 
-                                JSONObject currTemp = response.getJSONObject("main");
-                                String temp = currTemp.optString("temp").toString();
-                                String cleanTemp = (temp.substring(0, temp.indexOf("."))+"º");
+        ImageButton button = (ImageButton) getActivity().findViewById(R.id.quickLinkToSocialHub);
 
-                                mStatus = (TextView) getActivity().findViewById(R.id.weatherStatus);
-                                mCurrWeather = (TextView) getActivity().findViewById(R.id.currWeather);
+        // add button listener
+        button.setOnClickListener(new View.OnClickListener() {
 
-                                mCurrWeather.setText(cleanTemp);
-                                mStatus.setText(descripcion);
+            @Override
+            public void onClick(View arg0) {
 
-                            }catch (JSONException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
-                            }
-
-                        }
-                    }, new Response.ErrorListener() {
-
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            error.printStackTrace();
-                        }
-                    });
-
-            MyVolleySingleton.getInstance().addToRequestQueue(jsonRequest);
-        }else{
-            Toast.makeText(getActivity(), getResources().getString(R.string.minutos), Toast.LENGTH_SHORT).show();
-        }
+                Toast.makeText(getActivity(),"pasion",Toast.LENGTH_SHORT).show();
+                Fragment fSH = new SocialHubFragment();
+                android.support.v4.app.FragmentTransaction ftSH = getFragmentManager().beginTransaction();
+                ftSH.replace(R.id.frame, fSH); // f1_container is your FrameLayout container
+                ftSH.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                ftSH.addToBackStack(null);
+                ftSH.commit();
+            }
+        });
     }
 
     public void getLatestNews(){
 
         if(NetworkUtils.haveNetworkConnection(getActivity())) {
 
-            StringRequest request = new AuthRequest(Request.Method.GET, AHZ_LATEST_THREE_NEWS_ENTRIES, new Response.Listener<String>() {
+            StringRequest request = new AuthRequest(Request.Method.GET, AHZ_LATEST_THREE_NEWS_ENTRIES, "utf-8", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {
@@ -284,17 +258,17 @@ public class HomeFragment extends Fragment {
                         nom1 = newsArray.getJSONObject(0).optString("titulo").toString();
                         subtitulo1 = newsArray.getJSONObject(0).optString("subtitulo").toString();
                         desc1 = newsArray.getJSONObject(0).optString("descripcion").toString();
-                        img1 = newsArray.getJSONObject(0).optString("imagen_rectangular").toString();
+                        img1 = newsArray.getJSONObject(0).optString("imagen").toString();
                         tituloNoticia1 = (TextView) getActivity().findViewById(R.id.tituloNoticia1);
                         tituloNoticia1.setText(nom1);
 
                         last = (NetworkImageView) getActivity().findViewById(R.id.netork_imageView_last);
-                        last.setImageUrl(newsArray.getJSONObject(0).optString("imagen_rectangular"), imageLoader);
+                        last.setImageUrl(newsArray.getJSONObject(0).optString("imagen"), imageLoader);
 
                         nom2 = newsArray.getJSONObject(1).optString("titulo").toString();
                         subtitulo2 = newsArray.getJSONObject(1).optString("subtitulo").toString();
                         desc2 = newsArray.getJSONObject(1).optString("descripcion").toString();
-                        img2 = newsArray.getJSONObject(1).optString("imagen_rectangular").toString();
+                        img2 = newsArray.getJSONObject(1).optString("imagen").toString();
                         tituloNoticia2 = (TextView) getActivity().findViewById(R.id.tituloNoticia2);
                         tituloNoticia2.setText(nom2);
 
@@ -304,7 +278,7 @@ public class HomeFragment extends Fragment {
                         nom3 = newsArray.getJSONObject(2).optString("titulo").toString();
                         subtitulo3 = newsArray.getJSONObject(2).optString("subtitulo").toString();
                         desc3 = newsArray.getJSONObject(2).optString("descripcion").toString();
-                        img3 = newsArray.getJSONObject(2).optString("imagen_rectangular").toString();
+                        img3 = newsArray.getJSONObject(2).optString("imagen").toString();
                         tituloNoticia3 = (TextView) getActivity().findViewById(R.id.tituloNoticia3);
                         tituloNoticia3.setText(nom3);
 
@@ -333,7 +307,7 @@ public class HomeFragment extends Fragment {
     }
 
 
-
+    /*
     public void termsAndConditions(){
 
         button = (Button) getActivity().findViewById(R.id.terminos);
@@ -390,7 +364,7 @@ public class HomeFragment extends Fragment {
                 dialog.show();
             }
         });
-    }
+    }*/
 
 
 }

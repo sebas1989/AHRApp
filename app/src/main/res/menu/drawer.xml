@@ -49,5 +49,10 @@
             android:checked="false"
             android:icon="@drawable/icon_social_hub"
             android:title="@string/menu_social_hub" />
+        <item android:id="@+id/configuraciones"
+            android:checked="false"
+            android:icon="@drawable/ajustes_96"
+            android:title="@string/menu_configuraciones"/>
+
     </group>
 </menu>

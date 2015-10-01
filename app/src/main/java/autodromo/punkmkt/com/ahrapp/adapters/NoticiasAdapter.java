@@ -78,7 +78,7 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.Notici
 
                 Idetail.putExtra("id", Integer.toString(noticia.getId()));
                 Idetail.putExtra("nombre", noticia.getTitulo());
-                Idetail.putExtra("imagen", noticia.getImagen_portada_rectangular());
+                Idetail.putExtra("imagen", noticia.getImgen_contenido());
                 Idetail.putExtra("subtitulo", noticia.getSubtitulo());
                 Idetail.putExtra("descripcion", noticia.getDescripcion());
 
@@ -91,7 +91,7 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.Notici
                 Intent Idetail = new Intent (viewGroup.getContext(), SingleNewDetailActivity.class);
                 Idetail.putExtra("id", Integer.toString(noticia.getId()));
                 Idetail.putExtra("nombre", noticia.getTitulo());
-                Idetail.putExtra("imagen", noticia.getImagen_portada_rectangular());
+                Idetail.putExtra("imagen", noticia.getImgen_contenido());
                 Idetail.putExtra("subtitulo", noticia.getSubtitulo());
                 Idetail.putExtra("descripcion", noticia.getDescripcion());
 
@@ -106,7 +106,7 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.Notici
 
     @Override
     public void onBindViewHolder(NoticiaViewHolder noticiaViewHolder, int i) {
-        noticiaViewHolder.imagen.setImageUrl(items.get(i).getImagen_portada_rectangular(), imageLoader);
+        noticiaViewHolder.imagen.setImageUrl(items.get(i).getImgen_contenido(), imageLoader);
         noticiaViewHolder.nombre.setText(items.get(i).getTitulo());
         noticiaViewHolder.descripcion_corta.setText(items.get(i).getDescripcion_corta());
     }

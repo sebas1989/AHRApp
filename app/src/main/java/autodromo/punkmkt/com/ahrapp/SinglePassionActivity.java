@@ -307,7 +307,7 @@ public class SinglePassionActivity extends Activity {
                 intent.setData(contentUri);
                 this.sendBroadcast(intent);
                 if (share){
-                    //File filePath = contentUri;  //optional //internal storage
+                    /*/File filePath = contentUri;  //optional //internal storage
                     Intent shareIntent = new Intent();
                     shareIntent.setAction(Intent.ACTION_SEND);
                     shareIntent.putExtra(Intent.EXTRA_TEXT,  getString(R.string.compartir_usando));
@@ -315,14 +315,14 @@ public class SinglePassionActivity extends Activity {
                     shareIntent.putExtra(Intent.EXTRA_TITLE, "http://www.google.fr/");
                     shareIntent.setType("text/plain");
                     shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    startActivity(Intent.createChooser(shareIntent, "send"));
+                    startActivity(Intent.createChooser(shareIntent, "send"));*/
 
-                    /*Intent i = new Intent();
+                    Intent i = new Intent();
                     i.setAction(Intent.ACTION_SEND);
                     i.putExtra(Intent.EXTRA_TEXT, getString(R.string.compartir_usando));
                     i.putExtra(Intent.EXTRA_STREAM,contentUri );
                     i.setType("image/png");
-                    startActivity(Intent.createChooser(i, getResources().getText(R.string.share)));*/
+                    startActivity(Intent.createChooser(i, getResources().getText(R.string.share)));
                 }
                 else{
                     Toast.makeText(getApplicationContext(), R.string.save_to_gallery, Toast.LENGTH_LONG).show();

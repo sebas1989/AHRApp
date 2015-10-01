@@ -46,7 +46,7 @@ public class NoticiasFragment extends Fragment{
         recyclerView.setHasFixedSize(true);
 
         adapter = new NoticiasAdapter(noticias);
-        StringRequest request = new AuthRequest(Request.Method.GET, AHZ_URL_NOTICIAS, new Response.Listener<String>() {
+        StringRequest request = new AuthRequest(Request.Method.GET, AHZ_URL_NOTICIAS,  "utf-8",  new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -58,7 +58,7 @@ public class NoticiasFragment extends Fragment{
 
                         noticia.setId(Integer.parseInt(anEntry.optString("id")));
                         noticia.setTitulo(anEntry.optString("titulo"));
-                        noticia.setImagen_portada_rectangular(anEntry.optString("imagen_rectangular"));
+                        noticia.setImagen_portada_rectangular(anEntry.optString("imagen"));
                         noticia.setDescripcion_corta(anEntry.optString("descripcion_corta"));
                         noticia.setSubtitulo(anEntry.optString("subtitulo"));
                         noticia.setDescripcion(anEntry.optString("descripcion"));

@@ -51,7 +51,7 @@ public class NewsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
 
         adapter = new NoticiasAdapter(noticias);
-        StringRequest request = new AuthRequest(Request.Method.GET, AHZ_URL_NOTICIAS, new Response.Listener<String>() {
+        StringRequest request = new AuthRequest(Request.Method.GET, AHZ_URL_NOTICIAS,  "utf-8" , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

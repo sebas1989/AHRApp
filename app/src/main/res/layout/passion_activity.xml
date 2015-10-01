@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:scrollbars="none"
         android:numColumns="2">
     </GridView>
 

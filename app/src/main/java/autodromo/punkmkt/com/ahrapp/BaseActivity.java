@@ -20,11 +20,17 @@ import android.view.View;
 
 import android.widget.Toast;
 
+import autodromo.punkmkt.com.ahrapp.fragments.AutodromoFragment;
+import autodromo.punkmkt.com.ahrapp.fragments.CiudadMexicoActivity;
 import autodromo.punkmkt.com.ahrapp.fragments.ContentFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.HomeFragment;
+import autodromo.punkmkt.com.ahrapp.fragments.HorariosFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.NewsFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.PassionFragment;
+import autodromo.punkmkt.com.ahrapp.fragments.PilotosFragment;
+import autodromo.punkmkt.com.ahrapp.fragments.ResultadosActivity;
 import autodromo.punkmkt.com.ahrapp.fragments.ResultadosFragment;
+import autodromo.punkmkt.com.ahrapp.fragments.SocialHubFragment;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -46,8 +52,6 @@ public class BaseActivity extends AppCompatActivity {
             ft.addToBackStack(null);
             ft.commit();
         }
-
-
 
 
         //configuracionEvento();
@@ -91,19 +95,22 @@ public class BaseActivity extends AppCompatActivity {
                     // For rest of the options we just show a toast on click
                     case R.id.autodromo:
                         Toast.makeText(getApplicationContext(),"autodromo",Toast.LENGTH_SHORT).show();
-                        HomeFragment fragment2 = new HomeFragment();
-                        android.support.v4.app.FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction2.replace(R.id.frame, fragment2);
+                        Fragment fA = new AutodromoFragment();
+                        FragmentTransaction ftA = getSupportFragmentManager().beginTransaction();
+                        ftA.replace(R.id.frame, fA);
+                        ftA.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        ftA.addToBackStack(null);
+                        ftA.commit();
                         return true;
-                    case R.id.horarios:
 
+                    case R.id.horarios:
                         //Log.d("fragment","resultados");
-                        Fragment f = new ResultadosFragment();
-                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.frame, f);
-                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                        ft.addToBackStack(null);
-                        ft.commit();
+                        Fragment fHF = new HorariosFragment();
+                        FragmentTransaction ftHF = getSupportFragmentManager().beginTransaction();
+                        ftHF.replace(R.id.frame, fHF);
+                        ftHF.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        ftHF.addToBackStack(null);
+                        ftHF.commit();
                         return true;
 
                     case R.id.noticias:
@@ -115,12 +122,27 @@ public class BaseActivity extends AppCompatActivity {
                         ftN.addToBackStack(null);
                         ftN.commit();
                         return true;
+
                     case R.id.resultados:
                         Toast.makeText(getApplicationContext(),"resultados",Toast.LENGTH_SHORT).show();
+                        Fragment fRA = new ResultadosActivity();
+                        FragmentTransaction ftRA = getSupportFragmentManager().beginTransaction();
+                        ftRA.replace(R.id.frame, fRA);
+                        ftRA.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        ftRA.addToBackStack(null);
+                        ftRA.commit();
                         return true;
+
                     case R.id.pilotos:
                         Toast.makeText(getApplicationContext(),"pilotos",Toast.LENGTH_SHORT).show();
+                        Fragment fPT = new PilotosFragment();
+                        FragmentTransaction ftPP = getSupportFragmentManager().beginTransaction();
+                        ftPP.replace(R.id.frame, fPT);
+                        ftPP.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        ftPP.addToBackStack(null);
+                        ftPP.commit();
                         return true;
+
                     case R.id.pasion:
                         Toast.makeText(getApplicationContext(),"pasion",Toast.LENGTH_SHORT).show();
                         Fragment fP = new PassionFragment();
@@ -131,12 +153,27 @@ public class BaseActivity extends AppCompatActivity {
                         ftP.commit();
                         //passionContainer
                         return true;
+
                     case R.id.mexico:
                         Toast.makeText(getApplicationContext(),"mexico",Toast.LENGTH_SHORT).show();
+                        Fragment fM = new CiudadMexicoActivity();
+                        FragmentTransaction ftM = getSupportFragmentManager().beginTransaction();
+                        ftM.replace(R.id.frame, fM);
+                        ftM.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        ftM.addToBackStack(null);
+                        ftM.commit();
                         return true;
+
                     case R.id.social_hub:
                         Toast.makeText(getApplicationContext(),"Social hub",Toast.LENGTH_SHORT).show();
+                        Fragment fSH = new SocialHubFragment();
+                        FragmentTransaction ftSH = getSupportFragmentManager().beginTransaction();
+                        ftSH.replace(R.id.frame, fSH);
+                        ftSH.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        ftSH.addToBackStack(null);
+                        ftSH.commit();
                         return true;
+
                     default:
                         Toast.makeText(getApplicationContext(),"otro",Toast.LENGTH_SHORT).show();
                         return true;
@@ -188,9 +225,9 @@ public class BaseActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
