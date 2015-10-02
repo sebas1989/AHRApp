@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
     private ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
 
     NetworkImageView last,last2,last3;
-    public String img1, img2, img3, nom1, nom2, nom3, subtitulo1, subtitulo2, subtitulo3, desc1, desc2, desc3;
+    public String img1, img2, img3, id, id2, id3, nom1, nom2, nom3, subtitulo1, subtitulo2, subtitulo3, desc1, desc2, desc3;
     private Button button;
 
     @Override
@@ -108,10 +108,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v){
                 Intent newEntryIntent = new Intent(getActivity(), SingleNewDetailActivity.class);
-                newEntryIntent.putExtra("nombre", nom1);
-                newEntryIntent.putExtra("subtitulo", subtitulo1);
-                newEntryIntent.putExtra("descripcion", desc1);
-                newEntryIntent.putExtra("imagen", img1);
+                newEntryIntent.putExtra("id", id);
                 startActivity(newEntryIntent);
             }
         });
@@ -121,10 +118,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent newEntryIntent = new Intent(getActivity(), SingleNewDetailActivity.class);
-                newEntryIntent.putExtra("nombre", nom2);
-                newEntryIntent.putExtra("subtitulo", subtitulo2);
-                newEntryIntent.putExtra("descripcion", desc2);
-                newEntryIntent.putExtra("imagen", img2);
+                newEntryIntent.putExtra("id", id2);
                 startActivity(newEntryIntent);
             }
         });
@@ -134,10 +128,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v){
                     Intent newEntryIntent = new Intent(getActivity(), SingleNewDetailActivity.class);
-                    newEntryIntent.putExtra("nombre", nom3);
-                    newEntryIntent.putExtra("subtitulo", subtitulo3);
-                    newEntryIntent.putExtra("descripcion", desc3);
-                    newEntryIntent.putExtra("imagen", img3);
+                    newEntryIntent.putExtra("id", id3);
                     startActivity(newEntryIntent);
             }
         });
@@ -255,6 +246,7 @@ public class HomeFragment extends Fragment {
                     try {
                         JSONArray newsArray = new JSONArray(response);
                         //Log.d(":o", response);
+                        id = newsArray.getJSONObject(0).optString("id").toString();
                         nom1 = newsArray.getJSONObject(0).optString("titulo").toString();
                         subtitulo1 = newsArray.getJSONObject(0).optString("subtitulo").toString();
                         desc1 = newsArray.getJSONObject(0).optString("descripcion").toString();
@@ -265,6 +257,7 @@ public class HomeFragment extends Fragment {
                         last = (NetworkImageView) getActivity().findViewById(R.id.netork_imageView_last);
                         last.setImageUrl(newsArray.getJSONObject(0).optString("imagen"), imageLoader);
 
+                        id2 = newsArray.getJSONObject(1).optString("id").toString();
                         nom2 = newsArray.getJSONObject(1).optString("titulo").toString();
                         subtitulo2 = newsArray.getJSONObject(1).optString("subtitulo").toString();
                         desc2 = newsArray.getJSONObject(1).optString("descripcion").toString();
@@ -275,6 +268,7 @@ public class HomeFragment extends Fragment {
                         last2 = (NetworkImageView) getActivity().findViewById(R.id.netork_imageView);
                         last2.setImageUrl(newsArray.getJSONObject(1).optString("imagen_cuadrada"), imageLoader);
 
+                        id3 = newsArray.getJSONObject(2).optString("id").toString();
                         nom3 = newsArray.getJSONObject(2).optString("titulo").toString();
                         subtitulo3 = newsArray.getJSONObject(2).optString("subtitulo").toString();
                         desc3 = newsArray.getJSONObject(2).optString("descripcion").toString();

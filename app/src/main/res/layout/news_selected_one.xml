@@ -66,7 +66,6 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="New Text"
                 android:id="@+id/titulo"
                 android:textSize="20dp"
                 android:layout_marginBottom="5dp"
@@ -77,7 +76,6 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="New Text"
                 android:textStyle="italic"
                 android:textColor="@color/red_background"
                 android:id="@+id/subtitulo"
@@ -90,7 +88,6 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="New Text"
                 android:textColor="@color/black"
                 android:id="@+id/descripcion"
                 android:textSize="14dp"

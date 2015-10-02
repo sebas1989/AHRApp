@@ -51,7 +51,7 @@ public class NewsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
 
         adapter = new NoticiasAdapter(noticias);
-        StringRequest request = new AuthRequest(Request.Method.GET, AHZ_URL_NOTICIAS,  "utf-8" , new Response.Listener<String>() {
+        StringRequest request = new AuthRequest(Request.Method.GET, AHZ_URL_NOTICIAS,"UTF-8", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -63,8 +63,7 @@ public class NewsFragment extends Fragment {
 
                         noticia.setId(Integer.parseInt(anEntry.optString("id")));
                         noticia.setTitulo(anEntry.optString("titulo"));
-                        noticia.setImagen_portada_rectangular(anEntry.optString("imagen_rectangular"));
-                        noticia.setDescripcion_corta(anEntry.optString("descripcion_corta"));
+                        noticia.setImgen_contenido(anEntry.optString("imagen"));
                         noticia.setSubtitulo(anEntry.optString("subtitulo"));
                         noticia.setDescripcion(anEntry.optString("descripcion"));
 
@@ -94,9 +93,4 @@ public class NewsFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
     }
-    /*@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment, container, false);
-        return rootView;
-    }*/
 }

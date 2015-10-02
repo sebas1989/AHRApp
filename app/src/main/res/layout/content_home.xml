@@ -115,7 +115,6 @@
                         android:id="@+id/netork_imageView_last"
                         android:layout_width="fill_parent"
                         android:layout_height="200dp"
-                        android:background="@color/white"
                         android:layout_alignParentTop="true"
                         android:scaleType="centerCrop"
                         android:adjustViewBounds="true"

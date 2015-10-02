@@ -23,6 +23,7 @@ import android.widget.Toast;
 import autodromo.punkmkt.com.ahrapp.fragments.AutodromoFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.CiudadMexicoActivity;
 import autodromo.punkmkt.com.ahrapp.fragments.ContentFragment;
+import autodromo.punkmkt.com.ahrapp.fragments.FacebookLogIn;
 import autodromo.punkmkt.com.ahrapp.fragments.HomeFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.HorariosFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.NewsFragment;
@@ -94,7 +95,7 @@ public class BaseActivity extends AppCompatActivity {
 
                     // For rest of the options we just show a toast on click
                     case R.id.autodromo:
-                        Toast.makeText(getApplicationContext(),"autodromo",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(),"autodromo",Toast.LENGTH_SHORT).show();
                         Fragment fA = new AutodromoFragment();
                         FragmentTransaction ftA = getSupportFragmentManager().beginTransaction();
                         ftA.replace(R.id.frame, fA);
@@ -104,7 +105,6 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.horarios:
-                        //Log.d("fragment","resultados");
                         Fragment fHF = new HorariosFragment();
                         FragmentTransaction ftHF = getSupportFragmentManager().beginTransaction();
                         ftHF.replace(R.id.frame, fHF);
@@ -114,7 +114,6 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.noticias:
-                        Toast.makeText(getApplicationContext(),"pasion",Toast.LENGTH_SHORT).show();
                         Fragment fN = new NewsFragment();
                         FragmentTransaction ftN = getSupportFragmentManager().beginTransaction();
                         ftN.replace(R.id.frame, fN);
@@ -124,7 +123,6 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.resultados:
-                        Toast.makeText(getApplicationContext(),"resultados",Toast.LENGTH_SHORT).show();
                         Fragment fRA = new ResultadosActivity();
                         FragmentTransaction ftRA = getSupportFragmentManager().beginTransaction();
                         ftRA.replace(R.id.frame, fRA);
@@ -134,7 +132,6 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.pilotos:
-                        Toast.makeText(getApplicationContext(),"pilotos",Toast.LENGTH_SHORT).show();
                         Fragment fPT = new PilotosFragment();
                         FragmentTransaction ftPP = getSupportFragmentManager().beginTransaction();
                         ftPP.replace(R.id.frame, fPT);
@@ -144,7 +141,6 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.pasion:
-                        Toast.makeText(getApplicationContext(),"pasion",Toast.LENGTH_SHORT).show();
                         Fragment fP = new PassionFragment();
                         FragmentTransaction ftP = getSupportFragmentManager().beginTransaction();
                         ftP.replace(R.id.frame, fP);
@@ -155,7 +151,6 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.mexico:
-                        Toast.makeText(getApplicationContext(),"mexico",Toast.LENGTH_SHORT).show();
                         Fragment fM = new CiudadMexicoActivity();
                         FragmentTransaction ftM = getSupportFragmentManager().beginTransaction();
                         ftM.replace(R.id.frame, fM);
@@ -165,13 +160,18 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.social_hub:
-                        Toast.makeText(getApplicationContext(),"Social hub",Toast.LENGTH_SHORT).show();
-                        Fragment fSH = new SocialHubFragment();
+                        /*Fragment fSH = new SocialHubFragment();
                         FragmentTransaction ftSH = getSupportFragmentManager().beginTransaction();
                         ftSH.replace(R.id.frame, fSH);
                         ftSH.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                         ftSH.addToBackStack(null);
-                        ftSH.commit();
+                        ftSH.commit();*/
+                        Fragment fFL = new FacebookLogIn();
+                        FragmentTransaction ftFL = getSupportFragmentManager().beginTransaction();
+                        ftFL.replace(R.id.frame, fFL);
+                        ftFL.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        ftFL.addToBackStack(null);
+                        ftFL.commit();
                         return true;
 
                     default:
