@@ -98,6 +98,7 @@ public class HomeFragment extends Fragment {
         IniciarPassion();
         IniciarSocialHub();
         getLatestNews();
+        IniciarRegistro();
         /*getCurrentWeather();
         getLatestNews();
         termsAndConditions();
@@ -232,6 +233,26 @@ public class HomeFragment extends Fragment {
                 ftSH.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 ftSH.addToBackStack(null);
                 ftSH.commit();
+            }
+        });
+    }
+
+    public void IniciarRegistro(){
+
+        ImageButton button = (ImageButton) getActivity().findViewById(R.id.quickLinkToRegistration);
+
+        // add button listener
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Fragment fFL = new FacebookLogIn();
+                android.support.v4.app.FragmentTransaction ftFL = getFragmentManager().beginTransaction();
+                ftFL.replace(R.id.frame, fFL); // f1_container is your FrameLayout container
+                ftFL.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                ftFL.addToBackStack(null);
+                ftFL.commit();
             }
         });
     }

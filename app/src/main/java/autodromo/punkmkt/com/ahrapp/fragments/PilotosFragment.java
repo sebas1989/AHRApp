@@ -83,36 +83,6 @@ public class PilotosFragment extends Fragment {
         pilotos.add(p20);
         adapter = new PilotosAdapter(pilotos);
 
-//        StringRequest request = new AuthRequest(Request.Method.GET, AHZ_PILOTOS_JSON_API_URL, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                try {
-//                    JSONArray object = new JSONArray(response);
-//                    for (int count = 0; count < object.length(); count++) {
-//                        JSONObject anEntry = object.getJSONObject(count);
-//                        Piloto piloto = new Piloto();
-//                        piloto.setId(Integer.parseInt(anEntry.optString("id")));
-//                        piloto.setNombre(anEntry.optString("nombre"));
-//                        piloto.setFoto(anEntry.optString("foto"));
-//                        pilotos.add(piloto);
-//                    }
-//                    adapter.notifyDataSetChanged();
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.e("volley", "Error during request");
-//                error.printStackTrace();
-//            }
-//        });
-//        MyVolleySingleton.getInstance().addToRequestQueue(request);
-
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         //Por si quieren configurar algom como Grill solo cambian la linea de arriba por esta:
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         recyclerView.setItemAnimator(new DefaultItemAnimator());

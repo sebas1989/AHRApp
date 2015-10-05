@@ -14,6 +14,7 @@
     <string name="title_activity_autodromo">AutodromoActivity</string>
     <string name="title_activity_ubica_zona">UbicaZonaActivity</string>
     <string name="localiza_tu_zona">LOCALIZA TU ZONA</string>
+    <string name="descripcion_ubica_tu_zona_texto">DESCRIPCIÓN ÚBICA TU ZONA</string>
 
     <!-- PANTALLA 1 -->
     <string name="menu_home">INICIO</string>

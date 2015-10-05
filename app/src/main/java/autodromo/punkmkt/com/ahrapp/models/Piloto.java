@@ -20,15 +20,6 @@ public class Piloto {
     public Piloto(){
 
     }
-    /*public Piloto(int id, String nombre, String foto, String numero, String nacionalidad, String fecha_nacimiento, String campeonatos){
-        this.id = id;
-        this.nombre = nombre;
-        this.foto = foto;
-        this.numero = numero;
-        this.nacionalidad = fecha_nacimiento;
-        this.fecha_nacimiento = fecha_nacimiento;
-        this.campeonatos = campeonatos;
-    }*/
 
     public Piloto(int id, String nombre, String foto, String numero, String equipo, String nacionalidad, String fecha_nacimiento, String campeonatos, String grands_prix, String podiums) {
         this.id = id;

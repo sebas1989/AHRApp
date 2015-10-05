@@ -250,7 +250,7 @@ public class FacebookLogIn extends Fragment {
                             customUser.put("facebook_id",facebook_id.getText().toString());
                             customUser.put("locale",locale.getText().toString());
                             customUser.put("link",link.getText().toString());
-                            customUser.put("age_range",edad.getSelectedItem().toString());
+                            customUser.put("age",edad.getSelectedItem().toString());
                             customUser.put("zona", zonaView.getSelectedItem().toString());
                             customUser.put("asiento", asientoView.getSelectedItem().toString());
                             // Call the Parse signup method

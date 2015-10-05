@@ -91,6 +91,7 @@ public class BaseActivity extends AppCompatActivity {
                         ftH.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                         ftH.addToBackStack(null);
                         ftH.commit();
+                        ftH.setBreadCrumbTitle(R.string.app_name);
                         return true;
 
                     // For rest of the options we just show a toast on click
@@ -160,18 +161,13 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.social_hub:
-                        /*Fragment fSH = new SocialHubFragment();
+                        Fragment fSH = new SocialHubFragment();
                         FragmentTransaction ftSH = getSupportFragmentManager().beginTransaction();
                         ftSH.replace(R.id.frame, fSH);
                         ftSH.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                         ftSH.addToBackStack(null);
-                        ftSH.commit();*/
-                        Fragment fFL = new FacebookLogIn();
-                        FragmentTransaction ftFL = getSupportFragmentManager().beginTransaction();
-                        ftFL.replace(R.id.frame, fFL);
-                        ftFL.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                        ftFL.addToBackStack(null);
-                        ftFL.commit();
+                        ftSH.commit();
+
                         return true;
 
                     default:

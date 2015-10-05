@@ -9,12 +9,12 @@
 
     <item name="background_tabs" type="color">#f33100</item>
     <!--Zonas-->
-    <item name="grandstands" type="color">#79a925</item>
-    <item name="gradas_platino" type="color">#a64d1d</item>
-    <item name="gradas_oro" type="color">#d0b431</item>
-    <item name="foro_sol_sur" type="color">#92a1f0</item>
-    <item name="foro_sol_norte" type="color">#db881d</item>
-    <item name="admision_general" type="color">#4b6bc6</item>
+    <item name="area_verde" type="color">#79a925</item>
+    <item name="area_cafe" type="color">#a64d1d</item>
+    <item name="area_amarilla" type="color">#d0b431</item>
+    <item name="area_morada" type="color">#92a1f0</item>
+    <item name="area_naranja" type="color">#db881d</item>
+    <item name="area_azul" type="color">#4b6bc6</item>
     <item name="white_transparent" type="color">#BFffffff</item>
     <item name="black_transparent" type="color">#BF000000</item>
     <item name="grey" type="color">#999999</item>
