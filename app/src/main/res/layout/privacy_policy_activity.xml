@@ -36,10 +36,10 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:overScrollMode="ifContentScrolls"
-                android:text="@string/ppolicy_desc"
+                android:text="@string/politicas_desc"
                 android:layout_below="@id/policyTitle"
                 android:textColor="@color/black"
-                android:textSize="15dp"
+                android:textSize="12dp"
                 android:layout_marginTop="20dp"
                 />
 

@@ -18,9 +18,19 @@ android {
         }
     }
 }
-
+buildscript {
+    repositories {
+        // required for this library, don't use mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+    }
+}
+apply plugin: 'com.neenbedankt.android-apt'
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    apt 'com.raizlabs.android:DBFlow-Compiler:2.2.1'
     compile files('libs/Parse-1.9.4/Parse-1.9.4.jar')
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.android.support:design:22.2.0'

@@ -1,10 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main_container_linearlayout"
     android:background="@color/white">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/background_tabs"
+        android:id="@+id/container_menu"
+        android:gravity="center"
+        android:baselineAligned="false"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        >
+        <ImageView
+            android:id="@+id/numero1"
+            android:background="@drawable/boton_1_64_r"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
 
+            />
+        <ImageView
+            android:id="@+id/numero2"
+            android:background="@drawable/boton_2_64"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:onClick="NextViewPager"
+            />
+    </LinearLayout>
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="249dp"
@@ -16,13 +51,14 @@
         />
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
         <RelativeLayout
+            android:id="@+id/main_container"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:padding="30dp">
 
@@ -38,14 +74,12 @@
                 android:textAlignment="center"
                 android:layout_gravity="center|left"
                 />
-
             <TextView
                 android:id="@+id/borde"
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/black_border"
                 android:layout_below="@+id/textoActivaUbicacion"/>
-
             <android.support.v7.widget.SwitchCompat
                 android:id="@+id/turnGPSOn"
                 android:layout_width="fill_parent"
@@ -54,16 +88,58 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_below="@+id/borde"
+                android:textOn="ON"
                 android:textOff="OFF"
-                android:textOn="ON"/>
-
+                />
         </RelativeLayout>
 
-        <!--Button
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/container_next"
+            android:layout_below="@+id/main_container"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:layout_gravity="bottom"
-            android:id="@+id/button" /-->
+            android:weightSum="2"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            </LinearLayout>
+            <LinearLayout
+                android:onClick="NextViewPager"
+                android:id="@+id/container_next_image"
+                android:background="@color/background_tabs"
+                android:gravity="center"
+                android:baselineAligned="false"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/next_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SIGUIENTE"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textStyle="bold"
+                    android:layout_alignParentLeft="true"
+                    android:onClick="NextViewPager"
+                    />
+                <ImageButton
+                    android:id="@+id/next_image_view"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/white_arrow"
+                    android:layout_alignParentRight="true"
+                    android:onClick="NextViewPager"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

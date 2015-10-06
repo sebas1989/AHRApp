@@ -1,8 +1,6 @@
 package autodromo.punkmkt.com.ahrapp.fragments;
 
 
-import android.app.Dialog;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.CountDownTimer;
 
@@ -10,15 +8,12 @@ import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
 //import android.support.v4.app.FragmentTransaction;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentActivity;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.content.Context;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -27,7 +22,6 @@ import android.widget.Toast;
 import android.text.format.Time;
 import java.lang.String;
 
-import autodromo.punkmkt.com.ahrapp.CiudadMexicoDetalleActivity;
 import autodromo.punkmkt.com.ahrapp.R;
 
 
@@ -35,18 +29,16 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 
 import autodromo.punkmkt.com.ahrapp.SingleNewDetailActivity;
 import autodromo.punkmkt.com.ahrapp.utils.AuthRequest;
-import autodromo.punkmkt.com.ahrapp.utils.MyVolleySingleton;
+import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
 import autodromo.punkmkt.com.ahrapp.utils.NetworkUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * Created by sebastianmendezgiron on 19/09/15.
@@ -236,6 +228,8 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
+
 
     public void IniciarRegistro(){
 

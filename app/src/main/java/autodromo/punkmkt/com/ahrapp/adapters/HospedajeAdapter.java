@@ -4,9 +4,7 @@ package autodromo.punkmkt.com.ahrapp.adapters;
  * Created by sebastianmendezgiron on 30/09/15.
  */
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +13,11 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 import autodromo.punkmkt.com.ahrapp.R;
 import autodromo.punkmkt.com.ahrapp.models.Hotel;
-import autodromo.punkmkt.com.ahrapp.utils.MyVolleySingleton;
+import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
 
 /**
  * Created by germanpunk on 23/09/15.

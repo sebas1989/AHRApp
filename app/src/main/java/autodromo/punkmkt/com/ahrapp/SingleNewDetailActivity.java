@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.content.Intent;
 
 import android.widget.TextView;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -14,26 +13,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 
 import autodromo.punkmkt.com.ahrapp.utils.AuthRequest;
-import autodromo.punkmkt.com.ahrapp.utils.MyVolleySingleton;
-import autodromo.punkmkt.com.ahrapp.utils.BitmapManager;
 import autodromo.punkmkt.com.ahrapp.utils.NetworkUtils;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
-import android.os.Environment;
 import android.util.Log;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 

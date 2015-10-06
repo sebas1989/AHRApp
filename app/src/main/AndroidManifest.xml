@@ -32,7 +32,7 @@
 
 
     <application
-        android:name=".utils.MyVolleySingleton"
+        android:name=".MyVolleySingleton"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -105,6 +105,16 @@
         <activity android:name=".ZonaDetalleActivity">
 
         </activity>
+        <activity android:name=".SettingsActivity">
+
+        </activity>
+        <activity android:name=".PoliticasPrivacidadActivity">
+
+        </activity>
+        <!--activity android:name=".TerminosServicioActivity"
+            android:label="@string/terminos">
+
+        </activity-->
         <activity android:name="com.facebook.FacebookActivity"
             android:configChanges=
                 "keyboard|keyboardHidden|screenLayout|screenSize|orientation"

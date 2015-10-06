@@ -3,6 +3,7 @@ package autodromo.punkmkt.com.ahrapp;
 /**
  * Created by sebastianmendezgiron on 19/09/15.
  */
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
@@ -168,6 +169,11 @@ public class BaseActivity extends AppCompatActivity {
                         ftSH.addToBackStack(null);
                         ftSH.commit();
 
+                        return true;
+
+                    case R.id.configuraciones:
+                        Intent myIntent = new Intent(BaseActivity.this, SettingsActivity.class);
+                        BaseActivity.this.startActivity(myIntent);
                         return true;
 
                     default:

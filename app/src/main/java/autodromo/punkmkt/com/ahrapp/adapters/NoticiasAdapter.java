@@ -17,7 +17,7 @@ import java.util.List;
 import android.support.v7.widget.RecyclerView;
 
 import autodromo.punkmkt.com.ahrapp.SingleNewDetailActivity;
-import autodromo.punkmkt.com.ahrapp.utils.MyVolleySingleton;
+import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
 import autodromo.punkmkt.com.ahrapp.models.Noticias;
 import autodromo.punkmkt.com.ahrapp.R;
 

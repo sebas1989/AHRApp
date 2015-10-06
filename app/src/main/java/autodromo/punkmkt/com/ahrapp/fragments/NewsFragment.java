@@ -26,7 +26,7 @@ import autodromo.punkmkt.com.ahrapp.R;
 import autodromo.punkmkt.com.ahrapp.adapters.NoticiasAdapter;
 import autodromo.punkmkt.com.ahrapp.models.Noticias;
 import autodromo.punkmkt.com.ahrapp.utils.AuthRequest;
-import autodromo.punkmkt.com.ahrapp.utils.MyVolleySingleton;
+import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
 
 /**
  * Created by sebastianmendezgiron on 25/09/15.

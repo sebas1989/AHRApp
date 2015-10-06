@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -34,7 +32,6 @@ import autodromo.punkmkt.com.ahrapp.models.Etapa;
 import autodromo.punkmkt.com.ahrapp.models.Posicion;
 import autodromo.punkmkt.com.ahrapp.models.Premio;
 import autodromo.punkmkt.com.ahrapp.utils.AuthRequest;
-import autodromo.punkmkt.com.ahrapp.utils.MyVolleySingleton;
 
 public class ResultadosDetalleActivity extends Activity {
     private String AHZ_PREMIOS_JSON_API_URL = "http://104.236.3.158/api/premios/";

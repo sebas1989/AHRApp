@@ -1,17 +1,9 @@
 package autodromo.punkmkt.com.ahrapp.fragments;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.media.Image;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -28,13 +20,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import autodromo.punkmkt.com.ahrapp.R;
 import autodromo.punkmkt.com.ahrapp.models.DiaCarrera;
 import autodromo.punkmkt.com.ahrapp.models.EtapaDiaCarrera;
 import autodromo.punkmkt.com.ahrapp.utils.AuthRequest;
-import autodromo.punkmkt.com.ahrapp.utils.MyVolleySingleton;
+import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
 
 /**
  * Created by sebastianmendezgiron on 29/09/15.

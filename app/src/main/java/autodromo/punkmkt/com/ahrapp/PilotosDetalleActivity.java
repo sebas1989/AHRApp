@@ -4,31 +4,20 @@ package autodromo.punkmkt.com.ahrapp;
  * Created by sebastianmendezgiron on 25/09/15.
  */
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.support.annotation.DimenRes;
-import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 
 import java.util.ArrayList;
 
-import autodromo.punkmkt.com.ahrapp.adapters.GalleryAdapter;
 import autodromo.punkmkt.com.ahrapp.models.GalleryItem;
 import autodromo.punkmkt.com.ahrapp.models.Piloto;
 import autodromo.punkmkt.com.ahrapp.models.Premio;
-import autodromo.punkmkt.com.ahrapp.utils.MyVolleySingleton;
 
 
 public class PilotosDetalleActivity extends Activity {

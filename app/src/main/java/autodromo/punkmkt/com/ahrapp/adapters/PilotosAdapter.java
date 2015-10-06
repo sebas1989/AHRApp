@@ -5,7 +5,6 @@ package autodromo.punkmkt.com.ahrapp.adapters;
  */
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 
 import autodromo.punkmkt.com.ahrapp.PilotosDetalleActivity;
-import autodromo.punkmkt.com.ahrapp.utils.MyVolleySingleton;
+import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
 import autodromo.punkmkt.com.ahrapp.R;
 import autodromo.punkmkt.com.ahrapp.models.Piloto;
 

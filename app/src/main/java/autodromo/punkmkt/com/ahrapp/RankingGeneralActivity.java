@@ -4,12 +4,9 @@ package autodromo.punkmkt.com.ahrapp;
  * Created by sebastianmendezgiron on 28/09/15.
  */
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -32,7 +29,6 @@ import java.util.ArrayList;
 import autodromo.punkmkt.com.ahrapp.models.Posicion;
 
 import autodromo.punkmkt.com.ahrapp.utils.AuthRequest;
-import autodromo.punkmkt.com.ahrapp.utils.MyVolleySingleton;
 
 public class RankingGeneralActivity extends Activity {
     private String AHZ_RANKING_GENERAL = "http://104.236.3.158/api/premios/ranking_general/";
