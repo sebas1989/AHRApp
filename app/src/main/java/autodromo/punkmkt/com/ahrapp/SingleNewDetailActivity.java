@@ -1,11 +1,17 @@
 package autodromo.punkmkt.com.ahrapp;
 
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.content.Intent;
 
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +36,12 @@ import org.json.JSONObject;
 /**
  * Created by sebastianmendezgiron on 21/09/15.
  */
-public class SingleNewDetailActivity extends FragmentActivity {
+public class SingleNewDetailActivity extends AppCompatActivity {
+
+    //Defining Variables
+    private Toolbar toolbar;
+    private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
 
     public static final String ALBUM_PATH = "/Download/AHR_Noticias/";
     private String AHR_FILTER_SINGLE_NEW = "http://104.236.3.158/api/noticias/";
@@ -53,7 +64,7 @@ public class SingleNewDetailActivity extends FragmentActivity {
 
         String newsId = noticia.getStringExtra("id");
         AHR_FILTER_SINGLE_NEW = AHR_FILTER_SINGLE_NEW + newsId + "/";
-
+    
         if(NetworkUtils.haveNetworkConnection(this)) {
 
             StringRequest request = new AuthRequest(Request.Method.GET, AHR_FILTER_SINGLE_NEW, "utf-8", new Response.Listener<String>() {

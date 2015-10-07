@@ -3,15 +3,17 @@ package autodromo.punkmkt.com.ahrapp;
 /**
  * Created by sebastianmendezgiron on 30/09/15.
  */
+import android.app.ActionBar;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -22,8 +24,7 @@ import autodromo.punkmkt.com.ahrapp.fragments.LugaresFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.RestaurantesFragment;
 
 
-public class CiudadMexicoDetalleActivity extends FragmentActivity {
-
+public class CiudadMexicoDetalleActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +75,6 @@ public class CiudadMexicoDetalleActivity extends FragmentActivity {
         }
     }
 
-
     public void MostrarHoteles(View v){
         Fragment f = new HospedajeFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -108,18 +108,4 @@ public class CiudadMexicoDetalleActivity extends FragmentActivity {
         ft.commit();
     }
 
-    @Override
-    public void onBackPressed()
-    {
-        super.onBackPressed();
-        //startActivity(new Intent(CiudadMexicoDetalleActivity.this, CiudadMexicoActivity.class));
-        Fragment f = new CiudadMexicoActivity();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.container_fragment, f);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        ft.addToBackStack(null);
-        ft.commit();
-        finish();
-
-    }
 }

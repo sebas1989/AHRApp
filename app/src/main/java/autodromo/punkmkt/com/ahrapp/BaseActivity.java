@@ -56,13 +56,10 @@ public class BaseActivity extends AppCompatActivity {
             ft.commit();
         }
 
-
-        //configuracionEvento();
-        //getCurrentWeather();
         // Initializing Toolbar and setting it as the actionbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
         //Initializing NavigationView
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
 
@@ -87,18 +84,18 @@ public class BaseActivity extends AppCompatActivity {
 
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
+                        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
                         Fragment fH = new HomeFragment();
                         FragmentTransaction ftH = getSupportFragmentManager().beginTransaction();
                         ftH.replace(R.id.frame, fH);
                         ftH.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                         ftH.addToBackStack(null);
                         ftH.commit();
-                        ftH.setBreadCrumbTitle(R.string.app_name);
                         return true;
 
                     // For rest of the options we just show a toast on click
                     case R.id.autodromo:
-                        //Toast.makeText(getApplicationContext(),"autodromo",Toast.LENGTH_SHORT).show();
+                        getSupportActionBar().setTitle(getResources().getString(R.string.menu_autodromo));
                         Fragment fA = new AutodromoFragment();
                         FragmentTransaction ftA = getSupportFragmentManager().beginTransaction();
                         ftA.replace(R.id.frame, fA);
@@ -108,6 +105,7 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.horarios:
+                        getSupportActionBar().setTitle(getResources().getString(R.string.menu_horarios));
                         Fragment fHF = new HorariosFragment();
                         FragmentTransaction ftHF = getSupportFragmentManager().beginTransaction();
                         ftHF.replace(R.id.frame, fHF);
@@ -117,6 +115,7 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.noticias:
+                        getSupportActionBar().setTitle(getResources().getString(R.string.menu_noticias));
                         Fragment fN = new NewsFragment();
                         FragmentTransaction ftN = getSupportFragmentManager().beginTransaction();
                         ftN.replace(R.id.frame, fN);
@@ -126,6 +125,7 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.resultados:
+                        getSupportActionBar().setTitle(getResources().getString(R.string.menu_resultados));
                         Fragment fRA = new ResultadosActivity();
                         FragmentTransaction ftRA = getSupportFragmentManager().beginTransaction();
                         ftRA.replace(R.id.frame, fRA);
@@ -135,6 +135,7 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.pilotos:
+                        getSupportActionBar().setTitle(getResources().getString(R.string.menu_pilotos));
                         Fragment fPT = new PilotosFragment();
                         FragmentTransaction ftPP = getSupportFragmentManager().beginTransaction();
                         ftPP.replace(R.id.frame, fPT);
@@ -144,6 +145,7 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.pasion:
+                        getSupportActionBar().setTitle(getResources().getString(R.string.menu_pasion));
                         Fragment fP = new PassionFragment();
                         FragmentTransaction ftP = getSupportFragmentManager().beginTransaction();
                         ftP.replace(R.id.frame, fP);
@@ -154,6 +156,7 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.mexico:
+                        getSupportActionBar().setTitle(getResources().getString(R.string.menu_cd_mexico));
                         Fragment fM = new CiudadMexicoActivity();
                         FragmentTransaction ftM = getSupportFragmentManager().beginTransaction();
                         ftM.replace(R.id.frame, fM);
@@ -163,32 +166,33 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.social_hub:
+                        getSupportActionBar().setTitle(getResources().getString(R.string.menu_social_hub));
                         Fragment fSH = new SocialHubFragment();
                         FragmentTransaction ftSH = getSupportFragmentManager().beginTransaction();
                         ftSH.replace(R.id.frame, fSH);
                         ftSH.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                         ftSH.addToBackStack(null);
                         ftSH.commit();
-
                         return true;
 
                     case R.id.registrate:
+                        getSupportActionBar().setTitle(getResources().getString(R.string.menu_registrate_gana));
                         Fragment fRT = new FacebookLogIn();
                         FragmentTransaction ftRT = getSupportFragmentManager().beginTransaction();
                         ftRT.replace(R.id.frame, fRT);
                         ftRT.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                         ftRT.addToBackStack(null);
                         ftRT.commit();
-
                         return true;
 
                     case R.id.configuraciones:
+                        getSupportActionBar().setTitle(getResources().getString(R.string.menu_configuraciones));
                         Intent myIntent = new Intent(BaseActivity.this, SettingsActivity.class);
                         BaseActivity.this.startActivity(myIntent);
                         return true;
 
                     default:
-                        Toast.makeText(getApplicationContext(),"otro",Toast.LENGTH_SHORT).show();
+                        //getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
                         return true;
 
                 }
