@@ -1,356 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:id="@+id/contentFragmentHome"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@color/white"
+    tools:context=".EcardDetailActivity" >
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView3">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/ecard_img_single"
+            android:contentDescription="single"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:adjustViewBounds="true"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            />
+        <ImageView
+            android:id="@+id/ecard_img_frame"
+            android:contentDescription="desc"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+
+            />
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="fill_parent"
+            android:layout_height="120dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false"
+            android:paddingTop="10dp">
 
-            <LinearLayout
-                android:id="@+id/timer"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:background="@drawable/bg_timer"
-                android:padding="25dp"
-                android:layout_height="223dp">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/vive"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/vive_el_mexicogp"
-                        android:textColor="@color/white"
-                        android:textSize="20dp"
-                        android:paddingTop="20dp"
-                        android:gravity="center_horizontal|top"
-                        android:layout_gravity="center_horizontal"
-                        android:autoText="false" />
-
-                    <TextView
-                        android:id="@+id/counter"
-                        android:text="@string/resultados"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/vive"
-                        android:textSize="40dp"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        android:paddingTop="15dp"
-                        android:paddingBottom="15dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="fitCenter"
-                        android:gravity="center_horizontal" />
-
-                    <TextView
-                        android:id="@+id/definicion"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="True"
-                        android:textSize="14dp"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        android:textStyle="italic|bold"
-                        android:layout_below="@+id/counter"
-                        android:textColor="@color/black"/>
-
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/resultAndWeather"
+            <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:layout_below="@+id/timer">
+                android:layout_height="60dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignTop="@+id/takeOrSelect">
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_width="110dp"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentRight="true">
 
-
-                    <ImageButton
-                        android:id="@+id/imageButton"
-                        android:layout_width="155dp"
-                        android:layout_height="155dp"
-                        android:maxWidth="150dp"
-                        android:layout_alignLeft="@+id/conWeather"
-                        android:layout_alignParentLeft="true">
-                    </ImageButton>
-                    <RelativeLayout
-                        android:id="@+id/conWeather"
-                        android:layout_alignRight="@+id/imageButton"
-                        android:layout_width="155dp"
-                        android:layout_height="155dp"
+                    <Button
+                        android:id="@+id/savePicture"
+                        android:layout_width="48dp"
+                        android:layout_height="47dp"
+                        android:layout_alignParentLeft="true"
+                        android:background="@drawable/save_button"
+                        android:visibility="invisible"/>
+                    <Button
+                        android:id="@+id/sharePicture"
+                        android:layout_width="48dp"
+                        android:layout_height="47dp"
+                        android:background="@drawable/share_button"
                         android:layout_alignParentRight="true"
-                        >
-                        <TextView
-                            android:id="@+id/currWeather"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/white"
-                            android:textStyle="bold"
-                            android:textSize="60dp"
-                            android:gravity="center_horizontal"
-                            />
-                        <TextView
-                            android:id="@+id/weatherStatus"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/currWeather"
-                            android:gravity="center_horizontal"
-                            android:textStyle="bold"
-                            android:lines="2"
-                            android:textColor="@color/white"
-                            android:textSize="16dp"
-                            android:textAllCaps="true"
-                            />
-                    </RelativeLayout>
-
+                        android:visibility="invisible"/>
                 </RelativeLayout>
 
-            </LinearLayout>
+            </RelativeLayout>
 
-            <LinearLayout
-                android:id="@+id/lastNews"
+            <RelativeLayout
+                android:id="@+id/takeOrSelect"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/resultAndWeather"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="15dp"
-                >
-
-                <RelativeLayout
-                    android:id="@+id/lastNew"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
-                    <RelativeLayout
-                        android:id="@+id/container_main_view"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        >
-
-                        <com.android.volley.toolbox.NetworkImageView
-                            android:id="@+id/netork_imageView_last"
-                            android:layout_width="fill_parent"
-                            android:layout_height="200dp"
-                            android:background="@color/white"
-                            android:layout_alignParentTop="true"
-                            android:scaleType="centerCrop"
-                            android:adjustViewBounds="true"
-                            android:layout_gravity="top"/>
-                        <RelativeLayout
-                            android:layout_alignParentBottom="true"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/black_transparent"
-                            android:orientation="horizontal"
-                            android:paddingTop="@dimen/activity_horizontal_margin"
-                            android:paddingBottom="@dimen/activity_horizontal_margin"
-                            android:paddingRight="@dimen/activity_horizontal_margin"
-                            android:paddingLeft="@dimen/activity_horizontal_margin"
-                            android:id="@+id/container_title_premio"
-                            android:gravity="bottom"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/tituloNoticia1"
-                                android:textColor="@color/white"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif-condensed"
-                                android:textStyle="bold"
-                                android:ellipsize="end"
-                                android:singleLine="true"
-                                android:maxLength="40"
-                                android:maxWidth="250dp"
-                                android:layout_alignParentLeft="true"
-                                android:gravity="left"/>
-                            <ImageButton
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
-                                android:layout_gravity="right"
-                                android:layout_marginLeft="0dp"
-                                android:background="@drawable/red_arrow"
-                                android:layout_alignParentRight="true"
-                                />
-                        </RelativeLayout>
-
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:id="@+id/twoNews"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/container_main_view"
-                        >
-                        <RelativeLayout
-                            android:id="@+id/one_two"
-                            android:layout_width="155dp"
-                            android:layout_height="155dp"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true"
-                            >
-
-                            <com.android.volley.toolbox.NetworkImageView
-                                android:id="@+id/netork_imageView"
-                                android:layout_width="155dp"
-                                android:layout_height="155dp"
-                                android:background="@color/white"
-                                android:layout_alignParentTop="true"
-                                android:scaleType="centerCrop"
-                                android:adjustViewBounds="true"
-                                android:layout_gravity="top" />
-                            <RelativeLayout
-                                android:layout_alignParentBottom="true"
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@color/black_transparent"
-                                android:orientation="horizontal"
-                                android:paddingTop="@dimen/activity_horizontal_margin"
-                                android:paddingBottom="@dimen/activity_horizontal_margin"
-                                android:paddingRight="@dimen/activity_horizontal_margin"
-                                android:paddingLeft="@dimen/activity_horizontal_margin"
-                                android:id="@+id/container2"
-                                android:gravity="bottom"
-                                >
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/tituloNoticia2"
-                                    android:textColor="@color/white"
-                                    android:textSize="14sp"
-                                    android:fontFamily="sans-serif-condensed"
-                                    android:textStyle="bold"
-                                    android:ellipsize="end"
-                                    android:singleLine="true"
-                                    android:maxLength="40"
-                                    android:maxWidth="250dp"
-                                    android:layout_alignParentLeft="true"
-                                    android:gravity="left"/>
-                                <ImageButton
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:layout_gravity="right"
-                                    android:layout_marginLeft="0dp"
-                                    android:background="@drawable/red_arrow"
-                                    android:layout_alignParentRight="true"
-                                    />
-                            </RelativeLayout>
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:id="@+id/one_three"
-                            android:layout_width="155dp"
-                            android:layout_height="155dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
-                            >
-
-                            <com.android.volley.toolbox.NetworkImageView
-                                android:id="@+id/netork_imageView3"
-                                android:layout_width="155dp"
-                                android:layout_height="155dp"
-                                android:background="@color/white"
-                                android:layout_alignParentTop="true"
-                                android:scaleType="centerCrop"
-                                android:adjustViewBounds="true"
-                                android:layout_gravity="top" />
-                            <RelativeLayout
-                                android:layout_alignParentBottom="true"
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@color/black_transparent"
-                                android:orientation="horizontal"
-                                android:paddingTop="@dimen/activity_horizontal_margin"
-                                android:paddingBottom="@dimen/activity_horizontal_margin"
-                                android:paddingRight="@dimen/activity_horizontal_margin"
-                                android:paddingLeft="@dimen/activity_horizontal_margin"
-                                android:id="@+id/container3"
-                                android:gravity="bottom"
-                                >
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/tituloNoticia3"
-                                    android:textColor="@color/white"
-                                    android:textSize="14sp"
-                                    android:fontFamily="sans-serif-condensed"
-                                    android:textStyle="bold"
-                                    android:ellipsize="end"
-                                    android:singleLine="true"
-                                    android:maxLength="40"
-                                    android:maxWidth="250dp"
-                                    android:layout_alignParentLeft="true"
-                                    android:gravity="left"/>
-                                <ImageButton
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:layout_gravity="right"
-                                    android:layout_marginLeft="0dp"
-                                    android:background="@drawable/red_arrow"
-                                    android:layout_alignParentRight="true"
-                                    />
-                            </RelativeLayout>
-
-                        </RelativeLayout>
-
-
-                    </RelativeLayout>
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/terminosCondiciones"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/lastNews"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="15dp"
-                android:orientation="horizontal">
-
+                android:layout_height="60dp"
+                android:paddingTop="10dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white">
                 <RelativeLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
-
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true">
                     <Button
-                        android:layout_width="155dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/terminos"
-                        android:text="@string/terminos"
-                        android:background="@color/white"
-                        android:textColor="@color/black"
+                        android:layout_width="110dp"
+                        android:layout_height="47dp"
+                        android:background="@drawable/photo_shot_button"
+                        android:id="@+id/takePicture"
+                        android:layout_alignParentRight="false"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentBottom="false"
+                        android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true">
+                    <Button
+                        android:layout_width="49dp"
+                        android:layout_height="47dp"
+                        android:background="@drawable/select_file_button"
+                        android:id="@+id/selectExistingPicture"
                         android:layout_alignParentLeft="true"/>
-
-                    <Button
-                        android:layout_width="155dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/politicas"
-                        android:background="@color/white"
-                        android:textColor="@color/black"
-                        android:text="@string/politicas"
-                        android:layout_alignParentRight="true"/>
-
                 </RelativeLayout>
-
-            </LinearLayout>
-
+            </RelativeLayout>
         </RelativeLayout>
 
-    </ScrollView>
+
+
+    </RelativeLayout>
+
 </RelativeLayout>

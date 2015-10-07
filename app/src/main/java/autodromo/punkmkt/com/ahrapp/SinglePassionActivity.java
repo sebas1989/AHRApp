@@ -72,11 +72,56 @@ public class SinglePassionActivity extends Activity {
         Bundle passion = getIntent().getExtras();
 
         if (passion != null){
-            Integer eImageId = passion.getInt("imageId");
-
+            Integer eImageId = passion.getInt("position");
+            Log.d(":o", eImageId.toString());
             img = (ImageView) findViewById(R.id.ecard_img_single);
             ImageView frame=(ImageView) findViewById(R.id.ecard_img_frame);
-            frame.setBackgroundResource(eImageId);
+            if (eImageId.equals(0)){
+                frame.setBackgroundResource(R.drawable.alonso_bg);
+            }else if (eImageId.equals(1)){
+                frame.setBackgroundResource(R.drawable.bottas_bg);
+            }else if (eImageId.equals(2)){
+                frame.setBackgroundResource(R.drawable.button_bg);
+            }else if (eImageId.equals(3)){
+                frame.setBackgroundResource(R.drawable.checo_bg);
+            }else if (eImageId.equals(4)){
+                frame.setBackgroundResource(R.drawable.ericsson_bg);
+            }else if (eImageId.equals(5)){
+                frame.setBackgroundResource(R.drawable.grosjean_bg);
+            }else if (eImageId.equals(6)){
+                frame.setBackgroundResource(R.drawable.hamilton_bg);
+            }else if (eImageId.equals(7)){
+                frame.setBackgroundResource(R.drawable.hulkenberg_bg);
+            }else if (eImageId.equals(8)){
+                frame.setBackgroundResource(R.drawable.kimi_bg);
+            }else if (eImageId.equals(9)){
+                frame.setBackgroundResource(R.drawable.kvyat_bg);
+            }else if (eImageId.equals(10)){
+                frame.setBackgroundResource(R.drawable.massa_bg);
+            }else if (eImageId.equals(11)){
+                frame.setBackgroundResource(R.drawable.mexico_1_bg);
+            }else if (eImageId.equals(12)){
+                frame.setBackgroundResource(R.drawable.mexico_2_bg);
+            }else if (eImageId.equals(13)){
+                frame.setBackgroundResource(R.drawable.nasr_bg);
+            }else if (eImageId.equals(14)){
+                frame.setBackgroundResource(R.drawable.pastor_bg);
+            }else if (eImageId.equals(15)){
+                frame.setBackgroundResource(R.drawable.ricciardo_bg);
+            }else if (eImageId.equals(16)){
+                frame.setBackgroundResource(R.drawable.roseberd_bg);
+            }else if (eImageId.equals(17)){
+                frame.setBackgroundResource(R.drawable.rossi_bg);
+            }else if (eImageId.equals(18)){
+                frame.setBackgroundResource(R.drawable.sainz_bg);
+            }else if (eImageId.equals(19)){
+                frame.setBackgroundResource(R.drawable.stevens_bg);
+            }else if (eImageId.equals(20)){
+                frame.setBackgroundResource(R.drawable.verstappen_bg);
+            }else if (eImageId.equals(21)){
+                frame.setBackgroundResource(R.drawable.vettel_bg);
+            }
+            //frame.setBackgroundResource(eImageId);
 
             button = (Button) findViewById(R.id.takePicture);
             button.setOnClickListener(new View.OnClickListener() {

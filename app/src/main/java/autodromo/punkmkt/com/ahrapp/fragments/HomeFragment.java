@@ -181,10 +181,10 @@ public class HomeFragment extends Fragment {
         c.cancel();
 
     }
-    public void onResume(){
+    /*public void onResume(){
         super.onResume();
         configuracionEvento();
-    }
+    }*/
     public void IniciarPassion(){
 
         ImageButton button = (ImageButton) getActivity().findViewById(R.id.quickLinkToPassion);
