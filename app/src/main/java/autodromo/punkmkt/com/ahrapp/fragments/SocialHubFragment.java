@@ -17,7 +17,7 @@ import autodromo.punkmkt.com.ahrapp.R;
 public class SocialHubFragment extends Fragment {
 
     private WebView mWebView;
-    private final String AHZ_URL_SOCIAL_HUB = "http://104.236.3.158/api/noticias/";
+    private final String AHZ_URL_SOCIAL_HUB = "http://104.236.3.158/socialhub/";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

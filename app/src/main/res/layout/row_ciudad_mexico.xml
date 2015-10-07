@@ -9,16 +9,13 @@
     android:layout_height="wrap_content"
     card_view:cardCornerRadius="0dp"
     card_view:cardMaxElevation="1dp"
+    android:layout_marginBottom="10dp"
     >
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="0dp"
-        android:layout_margin="0dp"
         >
-        <ImageView
-            android:layout_margin="0dp"
-            android:padding="0dp"
+        <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/imageView"
             android:layout_width="fill_parent"
             android:layout_height="200dp"
@@ -35,7 +32,7 @@
             android:orientation="horizontal"
             android:padding="10dp"
             android:id="@+id/container_title_premio"
-            android:gravity="bottom"
+            android:gravity="top"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true">
             <TextView
@@ -47,12 +44,12 @@
                 android:textSize="22sp"
                 android:fontFamily="sans-serif-condensed"
                 android:textStyle="bold"
-                android:maxLength="40"
+                android:maxLength="12"
                 android:maxWidth="250dp"
                 android:layout_alignParentLeft="true"
                 android:gravity="left"/>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:id="@+id/container_ubicacion"
@@ -73,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:text="OHHHHHH"
                     android:textColor="@color/white"
-                    android:maxLength="100"
+                    android:maxLength="20"
                     android:id="@+id/ubicacion"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
@@ -84,7 +81,7 @@
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/container_telefono"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_below="@+id/container_ubicacion">
@@ -104,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textColor="@color/white"
-                    android:maxLength="100"
+                    android:maxLength="20"
                     android:id="@+id/telefono"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
@@ -112,27 +109,63 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/container_sitio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_below="@+id/container_telefono">
-                <TextView
-                    android:id="@+id/vermas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="50dp"
-                    android:textStyle="bold"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="VER EN MAPA"/>
-                <ImageButton
-                    android:id="@+id/vermasbutton"
-                    android:layout_marginLeft="4dp"
+                <ImageView
+                    android:id="@+id/sitioicon"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:layout_gravity="right"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/red_arrow" />
+                    android:src="@drawable/phone_icon"
+                    android:gravity="left"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginRight="4dp"
+                    />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:maxLength="20"
+                    android:id="@+id/sitiourl"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="sans-serif-condensed"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/container_sitio">
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/vermas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="50dp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-condensed"
+                        android:layout_alignParentLeft="true"
+                        android:text="VER EN MAPA"/>
+                    <ImageButton
+                        android:id="@+id/vermasbutton"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="right"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/red_arrow" />
+
+                </RelativeLayout>
+
             </LinearLayout>
         </RelativeLayout>
     </RelativeLayout>

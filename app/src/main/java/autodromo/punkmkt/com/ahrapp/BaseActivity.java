@@ -27,6 +27,7 @@ import autodromo.punkmkt.com.ahrapp.fragments.ContentFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.FacebookLogIn;
 import autodromo.punkmkt.com.ahrapp.fragments.HomeFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.HorariosFragment;
+import autodromo.punkmkt.com.ahrapp.fragments.LoginFBFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.NewsFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.PassionFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.PilotosFragment;
@@ -168,6 +169,16 @@ public class BaseActivity extends AppCompatActivity {
                         ftSH.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                         ftSH.addToBackStack(null);
                         ftSH.commit();
+
+                        return true;
+
+                    case R.id.registrate:
+                        Fragment fRT = new FacebookLogIn();
+                        FragmentTransaction ftRT = getSupportFragmentManager().beginTransaction();
+                        ftRT.replace(R.id.frame, fRT);
+                        ftRT.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        ftRT.addToBackStack(null);
+                        ftRT.commit();
 
                         return true;
 

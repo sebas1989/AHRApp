@@ -4,20 +4,29 @@ package autodromo.punkmkt.com.ahrapp.adapters;
  * Created by sebastianmendezgiron on 30/09/15.
  */
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
+import android.content.Intent;
+
+
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.LayoutInflater;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.List;
+import android.support.v7.widget.RecyclerView;
 
-import autodromo.punkmkt.com.ahrapp.R;
-import autodromo.punkmkt.com.ahrapp.models.Hotel;
+import autodromo.punkmkt.com.ahrapp.MapActivity;
+import autodromo.punkmkt.com.ahrapp.SingleNewDetailActivity;
 import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
+import autodromo.punkmkt.com.ahrapp.models.Hotel;
+import autodromo.punkmkt.com.ahrapp.R;
 
 /**
  * Created by germanpunk on 23/09/15.
@@ -31,36 +40,35 @@ public class HospedajeAdapter extends RecyclerView.Adapter<HospedajeAdapter.Hosp
         public TextView nombre;
         public TextView ubicacion;
         public TextView telefono;
-        TextView vermas;
-        ImageView imagen;
-        ImageView vermasbutton;
+        public TextView vermas;
+        public NetworkImageView imagen;
+        public ImageButton vermasbutton;
 
         public IMyViewHolderClicks mListener;
 
         public HospedajeViewHolder(View v, IMyViewHolderClicks listener) {
             super(v);
             mListener = listener;
-            imagen = (ImageView) v.findViewById(R.id.imageView);
-            vermasbutton = (ImageView) v.findViewById(R.id.vermasbutton);
+            imagen = (NetworkImageView) v.findViewById(R.id.imageView);
+            vermasbutton = (ImageButton) v.findViewById(R.id.vermasbutton);
             vermas = (TextView) v.findViewById(R.id.vermas);
             nombre = (TextView) v.findViewById(R.id.name);
             ubicacion = (TextView) v.findViewById(R.id.ubicacion);
             telefono = (TextView) v.findViewById(R.id.telefono);
             vermas.setOnClickListener(this);
             vermasbutton.setOnClickListener(this);
-            //v.setOnClickListener(this);
         }
         @Override
         public void onClick(View v) {
-            if (v instanceof ImageView){
-                mListener.onTomato((ImageView)v, getLayoutPosition());
+            if (v instanceof ImageButton){
+                mListener.onTomato((ImageButton)v, getLayoutPosition());
             } else {
                 mListener.onPotato((TextView)v,getLayoutPosition());
             }
         }
         public static interface IMyViewHolderClicks {
             public void onPotato(TextView caller, int i);
-            public void onTomato(ImageView callerImage, int i);
+            public void onTomato(ImageButton callerImage, int i);
         }
 
     }
@@ -83,20 +91,26 @@ public class HospedajeAdapter extends RecyclerView.Adapter<HospedajeAdapter.Hosp
 
         HospedajeAdapter.HospedajeViewHolder vh = new HospedajeViewHolder(v, new HospedajeAdapter.HospedajeViewHolder.IMyViewHolderClicks() {
             public void onPotato(TextView caller, int i) {
-                /*Hotel hotel  = items.get(i);
+                Hotel hotel  = items.get(i);
                 Intent Idetail = new Intent (viewGroup.getContext(), MapActivity.class);
-                Idetail.putExtra("latitud", hotel.getLatitud_mapa());
-                Idetail.putExtra("longitud", hotel.getLongitud_mapa());
+
+                Idetail.putExtra("id", Integer.toString(hotel.getId()));
                 Idetail.putExtra("titulo", hotel.getNombre());
-                viewGroup.getContext().startActivity(Idetail);*/
+                Idetail.putExtra("ubicacion", hotel.getUbicacion());
+                Idetail.putExtra("latitud_mapa", hotel.getLatitud_mapa());
+                Idetail.putExtra("longitud_mapa", hotel.getLongitud_mapa());
+                viewGroup.getContext().startActivity(Idetail);
             };
-            public void onTomato(ImageView callerImage, int i) {
-                /*Hotel hotel  = items.get(i);
+            public void onTomato(ImageButton callerImage, int i) {
+                Hotel hotel  = items.get(i);
                 Intent Idetail = new Intent (viewGroup.getContext(), MapActivity.class);
-                Idetail.putExtra("latitud", hotel.getLatitud_mapa());
-                Idetail.putExtra("longitud", hotel.getLongitud_mapa());
+
+                Idetail.putExtra("id", Integer.toString(hotel.getId()));
                 Idetail.putExtra("titulo", hotel.getNombre());
-                viewGroup.getContext().startActivity(Idetail);*/
+                Idetail.putExtra("ubicacion", hotel.getUbicacion());
+                Idetail.putExtra("latitud_mapa", hotel.getLatitud_mapa());
+                Idetail.putExtra("longitud_mapa", hotel.getLongitud_mapa());
+                viewGroup.getContext().startActivity(Idetail);
             }
         });
 
@@ -106,27 +120,10 @@ public class HospedajeAdapter extends RecyclerView.Adapter<HospedajeAdapter.Hosp
 
     @Override
     public void onBindViewHolder(HospedajeViewHolder viewHolder, int i) {
-        //viewHolder.imagen.setImageUrl(items.get(i).getImagen(), imageLoader);
+        viewHolder.imagen.setImageUrl(items.get(i).getImagen(), imageLoader);
         viewHolder.nombre.setText(items.get(i).getNombre());
         viewHolder.ubicacion.setText(items.get(i).getUbicacion());
         viewHolder.telefono.setText(items.get(i).getTelefono());
-        switch (i)
-        {
-            case 0:
-                viewHolder.imagen.setImageResource(R.drawable.hoteles_pic);
-                break;
-            case 1:
-                viewHolder.imagen.setImageResource(R.drawable.hoteles_pic);
-                break;
-            case 2:
-                viewHolder.imagen.setImageResource(R.drawable.hoteles_pic);
-                break;
-            case 3:
-                viewHolder.imagen.setImageResource(R.drawable.hoteles_pic);
-                break;
-            default:
-                break;
-        }
 
     }
 

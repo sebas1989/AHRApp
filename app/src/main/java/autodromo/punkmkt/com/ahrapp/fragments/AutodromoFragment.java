@@ -29,7 +29,7 @@ public class AutodromoFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        //IniciarActivityEventos();
+        IniciarActivityEventos();
         IniciarUbicaTuZona();
     }
 

@@ -12,10 +12,10 @@ public class Hotel {
     private String nombre;
     private String ubicacion;
     private String telefono;
-    private String urlmap;
     private String latitud_mapa;
     private String longitud_mapa;
     private String imagen;
+    private String urlmap;
 
     public Hotel(){
 

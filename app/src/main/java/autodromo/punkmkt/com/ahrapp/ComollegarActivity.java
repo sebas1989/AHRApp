@@ -55,7 +55,7 @@ public class ComollegarActivity extends FragmentActivity {
             googleMap = fm.getMap();
             googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
             LatLng centerLatLng = AUTODROMO_HNOZ_RODRIGUEZ;
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(centerLatLng, 14);
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(centerLatLng, 10);
             googleMap.moveCamera(cameraUpdate);
             // Enabling MyLocation Layer of Google Map
             googleMap.setMyLocationEnabled(true);
@@ -82,7 +82,7 @@ public class ComollegarActivity extends FragmentActivity {
         RemoveMarkers();
         MostrarMarcadorAHZ();
 
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(AUTODROMO_HNOZ_RODRIGUEZ, 14);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(AUTODROMO_HNOZ_RODRIGUEZ, 5);
         googleMap.moveCamera(cameraUpdate);
 
     }
@@ -93,8 +93,13 @@ public class ComollegarActivity extends FragmentActivity {
     }
     public void MostrarMarcadoresRecoleccionWitoutView(){
         recolecciones = new ArrayList<Coordenada>();
-        recolecciones.add(new Coordenada(19.407169, -99.081305, "Recoleccion1"));
-        recolecciones.add(new Coordenada(19.410875, -99.095178, "Recoleccion2"));
+        recolecciones.add(new Coordenada(19.525688, -99.226925, "Mundo E"));
+        recolecciones.add(new Coordenada(19.363066, -99.273070, "Santa Fe"));
+        recolecciones.add(new Coordenada(19.301994, -99.123284, "Galerias Coapa"));
+        recolecciones.add(new Coordenada(19.490944, -99.133967, "Plaza Lindavista"));
+        recolecciones.add(new Coordenada(19.304524, -99.189463, "Perisur"));
+        recolecciones.add(new Coordenada(19.438452, -99.222613, "Hipódromo"));
+        recolecciones.add(new Coordenada(19.402968, -99.242663, "Bosques de las Lomas"));
         MostrarMarcadorAHZ();
         for(Coordenada recoleccion : recolecciones ){
             MarkerOptions options = new MarkerOptions();
@@ -107,11 +112,32 @@ public class ComollegarActivity extends FragmentActivity {
         }
 
     }
+
+    public void MostrarMarcadoresEstacionesMetro(View v){
+        RemoveMarkers();
+        estaciones_metro = new ArrayList<Coordenada>();
+        estaciones_metro.add(new Coordenada(19.407126, -99.082267, "Metro Puebla"));
+        estaciones_metro.add(new Coordenada(19.408185, -99.091366, "Metro Ciudad Deportiva"));
+        estaciones_metro.add(new Coordenada(19.408610, -99.103175, "Metro Velodromo"));
+        MostrarMarcadorAHZ();
+        for(Coordenada estacion : estaciones_metro ){
+            MarkerOptions options = new MarkerOptions();
+            options.title(estacion.getTitulo());
+            LatLng point = new LatLng(estacion.getLatitud(), estacion.getLongitud());
+            options.position(point);
+            options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+            googleMap.addMarker(options);
+            //googleMap.addMarker(new MarkerOptions().position(new LatLng(estacion.getLatitud(), estacion.getLongitud())).title(estacion.getTitulo()));
+
+        }
+    }
+
+
     public void MostrarMarcadoresTaxis(View v){
         RemoveMarkers();
         taxis = new ArrayList<Coordenada>();
-        taxis.add(new Coordenada(19.407169, -99.081305, "Taxi1"));
-        taxis.add(new Coordenada(19.410875, -99.095178, "Taxi2"));
+        taxis.add(new Coordenada(19.408610, -99.103175, "Upicsa"));
+        taxis.add(new Coordenada(19.396575, -99.096079, "Iztacalco"));
         MostrarMarcadorAHZ();
         for(Coordenada taxi : taxis ){
             MarkerOptions options = new MarkerOptions();
@@ -125,23 +151,6 @@ public class ComollegarActivity extends FragmentActivity {
         }
     }
 
-    public void MostrarMarcadoresEstacionesMetro(View v){
-        RemoveMarkers();
-        estaciones_metro = new ArrayList<Coordenada>();
-        estaciones_metro.add(new Coordenada(19.407169, -99.081305, "Estacion1"));
-        estaciones_metro.add(new Coordenada(19.410875, -99.095178,"Estacion2"));
-        MostrarMarcadorAHZ();
-        for(Coordenada estacion : estaciones_metro ){
-            MarkerOptions options = new MarkerOptions();
-            options.title(estacion.getTitulo());
-            LatLng point = new LatLng(estacion.getLatitud(), estacion.getLongitud());
-            options.position(point);
-            options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-            googleMap.addMarker(options);
-            //googleMap.addMarker(new MarkerOptions().position(new LatLng(estacion.getLatitud(), estacion.getLongitud())).title(estacion.getTitulo()));
-
-        }
-    }
     public void MostrarMarcadorAHZ(){
         Marker AHZ = googleMap.addMarker(new MarkerOptions().position(AUTODROMO_HNOZ_RODRIGUEZ)
                 .title("Autodromo Hermanos Rodriguez"));

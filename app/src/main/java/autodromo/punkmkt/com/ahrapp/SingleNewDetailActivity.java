@@ -1,9 +1,11 @@
 package autodromo.punkmkt.com.ahrapp;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.content.Intent;
 
+import android.support.v4.app.FragmentTransaction;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,6 +14,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 
+import autodromo.punkmkt.com.ahrapp.fragments.CiudadMexicoActivity;
+import autodromo.punkmkt.com.ahrapp.fragments.HomeFragment;
 import autodromo.punkmkt.com.ahrapp.utils.AuthRequest;
 import autodromo.punkmkt.com.ahrapp.utils.NetworkUtils;
 
@@ -94,6 +98,5 @@ public class SingleNewDetailActivity extends FragmentActivity {
             Toast.makeText(this, getResources().getString(R.string.minutos), Toast.LENGTH_SHORT).show();
         }
     }
-
 
 }

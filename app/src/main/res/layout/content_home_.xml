@@ -83,7 +83,6 @@
                         android:id="@+id/imageButton"
                         android:layout_width="155dp"
                         android:layout_height="155dp"
-                        android:background="@drawable/cuadro_noticia1_home"
                         android:maxWidth="150dp"
                         android:layout_alignLeft="@+id/conWeather"
                         android:layout_alignParentLeft="true">
@@ -93,7 +92,6 @@
                         android:layout_alignRight="@+id/imageButton"
                         android:layout_width="155dp"
                         android:layout_height="155dp"
-                        android:background="@drawable/cuadro_noticia1_home"
                         android:layout_alignParentRight="true"
                         >
                         <TextView

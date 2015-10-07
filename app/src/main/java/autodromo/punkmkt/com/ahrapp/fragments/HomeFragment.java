@@ -91,10 +91,6 @@ public class HomeFragment extends Fragment {
         IniciarSocialHub();
         getLatestNews();
         IniciarRegistro();
-        /*getCurrentWeather();
-        getLatestNews();
-        termsAndConditions();
-        privacyPolicy();*/
 
         RelativeLayout relativeFirstNew =(RelativeLayout) getActivity().findViewById(R.id.container_main_view);
         relativeFirstNew.setOnClickListener(new View.OnClickListener(){
@@ -145,7 +141,7 @@ public class HomeFragment extends Fragment {
 
         long milliDiff = confMillis - nowMillis;
 
-        c =new CountDownTimer(milliDiff, 1000){
+        c = new CountDownTimer(milliDiff, 1000){
             @Override
             public void onTick(long millisUntilFinished) {
                 segundosFaltantes = (int) (millisUntilFinished / 1000) % 60 ;
@@ -181,13 +177,10 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onPause() {
-        Log.i("pausa", getClass().getSimpleName() + ":onPause()");
-
         super.onPause();
         c.cancel();
 
     }
-
     public void IniciarPassion(){
 
         ImageButton button = (ImageButton) getActivity().findViewById(R.id.quickLinkToPassion);
@@ -197,8 +190,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-
-                Toast.makeText(getActivity(),"pasion",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(),"pasion",Toast.LENGTH_SHORT).show();
                 Fragment fP = new PassionFragment();
                 android.support.v4.app.FragmentTransaction ftP = getFragmentManager().beginTransaction();
                 ftP.replace(R.id.frame, fP); // f1_container is your FrameLayout container
@@ -217,8 +209,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-
-                Toast.makeText(getActivity(),"pasion",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(),"pasion",Toast.LENGTH_SHORT).show();
                 Fragment fSH = new SocialHubFragment();
                 android.support.v4.app.FragmentTransaction ftSH = getFragmentManager().beginTransaction();
                 ftSH.replace(R.id.frame, fSH); // f1_container is your FrameLayout container
