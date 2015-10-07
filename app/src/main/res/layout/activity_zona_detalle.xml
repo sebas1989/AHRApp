@@ -1,0 +1,47 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:textAlignment="center"
+    android:touchscreenBlocksFocus="false">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/imagen_principal"
+            android:layout_width="fill_parent"
+            android:layout_height="328dp"
+            android:background="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/nombreZona"
+            android:padding="10dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/red_background"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/descripcion_ubica_tu_zona_texto"
+            android:layout_below="@+id/imagen_principal"/>
+
+        <TextView
+            android:id="@+id/descripcionZona"
+            android:padding="10dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/grey"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_below="@+id/nombreZona"/>
+
+    </RelativeLayout>
+
+</ScrollView>
