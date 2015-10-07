@@ -181,6 +181,10 @@ public class HomeFragment extends Fragment {
         c.cancel();
 
     }
+    public void onResume(){
+        super.onResume();
+        configuracionEvento();
+    }
     public void IniciarPassion(){
 
         ImageButton button = (ImageButton) getActivity().findViewById(R.id.quickLinkToPassion);
@@ -209,7 +213,6 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                //Toast.makeText(getActivity(),"pasion",Toast.LENGTH_SHORT).show();
                 Fragment fSH = new SocialHubFragment();
                 android.support.v4.app.FragmentTransaction ftSH = getFragmentManager().beginTransaction();
                 ftSH.replace(R.id.frame, fSH); // f1_container is your FrameLayout container
@@ -223,9 +226,7 @@ public class HomeFragment extends Fragment {
 
 
     public void IniciarRegistro(){
-
         ImageButton button = (ImageButton) getActivity().findViewById(R.id.quickLinkToRegistration);
-
         // add button listener
         button.setOnClickListener(new View.OnClickListener() {
 

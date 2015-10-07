@@ -21,10 +21,9 @@ public class Piloto {
 
     }
 
-    public Piloto(int id, String nombre, String foto, String numero, String equipo, String nacionalidad, String fecha_nacimiento, String campeonatos, String grands_prix, String podiums) {
+    public Piloto(int id, String nombre, String numero, String equipo, String nacionalidad, String fecha_nacimiento, String campeonatos, String grands_prix, String podiums) {
         this.id = id;
         this.nombre = nombre;
-        this.foto = foto;
         this.numero = numero;
         this.equipo = equipo;
         this.nacionalidad = nacionalidad;
@@ -113,62 +112,6 @@ public class Piloto {
     public void setPodiums(String podiums) {
         this.podiums = podiums;
     }
-
-    /*public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getNacionalidad() {
-        return nacionalidad;
-    }
-
-    public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
-    }
-
-    public String getFecha_nacimiento() {
-        return fecha_nacimiento;
-    }
-
-    public void setFecha_nacimiento(String fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
-    }
-
-    public String getCampeonatos() {
-        return campeonatos;
-    }
-
-    public void setCampeonatos(String campeonatos) {
-        this.campeonatos = campeonatos;
-    }*/
 
 }
 

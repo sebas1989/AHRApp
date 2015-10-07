@@ -132,7 +132,7 @@ public class PilotosDetalleActivity extends Activity {
                 break;
         }
 
-        piloto = new Piloto(Integer.parseInt(id),nombre,image,numero,equipo,nacionalidad,fecha_nacimiento,campeonatos,grands_prix,podiums);
+        piloto = new Piloto(Integer.parseInt(id),nombre,numero,equipo,nacionalidad,fecha_nacimiento,campeonatos,grands_prix,podiums);
         createdetailpiloto(piloto);
 
 

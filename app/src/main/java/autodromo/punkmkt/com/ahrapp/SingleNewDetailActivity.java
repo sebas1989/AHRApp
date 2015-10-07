@@ -64,7 +64,7 @@ public class SingleNewDetailActivity extends AppCompatActivity {
 
         String newsId = noticia.getStringExtra("id");
         AHR_FILTER_SINGLE_NEW = AHR_FILTER_SINGLE_NEW + newsId + "/";
-    
+
         if(NetworkUtils.haveNetworkConnection(this)) {
 
             StringRequest request = new AuthRequest(Request.Method.GET, AHR_FILTER_SINGLE_NEW, "utf-8", new Response.Listener<String>() {

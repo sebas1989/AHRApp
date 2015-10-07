@@ -32,7 +32,7 @@ public class PilotosAdapter extends RecyclerView.Adapter<PilotosAdapter.PilotoVi
 
     public static class PilotoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView nombre;
-        NetworkImageView imagen;
+        public NetworkImageView imagen;
         public IMyViewHolderClicks mListener;
 
         public PilotoViewHolder(View v, IMyViewHolderClicks listener) {

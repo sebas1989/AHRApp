@@ -21,6 +21,16 @@ import autodromo.punkmkt.com.ahrapp.adapters.CustomGrid;
 public class PassionFragment extends Fragment {
 
     int[] imageId={
+            R.drawable.hamilton,
+            R.drawable.select_pasion,
+            R.drawable.select_pasion,
+            R.drawable.select_pasion,
+            R.drawable.select_pasion,
+            R.drawable.select_pasion,
+            R.drawable.select_pasion,
+            R.drawable.select_pasion,
+            R.drawable.select_pasion,
+            R.drawable.select_pasion,
             R.drawable.select_pasion,
             R.drawable.select_pasion,
             R.drawable.select_pasion,
