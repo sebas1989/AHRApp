@@ -27,7 +27,6 @@ public class CiudadMexicoActivity extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         IniciarActivityHospedaje();
         IniciarActivityRestaurantes();
         IniciarActivityAdondeir();
@@ -35,15 +34,12 @@ public class CiudadMexicoActivity extends Fragment {
     }
 
     public void IniciarActivityHospedaje(){
-
         Button button = (Button) getActivity().findViewById(R.id.ir_hospedaje);
-
         // add button listener
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-
                 Intent myIntent = new Intent(getActivity(), CiudadMexicoDetalleActivity.class);
                 myIntent.putExtra("fragment","hospedaje");
                 getActivity().startActivity(myIntent);
@@ -52,15 +48,12 @@ public class CiudadMexicoActivity extends Fragment {
     }
 
     public void IniciarActivityRestaurantes(){
-
         Button button = (Button) getActivity().findViewById(R.id.ir_restaurantes);
-
         // add button listener
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-
                 Intent myIntent = new Intent(getActivity(), CiudadMexicoDetalleActivity.class);
                 myIntent.putExtra("fragment","restaurantes");
                 getActivity().startActivity(myIntent);
@@ -69,9 +62,7 @@ public class CiudadMexicoActivity extends Fragment {
     }
 
     public void IniciarActivityAdondeir(){
-
         Button button = (Button) getActivity().findViewById(R.id.ir_a_dondeir);
-
         // add button listener
         button.setOnClickListener(new View.OnClickListener() {
 
@@ -85,9 +76,7 @@ public class CiudadMexicoActivity extends Fragment {
         });
     }
     public void IniciarActivityEventos(){
-
         Button button = (Button) getActivity().findViewById(R.id.ir_eventos);
-
         // add button listener
         button.setOnClickListener(new View.OnClickListener() {
 

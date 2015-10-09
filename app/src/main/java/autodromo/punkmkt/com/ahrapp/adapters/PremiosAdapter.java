@@ -77,8 +77,6 @@ public class PremiosAdapter extends RecyclerView.Adapter<PremiosAdapter.PremioVi
 
             public void onPotato(View caller, int i) {
                 Premio premio  = items.get(i);
-
-
                 Intent Idetail = new Intent (viewGroup.getContext(), ResultadosDetalleActivity.class);
                 Idetail.putExtra("id", Integer.toString(premio.getId()));
                 Idetail.putExtra("nombre", premio.getName());

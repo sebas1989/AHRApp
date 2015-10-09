@@ -20,7 +20,7 @@
             <autodromo.punkmkt.com.ahrapp.utils.TouchImageView
                 android:id="@+id/mapaGeneral"
                 android:layout_width="fill_parent"
-                android:layout_height="267dp"
+                android:layout_height="272dp"
                 android:cropToPadding="false"
                 android:importantForAccessibility="yes"
                 android:adjustViewBounds="true"

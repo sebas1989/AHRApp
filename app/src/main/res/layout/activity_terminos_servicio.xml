@@ -13,12 +13,30 @@
         android:layout_below="@+id/container_top"
         android:scrollbars="none"
         >
-        <TextView
-            android:text="@string/terminos_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:fontFamily="sans-serif-condensed"/>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/termTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="ifContentScrolls"
+                android:text="@string/terminos"
+                android:textColor="@color/red_background"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_horizontal|top"
+                android:layout_gravity="center_horizontal"
+                />
+            <TextView
+                android:text="@string/terminos_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_below="@+id/termTitle"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif-condensed"/>
+        </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

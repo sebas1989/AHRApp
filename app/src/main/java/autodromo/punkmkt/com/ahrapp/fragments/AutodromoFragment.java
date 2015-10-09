@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import autodromo.punkmkt.com.ahrapp.ComollegarActivity;
 import autodromo.punkmkt.com.ahrapp.R;
+import autodromo.punkmkt.com.ahrapp.ServiciosActivity;
 
 /**
  * Created by sebastianmendezgiron on 30/09/15.
@@ -31,6 +32,7 @@ public class AutodromoFragment extends Fragment {
 
         IniciarActivityEventos();
         IniciarUbicaTuZona();
+        iniciarServicios();
     }
 
 
@@ -62,5 +64,15 @@ public class AutodromoFragment extends Fragment {
         });
     }
 
-
+    public void iniciarServicios(){
+        Button button = (Button) getActivity().findViewById(R.id.servicios);
+        // add button listener
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent myIntent = new Intent(getActivity(), ServiciosActivity.class);
+                getActivity().startActivity(myIntent);
+            }
+        });
+    }
 }

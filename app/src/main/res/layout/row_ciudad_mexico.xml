@@ -104,7 +104,9 @@
                     android:maxLength="20"
                     android:id="@+id/telefono"
                     android:layout_marginTop="10dp"
+                    android:clickable="true"
                     android:layout_marginBottom="10dp"
+                    android:onClick="llamarHospedaje"
                     android:fontFamily="sans-serif-condensed"
                     />
             </LinearLayout>
@@ -118,7 +120,7 @@
                     android:id="@+id/sitioicon"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:src="@drawable/phone_icon"
+                    android:src="@drawable/web_site_icon"
                     android:gravity="left"
                     android:layout_alignParentLeft="true"
                     android:layout_marginTop="13dp"

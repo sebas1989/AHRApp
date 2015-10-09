@@ -75,10 +75,10 @@ public class ComoLlegarFragment extends Fragment{
         RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
 
-        Zona z0 = new Zona(0, "Verde",  "Zona Verde", "Acceso por P4, P5, P6 Y P7 sobre Viaducto Río de la Piedad esquina con Eje 4 Oriente. El metro más cercano es Cd. Deportiva (línea 9 del metro)", "area_verde_autodromo.jpg");
-        Zona z1 = new Zona(1, "Azul",   "Zona Azul",    "El ingreso es por P8, P9 Y P12 entre Viaducto Río de la Piedad  y Eje 4 Oriente. El metro más cercano es Puebla (línea 9 del metro)", "area_azul_autodromo.jpg");
-        Zona z2 = new Zona(2, "Morada", "Zona Morada",  "El ingreso es por P13 ubicada sobre Eje 4 Oriente, esquina con Eje 3 Sur Añil. La estación de metrobús más cercana a este acceso es UPIICSA","area_morada_autodromo.jpg");
-        Zona z3 = new Zona(3, "Amarilla","Zona amarilla",   "El ingreso es por P14 ubicada sobre Eje 3 Sur Añil, esquina con Eje 4 Oriente La estación de metrobús más cercana este acceso es UPIICSA","area_amarilla_autodromo");
+        Zona z0 = new Zona(0, "Verde",  "Zona Verde", "Acceso por P4, P5, P6 sobre Viaducto Río de la Piedad esquina con Circuito Interior Av. Río Churubusco. El metro más cercano es Cd. Deportiva (línea 9 del metro).", "area_verde_autodromo.jpg");
+        Zona z1 = new Zona(1, "Azul",   "Zona Azul",    "El ingreso es por P8, P9 Y P12 entre Viaducto Río de la Piedad  y Eje 4 Oriente. El metro más cercano es Puebla (línea 9 del metro).", "area_azul_autodromo.jpg");
+        Zona z2 = new Zona(2, "Morada", "Zona Morada",  "El ingreso es por P13 ubicada sobre Eje 4 Oriente, esquina con Eje 3 Sur Añil. La estación de metrobús más cercana a este acceso es UPIICSA.","area_morada_autodromo.jpg");
+        Zona z3 = new Zona(3, "Amarilla","Zona amarilla",   "El ingreso es por P14 ubicada sobre Eje 3 Sur Añil, esquina con Eje 4 Oriente. La estación de metrobús más cercana a este acceso es UPIICSA.","area_amarilla_autodromo");
         Zona z4 = new Zona(4, "Naranja",    "Zona naranja","El ingreso es por P16 ubicada sobre Eje 3 Sur Añil, esquina con Resina.  La estación de metrobús más cercana a este acceso es Iztacalco.","area_naranja_autodromo.jpg");
         Zona z5 = new Zona(5, "Gris","Zona Gris","El ingreso es por P1 del Palacio de los Deportes  sobre Circuito Interior Río Churubusco esquina con Eje 3 Sur Añil. El metro más cercano es Velódromo (línea 9 del metro).","area_gris_autodromo.jpg");
         Zona z6 = new Zona(6, "Café","Zona Café","Acceso por P1 del Palacio de los Deportes ubicada sobre Circuito Interior Río Churubusco, esquina con Eje 3 Sur Añil. El metro más cercano es Velódromo (línea 9 del metro).","area_cafe_autodromo.jpg");

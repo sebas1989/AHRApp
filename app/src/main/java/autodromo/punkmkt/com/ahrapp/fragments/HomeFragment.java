@@ -164,6 +164,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFinish() {
                 Context context = getActivity();
+                mTextView.setText("00:00" + " : " + "00:00" + " : " + "00:00" + " : " + "00:00");
                 CharSequence text = "Listo";
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
@@ -288,10 +289,8 @@ public class HomeFragment extends Fragment {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-
                 }
             });
-
             MyVolleySingleton.getInstance().addToRequestQueue(request);
         }else{
 

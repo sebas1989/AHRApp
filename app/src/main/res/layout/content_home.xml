@@ -81,7 +81,6 @@
                     android:layout_height="165dp"
                     android:background="@drawable/home_pasion"
                     android:maxWidth="150dp"
-                    android:layout_alignLeft="@+id/conWeather"
                     android:layout_alignParentLeft="true">
                 </ImageButton>
 
@@ -91,7 +90,6 @@
                     android:layout_height="165dp"
                     android:background="@drawable/home_social_hub"
                     android:maxWidth="150dp"
-                    android:layout_alignLeft="@+id/conWeather"
                     android:layout_alignParentRight="true">
                 </ImageButton>
 

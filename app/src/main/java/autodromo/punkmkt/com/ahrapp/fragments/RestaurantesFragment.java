@@ -71,6 +71,7 @@ public class RestaurantesFragment extends Fragment {
                         restaurante.setImagen(anEntry.getString("imagen"));
                         restaurante.setLatitud_mapa(anEntry.getString("latitud_mapa"));
                         restaurante.setLongitud_mapa(anEntry.getString("longitud_mapa"));
+                        restaurante.setUrlmap(anEntry.getString("website"));
                         restaurantes.add(restaurante);
                     }
                     adapter.notifyDataSetChanged();
