@@ -57,7 +57,7 @@ public class PassionFragment extends Fragment {
 
         GridView grid = (GridView) getActivity().findViewById(R.id.grid_ecards);
         CustomGrid adapter = new CustomGrid(getActivity(), imageId);
-        grid.setAdapter(adapter);
+            grid.setAdapter(adapter);
         grid.setOnItemClickListener(new OnItemClickListener() {
 
             @Override

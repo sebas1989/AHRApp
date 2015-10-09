@@ -9,7 +9,7 @@ package autodromo.punkmkt.com.ahrapp.models;
 public class Piloto {
     private Integer id;
     private String nombre;
-    private String foto;
+    private int foto;
     private String numero;
     private String equipo;
     private String nacionalidad;
@@ -21,9 +21,10 @@ public class Piloto {
 
     }
 
-    public Piloto(int id, String nombre, String numero, String equipo, String nacionalidad, String fecha_nacimiento, String campeonatos, String grands_prix, String podiums) {
+    public Piloto(int id, String nombre, int foto, String numero, String equipo, String nacionalidad, String fecha_nacimiento, String campeonatos, String grands_prix, String podiums) {
         this.id = id;
         this.nombre = nombre;
+        this.foto = foto;
         this.numero = numero;
         this.equipo = equipo;
         this.nacionalidad = nacionalidad;
@@ -49,11 +50,11 @@ public class Piloto {
         this.nombre = nombre;
     }
 
-    public String getFoto() {
+    public int getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(int foto) {
         this.foto = foto;
     }
 
@@ -112,6 +113,7 @@ public class Piloto {
     public void setPodiums(String podiums) {
         this.podiums = podiums;
     }
+
 
 }
 

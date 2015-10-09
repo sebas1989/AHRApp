@@ -140,7 +140,7 @@ public class SettingsActivity extends Activity {
     }
 
     public void IniciarTerminosServicioActivity(View view){
-        Intent myIntent = new Intent(SettingsActivity.this, PoliticasPrivacidadActivity.class);
+        Intent myIntent = new Intent(SettingsActivity.this, TerminosServicioActivity.class);
         SettingsActivity.this.startActivity(myIntent);
     }
 

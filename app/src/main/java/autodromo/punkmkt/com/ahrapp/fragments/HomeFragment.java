@@ -170,9 +170,7 @@ public class HomeFragment extends Fragment {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
             }
-
         }.start();
-
     }
 
     @Override
@@ -185,6 +183,7 @@ public class HomeFragment extends Fragment {
         super.onResume();
         configuracionEvento();
     }*/
+
     public void IniciarPassion(){
 
         ImageButton button = (ImageButton) getActivity().findViewById(R.id.quickLinkToPassion);

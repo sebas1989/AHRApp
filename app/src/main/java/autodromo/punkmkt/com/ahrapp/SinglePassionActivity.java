@@ -73,7 +73,6 @@ public class SinglePassionActivity extends Activity {
 
         if (passion != null){
             Integer eImageId = passion.getInt("position");
-            Log.d(":o", eImageId.toString());
             img = (ImageView) findViewById(R.id.ecard_img_single);
             ImageView frame=(ImageView) findViewById(R.id.ecard_img_frame);
             if (eImageId.equals(0)){

@@ -114,10 +114,10 @@
         <activity android:name=".PoliticasPrivacidadActivity">
 
         </activity>
-        <!--activity android:name=".TerminosServicioActivity"
-            android:label="@string/terminos">
+        <activity android:name=".TerminosServicioActivity"
+            >
 
-        </activity-->
+        </activity>
         <activity android:name="com.facebook.FacebookActivity"
             android:configChanges=
                 "keyboard|keyboardHidden|screenLayout|screenSize|orientation"

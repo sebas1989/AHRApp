@@ -53,7 +53,6 @@ public class PilotosDetalleActivity extends Activity {
         descripcion_podiums_piloto = (TextView) findViewById(R.id.descripcion_podiums_piloto);
 
         Intent intent = getIntent();
-        Premio premio = new Premio();
         String id = intent.getStringExtra("id");
         String nombre = intent.getStringExtra("nombre");
         String image = intent.getStringExtra("image");
@@ -132,8 +131,17 @@ public class PilotosDetalleActivity extends Activity {
                 break;
         }
 
-        piloto = new Piloto(Integer.parseInt(id),nombre,numero,equipo,nacionalidad,fecha_nacimiento,campeonatos,grands_prix,podiums);
-        createdetailpiloto(piloto);
+        //piloto = new Piloto(Integer.parseInt(id),nombre,int,numero,equipo,nacionalidad,fecha_nacimiento,campeonatos,grands_prix,podiums);
+        //createdetailpiloto(piloto);
+        descripcion_nombre_piloto.setText(nombre);
+        descripcion_numero_piloto.setText(numero);
+        descripcion_equipo_piloto.setText(equipo);
+        descripcion_nacionalidad_piloto.setText(nacionalidad);
+        descripcion_fecha_nacimiento_piloto.setText(fecha_nacimiento);
+        //descripcion_lugar_nacimiento_piloto.setText(piloto.getLugar_nacimiento());
+        descripcion_campeonatos_piloto.setText(campeonatos);
+        descripcion_grands_prix_piloto.setText(grands_prix);
+        descripcion_podiums_piloto.setText(podiums);
 
 
     }
@@ -156,7 +164,7 @@ public class PilotosDetalleActivity extends Activity {
         switch (url){
             //imagen.setImageDrawable(r.getDrawable(R.drawable.noticia_photo1));
             case "foto1":
-                imagen.setImageResource(R.drawable.piloto_gallery);
+                imagen.setImageResource(R.drawable.noticia_photo1);
                 //imagen.setDefaultImageResId(R.drawable.piloto_gallery);
                 //imagen.setImageUrl(galeria_fotos.get(0).getImage(), imageLoader);
                 //imagen.setImageDrawable(ContextCompat.getDrawable(InitializeApplication.getAppContext(),R.drawable.piloto_gallery));

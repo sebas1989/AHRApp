@@ -117,7 +117,7 @@ public class PilotosAdapter extends RecyclerView.Adapter<PilotosAdapter.PilotoVi
     @Override
     public void onBindViewHolder(PilotoViewHolder viewHolder, int i) {
 
-        if (i == 0){
+        /*if (i == 0){
             viewHolder.imagen.setDefaultImageResId(R.drawable.alexander_rossi_pilot);
             viewHolder.imagen.setImageUrl(items.get(i).getFoto(), imageLoader);
         }else if (i == 1){
@@ -177,7 +177,7 @@ public class PilotosAdapter extends RecyclerView.Adapter<PilotosAdapter.PilotoVi
         }else if (i == 19){
             viewHolder.imagen.setDefaultImageResId(R.drawable.will_stevens_pilot);
             viewHolder.imagen.setImageUrl(items.get(i).getFoto(), imageLoader);
-        }
+        }*/
         viewHolder.nombre.setText(items.get(i).getNombre());
     }
 

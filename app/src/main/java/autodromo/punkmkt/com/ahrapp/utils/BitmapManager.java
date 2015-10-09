@@ -62,4 +62,6 @@ public class BitmapManager {
 		/* Decode the JPEG file into a Bitmap */
         return BitmapFactory.decodeFile(currentPhotoPath, bmOptions);
     }
+
+
 }

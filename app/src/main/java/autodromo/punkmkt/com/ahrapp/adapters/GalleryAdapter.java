@@ -93,7 +93,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
         //viewHolder.imagen.setImageURI(items.get(i).getImage(), imageLoader);
         switch (items.get(i).getImage()){
             case "foto1":
-                viewHolder.imagen.setImageResource(R.drawable.piloto_gallery);
+                viewHolder.imagen.setImageResource(R.drawable.noticia_photo1);
                 break;
             case "foto2":
                 viewHolder.imagen.setImageResource(R.drawable.noticia_photo1);
