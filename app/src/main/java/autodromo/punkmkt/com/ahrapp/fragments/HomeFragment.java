@@ -154,7 +154,6 @@ public class HomeFragment extends Fragment {
                 mTextView.setText(diasfaltantes + " : " + horasFaltantes + " : " + minutosFaltantes + " : " +segundosFaltantes);
                 mLabels = (TextView) getActivity().findViewById(R.id.definicion);
                 } catch (Exception e) {
-                    e.printStackTrace();
                 }
                 String fDias = getResources().getString(R.string.dias);
                 String fHoras = getResources().getString(R.string.horas);
@@ -179,21 +178,19 @@ public class HomeFragment extends Fragment {
         c.cancel();
 
     }
-    /*public void onResume(){
+    public void onResume(){
         super.onResume();
         configuracionEvento();
-    }*/
+    }
 
     public void IniciarPassion(){
 
         ImageButton button = (ImageButton) getActivity().findViewById(R.id.quickLinkToPassion);
-
         // add button listener
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                //Toast.makeText(getActivity(),"pasion",Toast.LENGTH_SHORT).show();
                 Fragment fP = new PassionFragment();
                 android.support.v4.app.FragmentTransaction ftP = getFragmentManager().beginTransaction();
                 ftP.replace(R.id.frame, fP); // f1_container is your FrameLayout container
@@ -251,7 +248,7 @@ public class HomeFragment extends Fragment {
                 public void onResponse(String response) {
                     try {
                         JSONArray newsArray = new JSONArray(response);
-                        //Log.d(":o", response);
+
                         id = newsArray.getJSONObject(0).optString("id").toString();
                         nom1 = newsArray.getJSONObject(0).optString("titulo").toString();
                         subtitulo1 = newsArray.getJSONObject(0).optString("subtitulo").toString();
@@ -285,86 +282,22 @@ public class HomeFragment extends Fragment {
                         last3 = (NetworkImageView) getActivity().findViewById(R.id.netork_imageView3);
                         last3.setImageUrl(newsArray.getJSONObject(2).optString("imagen_cuadrada"), imageLoader);
 
-                        //Log.d(":o", response);
-
                     } catch (JSONException e) {
-                        e.printStackTrace();
                     }
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Log.e("volley", "Error during request");
-                    error.printStackTrace();
+
                 }
             });
 
             MyVolleySingleton.getInstance().addToRequestQueue(request);
         }else{
-            Toast.makeText(getActivity(), getResources().getString(R.string.minutos), Toast.LENGTH_SHORT).show();
+
         }
 
     }
-
-
-    /*
-    public void termsAndConditions(){
-
-        button = (Button) getActivity().findViewById(R.id.terminos);
-
-        // add button listener
-        button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                // custom dialog
-                final Dialog dialog = new Dialog(getActivity());
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.terms_and_conditions_activity);
-
-                Button close = (Button) dialog.findViewById(R.id.ok);
-                // if button is clicked, close the custom dialog
-                close.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-                dialog.show();
-            }
-        });
-    }
-
-    public void privacyPolicy(){
-
-        button = (Button) getActivity().findViewById(R.id.politicas);
-
-        // add button listener
-        button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                // custom dialog
-                final Dialog dialog = new Dialog(getActivity());
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.privacy_policy_activity);
-
-                Button close = (Button) dialog.findViewById(R.id.ok);
-                // if button is clicked, close the custom dialog
-                close.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-                dialog.show();
-            }
-        });
-    }*/
 
 
 }
