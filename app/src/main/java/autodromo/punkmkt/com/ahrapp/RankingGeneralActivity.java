@@ -12,6 +12,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.android.volley.Cache;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -24,6 +25,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import autodromo.punkmkt.com.ahrapp.models.Posicion;
@@ -42,35 +44,59 @@ public class RankingGeneralActivity extends Activity {
         setContentView(R.layout.activity_ranking_general);
         tabla_resultados = (TableLayout) findViewById(R.id.tabla_resultados);
 
-        StringRequest request = new AuthRequest(Request.Method.GET, AHZ_RANKING_GENERAL, "utf-8", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject object = new JSONObject(response);
-                    JSONArray data = object.getJSONArray("data");
-                    for (int count = 0; count < data.length(); count++) {
-                        JSONObject anEntry = data.getJSONObject(count);
-                        //Log.d("volley",anSecondEntry.toString());
-                        Posicion posicion  = new Posicion();
-                        posicion.setPiloto_sobrenombre(anEntry.optString("piloto"));
-                        posicion.setEscuderia(anEntry.optString("escuderia"));
-                        posicion.setPuntos(anEntry.optString("puntos"));
-                        posiciones_ranking_general.add(posicion);
-                    }
-                    iniciarranking();
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
+        Cache mCache = MyVolleySingleton.getInstance().getRequestQueue().getCache();
+        Cache.Entry mEntry = mCache.get(AHZ_RANKING_GENERAL);
+        if (mEntry != null) {
+            try {
+                String cacheData = new String(mEntry.data, "UTF-8");
+                JSONObject object = new JSONObject(cacheData);
+                JSONArray data = object.getJSONArray("data");
+                for (int count = 0; count < data.length(); count++) {
+                    JSONObject anEntry = data.getJSONObject(count);
+                    //Log.d("volley",anSecondEntry.toString());
+                    Posicion posicion = new Posicion();
+                    posicion.setPiloto_sobrenombre(anEntry.optString("piloto"));
+                    posicion.setEscuderia(anEntry.optString("escuderia"));
+                    posicion.setPuntos(anEntry.optString("puntos"));
+                    posiciones_ranking_general.add(posicion);
                 }
+                iniciarranking();
+
+            } catch (UnsupportedEncodingException |JSONException e) {
+                e.printStackTrace();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("volley", "Error during request");
-                error.printStackTrace();
-            }
-        });
-        MyVolleySingleton.getInstance().addToRequestQueue(request);
+        } else {
+            StringRequest request = new AuthRequest(Request.Method.GET, AHZ_RANKING_GENERAL, "utf-8", new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONObject object = new JSONObject(response);
+                        JSONArray data = object.getJSONArray("data");
+                        for (int count = 0; count < data.length(); count++) {
+                            JSONObject anEntry = data.getJSONObject(count);
+                            //Log.d("volley",anSecondEntry.toString());
+                            Posicion posicion = new Posicion();
+                            posicion.setPiloto_sobrenombre(anEntry.optString("piloto"));
+                            posicion.setEscuderia(anEntry.optString("escuderia"));
+                            posicion.setPuntos(anEntry.optString("puntos"));
+                            posiciones_ranking_general.add(posicion);
+                        }
+                        iniciarranking();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("volley", "Error during request");
+                    error.printStackTrace();
+                }
+            });
+            MyVolleySingleton.getInstance().addToRequestQueue(request);
+        }
     }
 
 

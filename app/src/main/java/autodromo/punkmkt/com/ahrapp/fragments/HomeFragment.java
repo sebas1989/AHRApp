@@ -20,11 +20,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.text.format.Time;
+
+import java.io.UnsupportedEncodingException;
 import java.lang.String;
 
 import autodromo.punkmkt.com.ahrapp.R;
 
 
+import com.android.volley.Cache;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -240,9 +243,55 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    public void getLatestNews(){
+    public void getLatestNews() {
+        Cache mCache = MyVolleySingleton.getInstance().getRequestQueue().getCache();
+        Cache.Entry mEntry = mCache.get(AHZ_LATEST_THREE_NEWS_ENTRIES);
+        if (mEntry != null) {
+            try {
+                String cacheData = new String(mEntry.data, "UTF-8");
+                JSONArray newsArray = new JSONArray(cacheData);
 
-        if(NetworkUtils.haveNetworkConnection(getActivity())) {
+                Log.d("cache", cacheData);
+
+                id = newsArray.getJSONObject(0).optString("id").toString();
+                nom1 = newsArray.getJSONObject(0).optString("titulo").toString();
+                subtitulo1 = newsArray.getJSONObject(0).optString("subtitulo").toString();
+                desc1 = newsArray.getJSONObject(0).optString("descripcion").toString();
+                img1 = newsArray.getJSONObject(0).optString("imagen").toString();
+                tituloNoticia1 = (TextView) getActivity().findViewById(R.id.tituloNoticia1);
+                tituloNoticia1.setText(nom1);
+
+                last = (NetworkImageView) getActivity().findViewById(R.id.netork_imageView_last);
+                last.setImageUrl(newsArray.getJSONObject(0).optString("imagen"), imageLoader);
+
+                id2 = newsArray.getJSONObject(1).optString("id").toString();
+                nom2 = newsArray.getJSONObject(1).optString("titulo").toString();
+                subtitulo2 = newsArray.getJSONObject(1).optString("subtitulo").toString();
+                desc2 = newsArray.getJSONObject(1).optString("descripcion").toString();
+                img2 = newsArray.getJSONObject(1).optString("imagen").toString();
+                tituloNoticia2 = (TextView) getActivity().findViewById(R.id.tituloNoticia2);
+                tituloNoticia2.setText(nom2);
+
+                last2 = (NetworkImageView) getActivity().findViewById(R.id.netork_imageView);
+                last2.setImageUrl(newsArray.getJSONObject(1).optString("imagen_cuadrada"), imageLoader);
+
+                id3 = newsArray.getJSONObject(2).optString("id").toString();
+                nom3 = newsArray.getJSONObject(2).optString("titulo").toString();
+                subtitulo3 = newsArray.getJSONObject(2).optString("subtitulo").toString();
+                desc3 = newsArray.getJSONObject(2).optString("descripcion").toString();
+                img3 = newsArray.getJSONObject(2).optString("imagen").toString();
+                tituloNoticia3 = (TextView) getActivity().findViewById(R.id.tituloNoticia3);
+                tituloNoticia3.setText(nom3);
+
+                last3 = (NetworkImageView) getActivity().findViewById(R.id.netork_imageView3);
+                last3.setImageUrl(newsArray.getJSONObject(2).optString("imagen_cuadrada"), imageLoader);
+
+
+            } catch (UnsupportedEncodingException|JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+        if (NetworkUtils.haveNetworkConnection(getActivity())) {
 
             StringRequest request = new AuthRequest(Request.Method.GET, AHZ_LATEST_THREE_NEWS_ENTRIES, "utf-8", new Response.Listener<String>() {
                 @Override
@@ -292,11 +341,16 @@ public class HomeFragment extends Fragment {
                 }
             });
             MyVolleySingleton.getInstance().addToRequestQueue(request);
-        }else{
+        } else {
 
         }
-
     }
 
+
+
+    }
+   private void parseResponse(String response){
+
+    }
 
 }

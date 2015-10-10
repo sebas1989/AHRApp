@@ -13,6 +13,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:scrollbars="none"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
         android:numColumns="2">
     </GridView>
 

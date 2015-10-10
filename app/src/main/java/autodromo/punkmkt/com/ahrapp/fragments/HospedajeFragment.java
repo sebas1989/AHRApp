@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Cache;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -32,6 +33,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
@@ -64,35 +66,61 @@ public class HospedajeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         adapter = new HospedajeAdapter(hoteles);
 
-        StringRequest request = new AuthRequest(Request.Method.GET, AHZ_URL_HOTELES,"UTF-8", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONArray object = new JSONArray(response);
-                    for (int count = 0; count < object.length(); count++) {
-                        JSONObject anEntry = object.getJSONObject(count);
-                        Hotel hotel = new Hotel();
-                        hotel.setId(Integer.parseInt(anEntry.optString("id")));
-                        hotel.setNombre(anEntry.getString("nombre"));
-                        hotel.setUbicacion(anEntry.getString("ubicacion"));
-                        hotel.setTelefono(anEntry.getString("telefono"));
-                        hotel.setImagen(anEntry.getString("imagen"));
-                        hotel.setLatitud_mapa(anEntry.getString("latitud_mapa"));
-                        hotel.setLongitud_mapa(anEntry.getString("longitud_mapa"));
-                        hotel.setUrlmap(anEntry.getString("website"));
-                        hoteles.add(hotel);
-                    }
-                    adapter.notifyDataSetChanged();
-                } catch (JSONException e) {
+
+        Cache mCache = MyVolleySingleton.getInstance().getRequestQueue().getCache();
+        Cache.Entry mEntry = mCache.get(AHZ_URL_HOTELES);
+        if (mEntry != null) {
+            try {
+                String cacheData = new String(mEntry.data, "UTF-8");
+                JSONArray object = new JSONArray(cacheData);
+                for (int count = 0; count < object.length(); count++) {
+                    JSONObject anEntry = object.getJSONObject(count);
+                    Hotel hotel = new Hotel();
+                    hotel.setId(Integer.parseInt(anEntry.optString("id")));
+                    hotel.setNombre(anEntry.getString("nombre"));
+                    hotel.setUbicacion(anEntry.getString("ubicacion"));
+                    hotel.setTelefono(anEntry.getString("telefono"));
+                    hotel.setImagen(anEntry.getString("imagen"));
+                    hotel.setLatitud_mapa(anEntry.getString("latitud_mapa"));
+                    hotel.setLongitud_mapa(anEntry.getString("longitud_mapa"));
+                    hotel.setUrlmap(anEntry.getString("website"));
+                    hoteles.add(hotel);
                 }
+                adapter.notifyDataSetChanged();
+            } catch (UnsupportedEncodingException |JSONException e) {
+                e.printStackTrace();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        MyVolleySingleton.getInstance().addToRequestQueue(request);
+        } else {
+            StringRequest request = new AuthRequest(Request.Method.GET, AHZ_URL_HOTELES, "UTF-8", new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONArray object = new JSONArray(response);
+                        for (int count = 0; count < object.length(); count++) {
+                            JSONObject anEntry = object.getJSONObject(count);
+                            Hotel hotel = new Hotel();
+                            hotel.setId(Integer.parseInt(anEntry.optString("id")));
+                            hotel.setNombre(anEntry.getString("nombre"));
+                            hotel.setUbicacion(anEntry.getString("ubicacion"));
+                            hotel.setTelefono(anEntry.getString("telefono"));
+                            hotel.setImagen(anEntry.getString("imagen"));
+                            hotel.setLatitud_mapa(anEntry.getString("latitud_mapa"));
+                            hotel.setLongitud_mapa(anEntry.getString("longitud_mapa"));
+                            hotel.setUrlmap(anEntry.getString("website"));
+                            hoteles.add(hotel);
+                        }
+                        adapter.notifyDataSetChanged();
+                    } catch (JSONException e) {
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+            MyVolleySingleton.getInstance().addToRequestQueue(request);
+        }
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);

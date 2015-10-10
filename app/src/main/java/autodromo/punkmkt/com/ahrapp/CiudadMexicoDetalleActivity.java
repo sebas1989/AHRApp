@@ -108,4 +108,18 @@ public class CiudadMexicoDetalleActivity extends AppCompatActivity{
         ft.commit();
     }
 
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        //startActivity(new Intent(CiudadMexicoDetalleActivity.this, BaseActivity.class));
+        Intent i = new Intent(getApplicationContext(), BaseActivity.class);
+        i.putExtra("fragmento", "mexico");
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplicationContext().startActivity(i);
+        finish();
+
+    }
+
 }

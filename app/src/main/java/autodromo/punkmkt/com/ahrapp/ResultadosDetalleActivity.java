@@ -15,6 +15,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.android.volley.Cache;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -26,6 +27,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import autodromo.punkmkt.com.ahrapp.models.Etapa;
@@ -82,90 +84,156 @@ public class ResultadosDetalleActivity extends Activity {
         nombre.setText(premio.getName());
 
 
+        Cache mCache = MyVolleySingleton.getInstance().getRequestQueue().getCache();
+        Cache.Entry mEntry = mCache.get(AHZ_PREMIOS_JSON_API_URL);
+        if (mEntry != null) {
+            try {
+                String cacheData = new String(mEntry.data, "UTF-8");
+                JSONObject object = new JSONObject(cacheData);
+                JSONObject object2 = object.getJSONObject("data");
+                JSONArray etapa_set = object2.getJSONArray("etapa_set");
 
-        request = new AuthRequest(Request.Method.GET, AHZ_PREMIOS_JSON_API_URL,  "utf-8", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-
-                    JSONObject object = new JSONObject(response);
-                    JSONObject object2 = object.getJSONObject("data");
-                    JSONArray etapa_set = object2.getJSONArray("etapa_set");
-
-                    for (int count = 0; count < etapa_set.length(); count++) {
-                        JSONObject anEntry = etapa_set.getJSONObject(count);
-                        Etapa etapa = new Etapa();
-                        etapa.setId(Integer.parseInt(anEntry.optString("id")));
-                        etapa.setNombre(anEntry.optString("nombre"));
-                        etapa.setTipo(anEntry.optString("tipo_etapa"));
-                        Log.d("volley", etapa.getNombre());  //Etapas
-                        etapas.add(etapa);
-                        JSONArray posicion_set = anEntry.getJSONArray("posicion_set");
-                        ArrayList<Posicion> array_posiciones = new ArrayList<Posicion>();
-                        for (int count2 = 0; count2 < posicion_set.length(); count2++) {
-                            JSONObject anSecondEntry = posicion_set.getJSONObject(count2);
-                            //Log.d("volley",anSecondEntry.toString());
-                            Posicion posicion  = new Posicion();
-                            posicion.setId(Integer.parseInt(anSecondEntry.optString("id")));
-                            posicion.setPosicion(Integer.parseInt(anSecondEntry.optString("numero_posicion")));
-                            if(anSecondEntry.has("tiempo") && !anSecondEntry.optString("tiempo").equals("null")){
-                                posicion.setTiempo(anSecondEntry.optString("tiempo"));
-                            }
-                            if(anSecondEntry.has("gap") && !anSecondEntry.optString("gap").equals("null")){
-                                posicion.setGap(anSecondEntry.optString("gap"));
-                            }
-                            if(anSecondEntry.has("laps") && !anSecondEntry.optString("laps").equals("null")){
-                                posicion.setLaps(anSecondEntry.optString("laps"));
-                            }
-                            if(anSecondEntry.has("q1") && !anSecondEntry.optString("q1").equals("null")){
-                                posicion.setQ1(anSecondEntry.optString("q1"));
-                            }
-                            if(anSecondEntry.has("q2") && !anSecondEntry.optString("q2").equals("null")){
-                                posicion.setQ2(anSecondEntry.optString("q2"));
-                            }
-                            if(anSecondEntry.has("q3") && !anSecondEntry.optString("q3").equals("null")){
-                                posicion.setQ3(anSecondEntry.optString("q3"));
-                            }
-                            if(anSecondEntry.has("puntos") && !anSecondEntry.optString("puntos").equals("null")){
-                                posicion.setPuntos(anSecondEntry.optString("puntos"));
-                            }
-                            //JSONObject anpilot = anSecondEntry.optJSONObject("piloto");
-                            posicion.setPiloto_sobrenombre(anSecondEntry.optString("sobrenombre"));
-                            //JSONObject anEscuderia = anpilot.getJSONObject("escuderia");
-                            posicion.setEscuderia(anSecondEntry.optString("equipo_img"));
-                            array_posiciones.add(posicion);
+                for (int count = 0; count < etapa_set.length(); count++) {
+                    JSONObject anEntry = etapa_set.getJSONObject(count);
+                    Etapa etapa = new Etapa();
+                    etapa.setId(Integer.parseInt(anEntry.optString("id")));
+                    etapa.setNombre(anEntry.optString("nombre"));
+                    etapa.setTipo(anEntry.optString("tipo_etapa"));
+                    Log.d("volley", etapa.getNombre());  //Etapas
+                    etapas.add(etapa);
+                    JSONArray posicion_set = anEntry.getJSONArray("posicion_set");
+                    ArrayList<Posicion> array_posiciones = new ArrayList<Posicion>();
+                    for (int count2 = 0; count2 < posicion_set.length(); count2++) {
+                        JSONObject anSecondEntry = posicion_set.getJSONObject(count2);
+                        //Log.d("volley",anSecondEntry.toString());
+                        Posicion posicion = new Posicion();
+                        posicion.setId(Integer.parseInt(anSecondEntry.optString("id")));
+                        posicion.setPosicion(Integer.parseInt(anSecondEntry.optString("numero_posicion")));
+                        if (anSecondEntry.has("tiempo") && !anSecondEntry.optString("tiempo").equals("null")) {
+                            posicion.setTiempo(anSecondEntry.optString("tiempo"));
                         }
-                        if(etapa.getNombre().equals("P1")){
-                            posiciones_p1 = array_posiciones;
+                        if (anSecondEntry.has("gap") && !anSecondEntry.optString("gap").equals("null")) {
+                            posicion.setGap(anSecondEntry.optString("gap"));
                         }
-                        else if(etapa.getNombre().equals("P2")){
-                            posiciones_p2 = array_posiciones;
+                        if (anSecondEntry.has("laps") && !anSecondEntry.optString("laps").equals("null")) {
+                            posicion.setLaps(anSecondEntry.optString("laps"));
                         }
-                        else if(etapa.getNombre().equals("P3")){
-                            posiciones_p3 = array_posiciones;
+                        if (anSecondEntry.has("q1") && !anSecondEntry.optString("q1").equals("null")) {
+                            posicion.setQ1(anSecondEntry.optString("q1"));
                         }
-                        else if(etapa.getNombre().equals("Q")){
-                            posiciones_clasificatoria = array_posiciones;
+                        if (anSecondEntry.has("q2") && !anSecondEntry.optString("q2").equals("null")) {
+                            posicion.setQ2(anSecondEntry.optString("q2"));
                         }
-                        else if(etapa.getNombre().equals("R")){
-                            posiciones_carrera = array_posiciones;
+                        if (anSecondEntry.has("q3") && !anSecondEntry.optString("q3").equals("null")) {
+                            posicion.setQ3(anSecondEntry.optString("q3"));
                         }
+                        if (anSecondEntry.has("puntos") && !anSecondEntry.optString("puntos").equals("null")) {
+                            posicion.setPuntos(anSecondEntry.optString("puntos"));
+                        }
+                        //JSONObject anpilot = anSecondEntry.optJSONObject("piloto");
+                        posicion.setPiloto_sobrenombre(anSecondEntry.optString("sobrenombre"));
+                        //JSONObject anEscuderia = anpilot.getJSONObject("escuderia");
+                        posicion.setEscuderia(anSecondEntry.optString("equipo_img"));
+                        array_posiciones.add(posicion);
                     }
-
-                    iniciarpractica("practica1");
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    if (etapa.getNombre().equals("P1")) {
+                        posiciones_p1 = array_posiciones;
+                    } else if (etapa.getNombre().equals("P2")) {
+                        posiciones_p2 = array_posiciones;
+                    } else if (etapa.getNombre().equals("P3")) {
+                        posiciones_p3 = array_posiciones;
+                    } else if (etapa.getNombre().equals("Q")) {
+                        posiciones_clasificatoria = array_posiciones;
+                    } else if (etapa.getNombre().equals("R")) {
+                        posiciones_carrera = array_posiciones;
+                    }
                 }
+
+                iniciarpractica("practica1");
+            } catch (UnsupportedEncodingException |JSONException e) {
+                e.printStackTrace();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("volley", "Error during request");
-                error.printStackTrace();
-            }
-        });
-        MyVolleySingleton.getInstance().addToRequestQueue(request);
+        } else {
+            request = new AuthRequest(Request.Method.GET, AHZ_PREMIOS_JSON_API_URL, "utf-8", new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+
+                        JSONObject object = new JSONObject(response);
+                        JSONObject object2 = object.getJSONObject("data");
+                        JSONArray etapa_set = object2.getJSONArray("etapa_set");
+
+                        for (int count = 0; count < etapa_set.length(); count++) {
+                            JSONObject anEntry = etapa_set.getJSONObject(count);
+                            Etapa etapa = new Etapa();
+                            etapa.setId(Integer.parseInt(anEntry.optString("id")));
+                            etapa.setNombre(anEntry.optString("nombre"));
+                            etapa.setTipo(anEntry.optString("tipo_etapa"));
+                            Log.d("volley", etapa.getNombre());  //Etapas
+                            etapas.add(etapa);
+                            JSONArray posicion_set = anEntry.getJSONArray("posicion_set");
+                            ArrayList<Posicion> array_posiciones = new ArrayList<Posicion>();
+                            for (int count2 = 0; count2 < posicion_set.length(); count2++) {
+                                JSONObject anSecondEntry = posicion_set.getJSONObject(count2);
+                                //Log.d("volley",anSecondEntry.toString());
+                                Posicion posicion = new Posicion();
+                                posicion.setId(Integer.parseInt(anSecondEntry.optString("id")));
+                                posicion.setPosicion(Integer.parseInt(anSecondEntry.optString("numero_posicion")));
+                                if (anSecondEntry.has("tiempo") && !anSecondEntry.optString("tiempo").equals("null")) {
+                                    posicion.setTiempo(anSecondEntry.optString("tiempo"));
+                                }
+                                if (anSecondEntry.has("gap") && !anSecondEntry.optString("gap").equals("null")) {
+                                    posicion.setGap(anSecondEntry.optString("gap"));
+                                }
+                                if (anSecondEntry.has("laps") && !anSecondEntry.optString("laps").equals("null")) {
+                                    posicion.setLaps(anSecondEntry.optString("laps"));
+                                }
+                                if (anSecondEntry.has("q1") && !anSecondEntry.optString("q1").equals("null")) {
+                                    posicion.setQ1(anSecondEntry.optString("q1"));
+                                }
+                                if (anSecondEntry.has("q2") && !anSecondEntry.optString("q2").equals("null")) {
+                                    posicion.setQ2(anSecondEntry.optString("q2"));
+                                }
+                                if (anSecondEntry.has("q3") && !anSecondEntry.optString("q3").equals("null")) {
+                                    posicion.setQ3(anSecondEntry.optString("q3"));
+                                }
+                                if (anSecondEntry.has("puntos") && !anSecondEntry.optString("puntos").equals("null")) {
+                                    posicion.setPuntos(anSecondEntry.optString("puntos"));
+                                }
+                                //JSONObject anpilot = anSecondEntry.optJSONObject("piloto");
+                                posicion.setPiloto_sobrenombre(anSecondEntry.optString("sobrenombre"));
+                                //JSONObject anEscuderia = anpilot.getJSONObject("escuderia");
+                                posicion.setEscuderia(anSecondEntry.optString("equipo_img"));
+                                array_posiciones.add(posicion);
+                            }
+                            if (etapa.getNombre().equals("P1")) {
+                                posiciones_p1 = array_posiciones;
+                            } else if (etapa.getNombre().equals("P2")) {
+                                posiciones_p2 = array_posiciones;
+                            } else if (etapa.getNombre().equals("P3")) {
+                                posiciones_p3 = array_posiciones;
+                            } else if (etapa.getNombre().equals("Q")) {
+                                posiciones_clasificatoria = array_posiciones;
+                            } else if (etapa.getNombre().equals("R")) {
+                                posiciones_carrera = array_posiciones;
+                            }
+                        }
+
+                        iniciarpractica("practica1");
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("volley", "Error during request");
+                    error.printStackTrace();
+                }
+            });
+            MyVolleySingleton.getInstance().addToRequestQueue(request);
+        }
 
         p1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

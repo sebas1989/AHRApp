@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Cache;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -32,6 +33,8 @@ import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by sebastianmendezgiron on 21/09/15.
@@ -64,16 +67,43 @@ public class SingleNewDetailActivity extends AppCompatActivity {
 
         String newsId = noticia.getStringExtra("id");
         AHR_FILTER_SINGLE_NEW = AHR_FILTER_SINGLE_NEW + newsId + "/";
+        Cache mCache = MyVolleySingleton.getInstance().getRequestQueue().getCache();
+        Cache.Entry mEntry = mCache.get(AHR_FILTER_SINGLE_NEW);
+        if (mEntry != null) {
+            try {
+                String cacheData = new String(mEntry.data, "UTF-8");
+                JSONObject jsonObject = new JSONObject(cacheData);
+                String titulo = jsonObject.optString("titulo").toString();
+                String subtitulo = jsonObject.optString("subtitulo").toString();
+                String descripcion = jsonObject.optString("descripcion").toString();
+                String img = jsonObject.optString("imagen").toString();
 
+                mNetworkImageView = (NetworkImageView) findViewById(R.id.imagen_principal);
+                imageLoader = MyVolleySingleton.getInstance().getImageLoader();
+                mNetworkImageView.setImageUrl(img, imageLoader);
+
+                mTitulo = (TextView) findViewById(R.id.titulo);
+                mTitulo.setText(titulo);
+
+                mSubtitulo = (TextView) findViewById(R.id.subtitulo);
+                mSubtitulo.setText(subtitulo);
+
+                mDescripcion = (TextView) findViewById(R.id.descripcion);
+                mDescripcion.setText(descripcion);
+
+
+            } catch (UnsupportedEncodingException | JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
         if(NetworkUtils.haveNetworkConnection(this)) {
 
             StringRequest request = new AuthRequest(Request.Method.GET, AHR_FILTER_SINGLE_NEW, "utf-8", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {
-                        //JSONArray newsArray = new JSONArray(response);
                         JSONObject jsonObject = new JSONObject(response);
-                        Log.d(":o", response);
                         String titulo = jsonObject.optString("titulo").toString();
                         String subtitulo = jsonObject.optString("subtitulo").toString();
                         String descripcion = jsonObject.optString("descripcion").toString();
@@ -107,6 +137,7 @@ public class SingleNewDetailActivity extends AppCompatActivity {
             MyVolleySingleton.getInstance().addToRequestQueue(request);
         }else{
             Toast.makeText(this, getResources().getString(R.string.minutos), Toast.LENGTH_SHORT).show();
+        }
         }
     }
 

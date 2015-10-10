@@ -68,6 +68,13 @@ public class BaseActivity extends AppCompatActivity {
                     ft.add(R.id.frame, f1).commit();
                 }
             }
+            else if(fragmento.equals("mexico")){
+                if (savedInstanceState == null) {
+                    Fragment f1 = new CiudadMexicoActivity();
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.add(R.id.frame, f1).commit();
+                }
+            }
         }catch (Exception e){
             if (savedInstanceState == null) {
                 Fragment f1 = new HomeFragment();

@@ -11,6 +11,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.android.volley.Cache;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -20,6 +21,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import autodromo.punkmkt.com.ahrapp.R;
 import autodromo.punkmkt.com.ahrapp.models.DiaCarrera;
@@ -51,50 +53,85 @@ public class HorariosFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         tabla_informacion = (TableLayout) getActivity().findViewById(R.id.tabla_informacion);
+        Cache mCache = MyVolleySingleton.getInstance().getRequestQueue().getCache();
+        Cache.Entry mEntry = mCache.get(AHZ_HORARIOS_JSON_API_URL);
+        if (mEntry != null) {
+            try {
+                String cacheData = new String(mEntry.data, "UTF-8");
+                JSONObject object = new JSONObject(cacheData);
+                JSONArray object2 = object.getJSONArray("data");
+                //JSONArray etapa_set = object2.getJSONArray("etapa_dia_carrera_set");
+                for (int count = 0; count < object2.length(); count++) {
+                    JSONObject anEntry = object2.getJSONObject(count);
+                    DiaCarrera dia = new DiaCarrera();
+                    dia.setId(Integer.parseInt(anEntry.optString("id")));
+                    dia.setNombre(anEntry.optString("nombre"));
+                    //Log.d("volley", dia.getNombre());  //Etapas
+                    CreateTitleRow(dia);
+                    JSONArray etapa_dia_carrera_set = anEntry.getJSONArray("etapa_dia_carrera_set");
+                    ArrayList<EtapaDiaCarrera> etapasdiascarrera = new ArrayList<EtapaDiaCarrera>();
+                    for (int count2 = 0; count2 < etapa_dia_carrera_set.length(); count2++) {
+                        JSONObject anSecondEntry = etapa_dia_carrera_set.getJSONObject(count2);
+                        EtapaDiaCarrera etapadiacarrera = new EtapaDiaCarrera();
+                        etapadiacarrera.setId(Integer.parseInt(anSecondEntry.optString("id")));
+                        etapadiacarrera.setNombre(anSecondEntry.optString("nombre"));
+                        //etapadiacarrera.setDescripcion(anSecondEntry.optString("descripcion"));
+                        etapadiacarrera.setHora_inicio(anSecondEntry.optString("hora_inicio"));
+                        etapadiacarrera.setHora_fin(anSecondEntry.optString("hora_fin"));
+                        etapadiacarrera.setZona(anSecondEntry.optString("zona"));
+                        etapasdiascarrera.add(etapadiacarrera);
 
-        StringRequest request = new AuthRequest(Request.Method.GET, AHZ_HORARIOS_JSON_API_URL,  "utf-8", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject object = new JSONObject(response);
-                    JSONArray object2 = object.getJSONArray("data");
-                    //JSONArray etapa_set = object2.getJSONArray("etapa_dia_carrera_set");
-                    for (int count = 0; count < object2.length(); count++) {
-                        JSONObject anEntry = object2.getJSONObject(count);
-                        DiaCarrera dia = new DiaCarrera();
-                        dia.setId(Integer.parseInt(anEntry.optString("id")));
-                        dia.setNombre(anEntry.optString("nombre"));
-                        //Log.d("volley", dia.getNombre());  //Etapas
-                        CreateTitleRow(dia);
-                        JSONArray etapa_dia_carrera_set = anEntry.getJSONArray("etapa_dia_carrera_set");
-                        ArrayList<EtapaDiaCarrera> etapasdiascarrera = new ArrayList<EtapaDiaCarrera>();
-                        for (int count2 = 0; count2 < etapa_dia_carrera_set.length(); count2++) {
-                            JSONObject anSecondEntry = etapa_dia_carrera_set.getJSONObject(count2);
-                            EtapaDiaCarrera etapadiacarrera  = new EtapaDiaCarrera();
-                            etapadiacarrera.setId(Integer.parseInt(anSecondEntry.optString("id")));
-                            etapadiacarrera.setNombre(anSecondEntry.optString("nombre"));
-                            //etapadiacarrera.setDescripcion(anSecondEntry.optString("descripcion"));
-                            etapadiacarrera.setHora_inicio(anSecondEntry.optString("hora_inicio"));
-                            etapadiacarrera.setHora_fin(anSecondEntry.optString("hora_fin"));
-                            etapadiacarrera.setZona(anSecondEntry.optString("zona"));
-                            etapasdiascarrera.add(etapadiacarrera);
-
-                        }
-                        CreateContentRow(etapasdiascarrera);
                     }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    CreateContentRow(etapasdiascarrera);
                 }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("volley", "Error during request");
-                error.printStackTrace();
-            }
-        });
-        MyVolleySingleton.getInstance().addToRequestQueue(request);
+            } catch (UnsupportedEncodingException|JSONException e) {
+            e.printStackTrace();
+        }
+        } else {
+            StringRequest request = new AuthRequest(Request.Method.GET, AHZ_HORARIOS_JSON_API_URL, "utf-8", new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONObject object = new JSONObject(response);
+                        JSONArray object2 = object.getJSONArray("data");
+                        //JSONArray etapa_set = object2.getJSONArray("etapa_dia_carrera_set");
+                        for (int count = 0; count < object2.length(); count++) {
+                            JSONObject anEntry = object2.getJSONObject(count);
+                            DiaCarrera dia = new DiaCarrera();
+                            dia.setId(Integer.parseInt(anEntry.optString("id")));
+                            dia.setNombre(anEntry.optString("nombre"));
+                            //Log.d("volley", dia.getNombre());  //Etapas
+                            CreateTitleRow(dia);
+                            JSONArray etapa_dia_carrera_set = anEntry.getJSONArray("etapa_dia_carrera_set");
+                            ArrayList<EtapaDiaCarrera> etapasdiascarrera = new ArrayList<EtapaDiaCarrera>();
+                            for (int count2 = 0; count2 < etapa_dia_carrera_set.length(); count2++) {
+                                JSONObject anSecondEntry = etapa_dia_carrera_set.getJSONObject(count2);
+                                EtapaDiaCarrera etapadiacarrera = new EtapaDiaCarrera();
+                                etapadiacarrera.setId(Integer.parseInt(anSecondEntry.optString("id")));
+                                etapadiacarrera.setNombre(anSecondEntry.optString("nombre"));
+                                //etapadiacarrera.setDescripcion(anSecondEntry.optString("descripcion"));
+                                etapadiacarrera.setHora_inicio(anSecondEntry.optString("hora_inicio"));
+                                etapadiacarrera.setHora_fin(anSecondEntry.optString("hora_fin"));
+                                etapadiacarrera.setZona(anSecondEntry.optString("zona"));
+                                etapasdiascarrera.add(etapadiacarrera);
+
+                            }
+                            CreateContentRow(etapasdiascarrera);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("volley", "Error during request");
+                    error.printStackTrace();
+                }
+            });
+            MyVolleySingleton.getInstance().addToRequestQueue(request);
+        }
 
     }
 

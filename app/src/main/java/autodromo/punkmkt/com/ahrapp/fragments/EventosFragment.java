@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Cache;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -23,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
@@ -48,42 +50,66 @@ public class EventosFragment extends Fragment {
 
         adapter = new EventosAdapter(eventos);
 
+        Cache mCache = MyVolleySingleton.getInstance().getRequestQueue().getCache();
+        Cache.Entry mEntry = mCache.get(AHZ_URL_EVENTOS);
+        if (mEntry != null) {
+            try {
+                String cacheData = new String(mEntry.data, "UTF-8");
+                JSONArray object = new JSONArray(cacheData);
+                for (int count = 0; count < object.length(); count++) {
+                    JSONObject anEntry = object.getJSONObject(count);
+                    Evento evento = new Evento();
 
-        StringRequest request = new AuthRequest(Request.Method.GET, AHZ_URL_EVENTOS,"UTF-8", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    //Log.d(":o", response);
-                    JSONArray object = new JSONArray(response);
-                    for (int count = 0; count < object.length(); count++) {
-                        JSONObject anEntry = object.getJSONObject(count);
-                        Evento evento = new Evento();
-
-                        evento.setId(Integer.parseInt(anEntry.optString("id")));
-                        evento.setNombre(anEntry.getString("nombre"));
-                        evento.setUbicacion(anEntry.getString("ubicacion"));
-                        evento.setTelefono(anEntry.getString("telefono"));
-                        evento.setImagen(anEntry.getString("imagen"));
-                        evento.setLatitud_mapa(anEntry.getString("latitud_mapa"));
-                        evento.setLongitud_mapa(anEntry.getString("longitud_mapa"));
-                        evento.setUrlmap(anEntry.getString("website"));
-                        eventos.add(evento);
-                    }
-                    adapter.notifyDataSetChanged();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    evento.setId(Integer.parseInt(anEntry.optString("id")));
+                    evento.setNombre(anEntry.getString("nombre"));
+                    evento.setUbicacion(anEntry.getString("ubicacion"));
+                    evento.setTelefono(anEntry.getString("telefono"));
+                    evento.setImagen(anEntry.getString("imagen"));
+                    evento.setLatitud_mapa(anEntry.getString("latitud_mapa"));
+                    evento.setLongitud_mapa(anEntry.getString("longitud_mapa"));
+                    evento.setUrlmap(anEntry.getString("website"));
+                    eventos.add(evento);
                 }
+                adapter.notifyDataSetChanged();
+            } catch (UnsupportedEncodingException |JSONException e) {
+                e.printStackTrace();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("volley", "Error during request");
-                error.printStackTrace();
-            }
-        });
-        MyVolleySingleton.getInstance().addToRequestQueue(request);
+        } else {
+            StringRequest request = new AuthRequest(Request.Method.GET, AHZ_URL_EVENTOS, "UTF-8", new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
 
+                        JSONArray object = new JSONArray(response);
+                        for (int count = 0; count < object.length(); count++) {
+                            JSONObject anEntry = object.getJSONObject(count);
+                            Evento evento = new Evento();
+
+                            evento.setId(Integer.parseInt(anEntry.optString("id")));
+                            evento.setNombre(anEntry.getString("nombre"));
+                            evento.setUbicacion(anEntry.getString("ubicacion"));
+                            evento.setTelefono(anEntry.getString("telefono"));
+                            evento.setImagen(anEntry.getString("imagen"));
+                            evento.setLatitud_mapa(anEntry.getString("latitud_mapa"));
+                            evento.setLongitud_mapa(anEntry.getString("longitud_mapa"));
+                            evento.setUrlmap(anEntry.getString("website"));
+                            eventos.add(evento);
+                        }
+                        adapter.notifyDataSetChanged();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("volley", "Error during request");
+                    error.printStackTrace();
+                }
+            });
+            MyVolleySingleton.getInstance().addToRequestQueue(request);
+        }
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         //Por si quieren configurar algom como Grilla solo cambian la linea de arriba por esta:
