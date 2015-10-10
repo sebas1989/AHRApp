@@ -42,6 +42,7 @@ public class MyVolleySingleton extends Application {
         super.onCreate();
         mInstance = this;
 
+
         FlowManager.init(MyVolleySingleton.this);
         Parse.initialize(this,
                 getResources().getString(R.string.parse_application_id),
@@ -52,16 +53,17 @@ public class MyVolleySingleton extends Application {
         Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                 .getBoolean("isFirstRun", true);
 
-        /*if (isFirstRun) {
+        if (isFirstRun) {
 
             Intent myIntent = new Intent(getApplicationContext(), ConfiguracionActivity.class);
             myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             getApplicationContext().startActivity(myIntent);
-        }*/
+        }
 
 
         getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
                 .putBoolean("isFirstRun", false).commit();
+
     }
 
     public static synchronized MyVolleySingleton getInstance() {

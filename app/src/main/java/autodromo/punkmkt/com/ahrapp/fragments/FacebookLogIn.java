@@ -73,7 +73,6 @@ public class FacebookLogIn extends Fragment {
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction().add(R.id.fragment_container, new LoginFBFragment()).commit();
         }
-
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
@@ -93,9 +92,6 @@ public class FacebookLogIn extends Fragment {
                         // App code
                     }
                 });
-
-
-        //showHashKey(getActivity().getApplicationContext());
 
         first_nameView = (EditText) getActivity().findViewById(R.id.first_name);
         last_nameView = (EditText) getActivity().findViewById(R.id.last_name);
@@ -167,45 +163,16 @@ public class FacebookLogIn extends Fragment {
                         new StringBuilder(getResources().getString(R.string.error_intro));
                 if (isEmpty(first_nameView)) {
                     validationError = true;
-//                    String simple = getResources().getString(R.string.prompt_first_name);
-//                    String colored = " *";
-//                    SpannableStringBuilder builder = new SpannableStringBuilder();
-//                    builder.append(simple); int start = builder.length();
-//                    builder.append(colored); int end = builder.length();
-//                    builder.setSpan(new ForegroundColorSpan(Color.RED), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-//                    first_nameView.setHint(builder);
-                    //validationErrorMessage.append(getResources().getString(R.string.error_blank_first_name));
                 }
                 if (isEmpty(last_nameView)) {
                     validationError = true;
-//                    String simple = getResources().getString(R.string.prompt_last_name);
-//                    String colored = " *";
-//                    SpannableStringBuilder builder = new SpannableStringBuilder();
-//                    builder.append(simple); int start = builder.length();
-//                    builder.append(colored); int end = builder.length();
-//                    builder.setSpan(new ForegroundColorSpan(Color.RED), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-//                    last_nameView.setHint(builder);
                 }
                 if(!isValidEmail(emailView.getText().toString())){
                     validationError = true;
-//                    String simple = getResources().getString(R.string.prompt_email);
-//                    String colored = " *";
-//                    SpannableStringBuilder builder = new SpannableStringBuilder();
-//                    builder.append(simple); int start = builder.length();
-//                    builder.append(colored); int end = builder.length();
-//                    builder.setSpan(new ForegroundColorSpan(Color.RED), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-//                    emailView.setHint(builder);
                 }
 
                 if(!ValidateSpinner(genero, getResources().getString(R.string.selecciona_genero))){
                     validationError = true;
-//                    String simple = getResources().getString(R.string.selecciona_genero);
-//                    String colored = " *";
-//                    SpannableStringBuilder builder = new SpannableStringBuilder();
-//                    builder.append(simple); int start = builder.length();
-//                    builder.append(colored); int end = builder.length();
-//                    builder.setSpan(new ForegroundColorSpan(Color.RED), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    //genero.settex
                 }
                 if(!ValidateSpinner(edad,getResources().getString(R.string.selecciona_edad))){
                     validationError = true;
@@ -250,7 +217,7 @@ public class FacebookLogIn extends Fragment {
                             customUser.put("facebook_id",facebook_id.getText().toString());
                             customUser.put("locale",locale.getText().toString());
                             customUser.put("link",link.getText().toString());
-                            customUser.put("age",edad.getSelectedItem().toString());
+                            customUser.put("age_range",edad.getSelectedItem().toString());
                             customUser.put("zona", zonaView.getSelectedItem().toString());
                             customUser.put("asiento", asientoView.getSelectedItem().toString());
                             // Call the Parse signup method
@@ -260,22 +227,15 @@ public class FacebookLogIn extends Fragment {
                                     dlg.dismiss();
                                     if (e != null) {
                                         // Show the error message
-                                        //Toast.makeText(LoginSingUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                                         Crouton.makeText(getActivity(), e.getMessage(), Style.ALERT).show();
                                     } else {
                                         Crouton.makeText(getActivity(), R.string.gracias_por_registrarte, Style.INFO).show();
-                                        //Toast.makeText(LoginSingUpActivity.this, R.string.gracias_por_registrarte, Toast.LENGTH_LONG).show();
-                                        // Start an intent for the dispatch activity
-                                        //Intent intent = new Intent(LoginSingUpActivity.this, MainActivity.class);
-                                        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        //startActivity(intent);
                                     }
                                 }
                             });
                         } else {
                             dlg.dismiss();
                             Crouton.makeText(getActivity(),R.string.usuario_existente, Style.ALERT).show();
-                            //Toast.makeText(LoginSingUpActivity.this,R.string.usuario_existente, Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -315,22 +275,6 @@ public class FacebookLogIn extends Fragment {
 
         return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }
-
-    /*public static void showHashKey(Context context) {
-
-        try {
-            PackageInfo info = context.getPackageManager().getPackageInfo(
-                    "autodromo.punkmkt.com.ahrapp", PackageManager.GET_SIGNATURES); //Your            package name here
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-
-                Log.i("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-        } catch (NoSuchAlgorithmException e) {
-        }
-    }*/
 
     public final static boolean ValidateSpinner(Spinner s,String s_option){
         String st =s.getSelectedItem().toString();

@@ -5,34 +5,23 @@ package autodromo.punkmkt.com.ahrapp;
  */
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
-
-import java.util.ArrayList;
-
-import autodromo.punkmkt.com.ahrapp.models.GalleryItem;
 import autodromo.punkmkt.com.ahrapp.models.Piloto;
-import autodromo.punkmkt.com.ahrapp.models.Premio;
-
 
 public class PilotosDetalleActivity extends Activity {
-    private String AHZ_PILOTOS_JSON_API_URL = "http://104.236.3.158/api/pilotos/";
-    static ArrayList<GalleryItem> galeria_fotos = new ArrayList<GalleryItem>();
     Piloto piloto;
-    static ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
-    private RecyclerView.Adapter adapter;
-    static ImageView imagen;
+    ImageView imagen;
     TextView descripcion_nombre_piloto;
     TextView descripcion_numero_piloto;
     TextView descripcion_equipo_piloto;
     TextView descripcion_nacionalidad_piloto;
     TextView descripcion_fecha_nacimiento_piloto;
-    //TextView descripcion_lugar_nacimiento_piloto;
     TextView descripcion_campeonatos_piloto;
     TextView descripcion_grands_prix_piloto;
     TextView descripcion_podiums_piloto;
@@ -41,7 +30,6 @@ public class PilotosDetalleActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pilotos_detalle);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         imagen = (ImageView) findViewById(R.id.imagen_principal);
         descripcion_nombre_piloto = (TextView) findViewById(R.id.descripcion_nombre_piloto);
         descripcion_numero_piloto = (TextView) findViewById(R.id.descripcion_numero_piloto);
@@ -65,84 +53,78 @@ public class PilotosDetalleActivity extends Activity {
         String grands_prix = intent.getStringExtra("grands_prix");
         String podiums = intent.getStringExtra("podiums");
 
-        /*Log.d("id",id);*/
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        //options.inJustDecodeBounds=true;
+        options.inSampleSize = 2;
         switch (Integer.parseInt(id)){
             case 0:
-                imagen.setImageResource(R.drawable.alexander_rossi_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.alexander_rossi_car,options));
                 break;
             case 1:
-                imagen.setImageResource(R.drawable.carlos_sainz_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.carlos_sainz_car, options));
                 break;
             case 2:
-                imagen.setImageResource(R.drawable.daniel_ricciardo_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.daniel_ricciardo_car, options));
                 break;
             case 3:
-                imagen.setImageResource(R.drawable.daniil_kvyat_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.daniil_kvyat_car, options));
                 break;
             case 4:
-                imagen.setImageResource(R.drawable.felipe_massa_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.felipe_massa_car, options));
                 break;
             case 5:
-                imagen.setImageResource(R.drawable.felipe_nassar_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.felipe_nassar_car, options));
                 break;
             case 6:
-                imagen.setImageResource(R.drawable.fernando_alonso_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.fernando_alonso_car, options));
                 break;
             case 7:
-                imagen.setImageResource(R.drawable.jenson_button_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.jenson_button_car, options));
                 break;
             case 8:
-                imagen.setImageResource(R.drawable.kimi_rnikkinen_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.kimi_rnikkinen_car, options));
                 break;
             case 9:
-                imagen.setImageResource(R.drawable.lewis_hamilton_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.lewis_hamilton_car, options));
                 break;
             case 10:
-                imagen.setImageResource(R.drawable.marcus_ericsson_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.marcus_ericsson_car, options));
                 break;
             case 11:
-                imagen.setImageResource(R.drawable.max_verstappen_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.max_verstappen_car, options));
                 break;
             case 12:
-                imagen.setImageResource(R.drawable.nico_hulkenberg_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.nico_hulkenberg_car, options));
                 break;
             case 13:
-                imagen.setImageResource(R.drawable.rico_rosberg_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.rico_rosberg_car, options));
                 break;
             case 14:
-                imagen.setImageResource(R.drawable.pastor_maldonado_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.pastor_maldonado_car, options));
                 break;
             case 15:
-                imagen.setImageResource(R.drawable.romain_grosjean_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.romain_grosjean_car, options));
+
                 break;
             case 16:
-                imagen.setImageResource(R.drawable.sebastian_vettel_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.sebastian_vettel_car, options));
                 break;
             case 17:
-                imagen.setImageResource(R.drawable.sergio_perez_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.sergio_perez_car, options));
+
                 break;
             case 18:
-                imagen.setImageResource(R.drawable.valtteri_bottas_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.valtteri_bottas_car, options));
                 break;
             case 19:
-                imagen.setImageResource(R.drawable.will_stevens_car);
+                imagen.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.will_stevens_car, options));
                 break;
             default:
                 break;
         }
 
-        //piloto = new Piloto(Integer.parseInt(id),nombre,int,numero,equipo,nacionalidad,fecha_nacimiento,campeonatos,grands_prix,podiums);
-        //createdetailpiloto(piloto);
-        descripcion_nombre_piloto.setText(nombre);
-        descripcion_numero_piloto.setText(numero);
-        descripcion_equipo_piloto.setText(equipo);
-        descripcion_nacionalidad_piloto.setText(nacionalidad);
-        descripcion_fecha_nacimiento_piloto.setText(fecha_nacimiento);
-        //descripcion_lugar_nacimiento_piloto.setText(piloto.getLugar_nacimiento());
-        descripcion_campeonatos_piloto.setText(campeonatos);
-        descripcion_grands_prix_piloto.setText(grands_prix);
-        descripcion_podiums_piloto.setText(podiums);
-
+        piloto = new Piloto(Integer.parseInt(id),nombre,numero,equipo,nacionalidad,fecha_nacimiento,campeonatos,grands_prix,podiums);
+        createdetailpiloto(piloto);
 
     }
 
@@ -152,32 +134,9 @@ public class PilotosDetalleActivity extends Activity {
         descripcion_equipo_piloto.setText(piloto.getEquipo());
         descripcion_nacionalidad_piloto.setText(piloto.getNacionalidad());
         descripcion_fecha_nacimiento_piloto.setText(piloto.getFecha_nacimiento());
-        //descripcion_lugar_nacimiento_piloto.setText(piloto.getLugar_nacimiento());
         descripcion_campeonatos_piloto.setText(piloto.getCampeonatos());
         descripcion_grands_prix_piloto.setText(piloto.getGrands_prix());
         descripcion_podiums_piloto.setText(piloto.getPodiums());
     }
-    public static void updatePhoto(String url){
-        //imagen.setImageUrl(url, imageLoader);
 
-        Log.d("url",url);
-        switch (url){
-            //imagen.setImageDrawable(r.getDrawable(R.drawable.noticia_photo1));
-            case "foto1":
-                imagen.setImageResource(R.drawable.noticia_photo1);
-                //imagen.setDefaultImageResId(R.drawable.piloto_gallery);
-                //imagen.setImageUrl(galeria_fotos.get(0).getImage(), imageLoader);
-                //imagen.setImageDrawable(ContextCompat.getDrawable(InitializeApplication.getAppContext(),R.drawable.piloto_gallery));
-                break;
-            case "foto2":
-                Log.d("entre", "entre");
-                imagen.setImageResource(R.drawable.noticia_photo1);
-                //imagen.setDefaultImageResId(R.drawable.noticia_photo1);
-                //imagen.setImageDrawable(ContextCompat.getDrawable(InitializeApplication.getAppContext(), R.drawable.noticia_photo1));
-                break;
-            default:
-                break;
-        }
-
-    }
 }

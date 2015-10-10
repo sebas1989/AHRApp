@@ -34,29 +34,42 @@ public class MyPushBroadcastReceiver extends ParsePushBroadcastReceiver {
                 String Channel = extras.getString("com.parse.Channel");
                 Log.d("com.parse.push",jsonData);
                 Log.d("com.parse.push",Channel);
-                //eLog.e("com.parse.push",Channel);
+
                 JSONObject jsonDataFinal;
                 jsonDataFinal = new JSONObject(jsonData);
                 String pushContent = jsonDataFinal.getString("alert");
-                //String noticia = jsonDataFinal.getString("noticia");
-                String premio = jsonDataFinal.getString("premio");
-                String posicion = jsonDataFinal.getString("posicion");
-                Log.d("com.parse.push", premio);
+                String tipo = jsonDataFinal.getString("tipo");
+
                 if (Channel!=""){
                     if("notificaciones".equals(Channel)){
-                        String noticia = jsonDataFinal.getString("noticia");
-                        Intent i = new Intent(context, SingleNewDetailActivity.class);
-                        i.putExtras(intent.getExtras());
-                        i.putExtra("id", noticia);
-                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(i);
+                        if(tipo.equals("noticia")){
+                            String noticia = jsonDataFinal.getString("noticia");
+                            Intent i = new Intent(context, BaseActivity.class);
+                            i.putExtras(intent.getExtras());
+                            i.putExtra("fragmento", "noticias");
+                            i.putExtra("id", noticia);
+                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(i);
+                        }
+                        else if (tipo.equals("premio")){
+                            String premio = jsonDataFinal.getString("premio");
+                            Intent i = new Intent(context, BaseActivity.class);
+                            i.putExtras(intent.getExtras());
+                            i.putExtra("fragmento", "premios");
+                            i.putExtra("id", premio);
+                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(i);
+                        }
+                        else{
+                            IniciarMainActivity(context, intent);
+                        }
+
+                    }else{
+                        IniciarMainActivity(context, intent);
                     }
                 }
                 else{
-                    Intent i = new Intent(context, MainActivity.class);
-                    i.putExtras(intent.getExtras());
-                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(i);
+
                 }
             }
         } catch (JSONException e) {
@@ -64,8 +77,12 @@ public class MyPushBroadcastReceiver extends ParsePushBroadcastReceiver {
             e.printStackTrace();
             Log.e("com.parse.push", e.getMessage());
         }
+    }
 
-
-
+    public void IniciarMainActivity(Context context, Intent intent){
+        Intent i = new Intent(context, BaseActivity.class);
+        i.putExtras(intent.getExtras());
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(i);
     }
 }

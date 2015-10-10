@@ -153,13 +153,13 @@ public class HomeFragment extends Fragment {
                 mTextView = (TextView) getActivity().findViewById(R.id.counter);//findViewById(R.id.counter);
                 mTextView.setText(diasfaltantes + " : " + horasFaltantes + " : " + minutosFaltantes + " : " +segundosFaltantes);
                 mLabels = (TextView) getActivity().findViewById(R.id.definicion);
-                } catch (Exception e) {
-                }
                 String fDias = getResources().getString(R.string.dias);
                 String fHoras = getResources().getString(R.string.horas);
                 String fMinutos = getResources().getString(R.string.minutos);
                 String fSegundos = getResources().getString(R.string.segundos);
                 mLabels.setText(fDias+"\u00A0"+"\u00A0 \u00A0 \u00A0"+fHoras+"\u00A0"+"\u00A0 \u00A0"+fMinutos+"\u00A0"+"\u00A0 \u00A0"+fSegundos);
+                } catch (Exception e) {
+                }
             }
             @Override
             public void onFinish() {

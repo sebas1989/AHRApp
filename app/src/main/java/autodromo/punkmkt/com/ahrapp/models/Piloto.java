@@ -1,8 +1,11 @@
 package autodromo.punkmkt.com.ahrapp.models;
-
 /**
  * Created by sebastianmendezgiron on 25/09/15.
  */
+
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+
 /**
  * Created by germanpunk on 20/09/15.
  */
@@ -17,6 +20,8 @@ public class Piloto {
     private String campeonatos;
     private String grands_prix;
     private String podiums;
+    private Bitmap fotob;
+    private Drawable fotod;
     public Piloto(){
 
     }
@@ -33,6 +38,42 @@ public class Piloto {
         this.grands_prix = grands_prix;
         this.podiums = podiums;
     }
+    public Piloto(int id, String nombre, Bitmap foto, String numero, String equipo, String nacionalidad, String fecha_nacimiento, String campeonatos, String grands_prix, String podiums) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fotob = foto;
+        this.numero = numero;
+        this.equipo = equipo;
+        this.nacionalidad = nacionalidad;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.campeonatos = campeonatos;
+        this.grands_prix = grands_prix;
+        this.podiums = podiums;
+    }
+    public Piloto(int id, String nombre, Drawable foto, String numero, String equipo, String nacionalidad, String fecha_nacimiento, String campeonatos, String grands_prix, String podiums) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fotod = foto;
+        this.numero = numero;
+        this.equipo = equipo;
+        this.nacionalidad = nacionalidad;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.campeonatos = campeonatos;
+        this.grands_prix = grands_prix;
+        this.podiums = podiums;
+    }
+    public Piloto(int id, String nombre, String numero, String equipo, String nacionalidad, String fecha_nacimiento, String campeonatos, String grands_prix, String podiums) {
+        this.id = id;
+        this.nombre = nombre;
+        this.numero = numero;
+        this.equipo = equipo;
+        this.nacionalidad = nacionalidad;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.campeonatos = campeonatos;
+        this.grands_prix = grands_prix;
+        this.podiums = podiums;
+    }
+
 
     public Integer getId() {
         return id;
@@ -114,6 +155,20 @@ public class Piloto {
         this.podiums = podiums;
     }
 
+    public Bitmap getFotob() {
+        return fotob;
+    }
 
+    public void setFotob(Bitmap fotob) {
+        this.fotob = fotob;
+    }
+
+    public Drawable getFotod() {
+        return fotod;
+    }
+
+    public void setFotod(Drawable fotod) {
+        this.fotod = fotod;
+    }
 }
 

@@ -5,6 +5,7 @@ package autodromo.punkmkt.com.ahrapp;
  */
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
@@ -31,6 +32,7 @@ import autodromo.punkmkt.com.ahrapp.fragments.LoginFBFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.NewsFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.PassionFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.PilotosFragment;
+import autodromo.punkmkt.com.ahrapp.fragments.PremiosFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.ResultadosActivity;
 import autodromo.punkmkt.com.ahrapp.fragments.ResultadosFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.SocialHubFragment;
@@ -47,14 +49,37 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState == null) {
-            Fragment f1 = new HomeFragment();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.frame, f1); // f1_container is your FrameLayout container
-            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            ft.addToBackStack(null);
-            ft.commit();
+        Intent intent = getIntent();
+
+        try{
+            String fragmento = intent.getStringExtra("fragmento");
+            if(fragmento.equals("noticias")){
+                if (savedInstanceState == null) {
+                    Fragment f1 = new NewsFragment();
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.add(R.id.frame, f1).commit();
+                }
+            }
+            else if(fragmento.equals("premios")){
+                if (savedInstanceState == null) {
+                    Fragment f1 = new PremiosFragment();
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.add(R.id.frame, f1).commit();
+                }
+            }
+        }catch (Exception e){
+            if (savedInstanceState == null) {
+                Fragment f1 = new HomeFragment();
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                //ft.replace(R.id.frame, f1); // f1_container is your FrameLayout container
+                ft.add(R.id.frame, f1).commit();
+                //ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                //ft.addToBackStack(null);
+                // ft.commit();
+            }
         }
+
+
 
         // Initializing Toolbar and setting it as the actionbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -69,19 +94,13 @@ public class BaseActivity extends AppCompatActivity {
             // This method will trigger on item Click of navigation menu
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-
                 //Checking if the item is in checked state or not, if not make it in checked state
                 if(menuItem.isChecked()) menuItem.setChecked(false);
                 else menuItem.setChecked(true);
-
                 //Closing drawer on item click
                 drawerLayout.closeDrawers();
-
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()){
-
-
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
                         getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
@@ -192,7 +211,6 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     default:
-                        //getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
                         return true;
 
                 }
@@ -219,11 +237,13 @@ public class BaseActivity extends AppCompatActivity {
             }
         };
 
-        //Setting the actionbarToggle to drawer layout
-        drawerLayout.setDrawerListener(actionBarDrawerToggle);
 
-        //calling sync state is necessay or else your hamburger icon wont show up
-        actionBarDrawerToggle.syncState();
+            //Setting the actionbarToggle to drawer layout
+            drawerLayout.setDrawerListener(actionBarDrawerToggle);
+
+            //calling sync state is necessay or else your hamburger icon wont show up
+            actionBarDrawerToggle.syncState();
+
 
     }
 
@@ -240,14 +260,16 @@ public class BaseActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        /*if (id == R.id.action_settings) {
-            return true;
-        }*/
-
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    public void onBackPressed(){
+        FragmentManager fm = getSupportFragmentManager();
+        if (fm.getBackStackEntryCount() > 0) {
+            fm.popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

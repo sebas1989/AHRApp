@@ -62,7 +62,7 @@ public class ConfiguracionActivity extends Activity{
         myPager.setCurrentItem(getItem(-1),true);
     }
     public void EndViewPager(View v){
-        Intent myIntent = new Intent(ConfiguracionActivity.this, MainActivity.class);
+        Intent myIntent = new Intent(ConfiguracionActivity.this, BaseActivity.class);
         ConfiguracionActivity.this.startActivity(myIntent);
     }
 
