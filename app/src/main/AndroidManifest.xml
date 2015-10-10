@@ -129,6 +129,9 @@
             >
 
         </activity>
+        <activity android:name=".GraciasParticiparActivity">
+
+        </activity>
         <activity android:name="com.facebook.FacebookActivity"
             android:configChanges=
                 "keyboard|keyboardHidden|screenLayout|screenSize|orientation"

@@ -214,10 +214,10 @@
     <string name="usuario_existente">Usuario existente</string>
     <string name="gracias_por_registrarte">Gracias por registrarte!</string>
 
-    <string name="selecciona_genero">Género</string>
-    <string name="selecciona_edad">Edad</string>
-    <string name="selecciona_zona">Zona</string>
-    <string name="selecciona_asientos">Asiento</string>
+    <string name="selecciona_genero">SEXO</string>
+    <string name="selecciona_edad">EDAD</string>
+    <string name="selecciona_zona">ZONA</string>
+    <string name="selecciona_asientos">GRADA</string>
 
     <string name="campos_obligatorios">Todos los campos son obligatorios</string>
     <string name="porfavor_espere">Por favor espere.</string>
@@ -241,4 +241,31 @@
         <item>Gris</item>
         <item>Café</item>
     </string-array>
+    <string-array name="asientos_arrays">
+        <item>GRANDSTANDS - GRADA 1</item>
+        <item>GRANDSTANDS - GRADA 2</item>
+        <item>GRADAS PLATINO - GRADA 5</item>
+        <item>GRADAS PLATINO - GRADA 9</item>
+        <item>GRADAS PLATINO - GRADA 10</item>
+        <item>GRADAS PLATINO - GRADA 11</item>
+        <item>GRADAS ORO - GRADA 3</item>
+        <item>GRADAS ORO - GRADA 4</item>
+        <item>GRADAS ORO - GRADA 6</item>
+        <item>GRADAS ORO - GRADA 7</item>
+        <item>GRADAS ORO - GRADA 8</item>
+        <item>GRADAS ORO - GRADA 12</item>
+        <item>FORO SOL SUR - GRADA 14</item>
+        <item>FORO SOL NORTE - GRADA 15</item>
+        <item>ADMISIÓN GENERAL - GRADA 13</item>
+        <item>ADMISIÓN GENERAL - GRADA 2A</item>
+        <item>ADMISIÓN GENERAL - GRADA 2B</item>
+        <item>ADMISIÓN GENERAL - GRADA 6A</item>
+        <item>GRADA PLATA - GRADA 6B</item>
+    </string-array>
+    <string name="registrate_descripcion">Al registrarte podrás participar para ganar algunos de los artículos exclusivos de los embajadores del Autódromo Hermanos Rodríguez.</string>
+    <string name="title_activity_gracias_participar">GraciasParticiparActivity</string>
+    <string name="gracias_participar">GRACIAS POR PARTICIPAR</string>
+    <string name="datos_registrados">TUS DATOS YA ESTÁN REGISTRDOS</string>
+    <string name="caso_seleccionado">EN CASO DE SER SELECCIONADO</string>
+    <string name="caso_seleccionado2">TE CONTÁCTAREMOS POR CUALQUIERA \n DE LOS MEDIOS QUE NOS PROPORCIONASTE.</string>
 </resources>

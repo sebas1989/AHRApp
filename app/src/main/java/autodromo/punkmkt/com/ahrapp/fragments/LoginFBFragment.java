@@ -3,13 +3,16 @@ package autodromo.punkmkt.com.ahrapp.fragments;
 /**
  * Created by sebastianmendezgiron on 02/10/15.
  */
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +27,7 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONObject;
+
 import java.util.Arrays;
 
 import autodromo.punkmkt.com.ahrapp.R;
@@ -32,6 +36,7 @@ public class LoginFBFragment extends Fragment {
 
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+
     private TextView first_name;
     private TextView last_name;
     private TextView email;
@@ -65,7 +70,9 @@ public class LoginFBFragment extends Fragment {
         loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email"));
         loginButton.setFragment(this);
 
+
         // Callback registration
+
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -127,6 +134,9 @@ public class LoginFBFragment extends Fragment {
                 request.setParameters(parameters);
                 request.executeAsync();
             }
+
+
+
             @Override
             public void onCancel() {
                 Toast.makeText(getActivity(), "Login canceled", Toast.LENGTH_SHORT).show();
@@ -138,6 +148,7 @@ public class LoginFBFragment extends Fragment {
             }
         });
 
+
         return view;
     }
     @Override
@@ -145,5 +156,9 @@ public class LoginFBFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
+
+
+
+
 
 }

@@ -36,6 +36,7 @@ import autodromo.punkmkt.com.ahrapp.fragments.PremiosFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.ResultadosActivity;
 import autodromo.punkmkt.com.ahrapp.fragments.ResultadosFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.SocialHubFragment;
+import de.keyboardsurfer.android.widget.crouton.Crouton;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -246,7 +247,11 @@ public class BaseActivity extends AppCompatActivity {
 
 
     }
-
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Crouton.cancelAllCroutons();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

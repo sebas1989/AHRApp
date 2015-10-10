@@ -32,8 +32,7 @@ public class MyPushBroadcastReceiver extends ParsePushBroadcastReceiver {
             if (extras != null) {
                 String jsonData = extras.getString("com.parse.Data");
                 String Channel = extras.getString("com.parse.Channel");
-                Log.d("com.parse.push",jsonData);
-                Log.d("com.parse.push",Channel);
+
 
                 JSONObject jsonDataFinal;
                 jsonDataFinal = new JSONObject(jsonData);
@@ -69,13 +68,12 @@ public class MyPushBroadcastReceiver extends ParsePushBroadcastReceiver {
                     }
                 }
                 else{
-
+                    IniciarMainActivity(context, intent);
                 }
             }
         } catch (JSONException e) {
-
+            IniciarMainActivity(context, intent);
             e.printStackTrace();
-            Log.e("com.parse.push", e.getMessage());
         }
     }
 

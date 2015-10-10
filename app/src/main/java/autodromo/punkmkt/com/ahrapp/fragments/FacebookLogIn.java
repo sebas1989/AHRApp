@@ -2,12 +2,12 @@ package autodromo.punkmkt.com.ahrapp.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,6 +34,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
+import autodromo.punkmkt.com.ahrapp.GraciasParticiparActivity;
 import autodromo.punkmkt.com.ahrapp.R;
 import autodromo.punkmkt.com.ahrapp.adapters.CustomizedSpinnerAdapter;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
@@ -106,12 +107,16 @@ public class FacebookLogIn extends Fragment {
         genero = (Spinner) getActivity().findViewById(R.id.spinner_gender);
         edad = (Spinner) getActivity().findViewById(R.id.spinner_edad);
 
-        first_nameView.setHintTextColor(getResources().getColor(R.color.white));
-        last_nameView.setHintTextColor(getResources().getColor(R.color.white));
-        emailView.setHintTextColor(getResources().getColor(R.color.white));
+        first_nameView.setHintTextColor(getResources().getColor(R.color.black));
+        last_nameView.setHintTextColor(getResources().getColor(R.color.black));
+        emailView.setHintTextColor(getResources().getColor(R.color.black));
 
         final String[] data_array_genero = getResources().getStringArray(R.array.gender_arrays);
         final String[] data_array_zonas = getResources().getStringArray(R.array.zonas_arrays);
+
+        final String[] data_array_asientos = getResources().getStringArray(R.array.asientos_arrays);
+
+
         final ArrayList<String> data_genero = new ArrayList<String>();
         final ArrayList<String> data_edad = new ArrayList<String>();
         final ArrayList<String> data_zonas = new ArrayList<String>();
@@ -127,8 +132,8 @@ public class FacebookLogIn extends Fragment {
             data_edad.add(Integer.toString(i));
         }
 
-        for (int i = 1; i<=99;i++){
-            data_asientos.add(Integer.toString(i));
+        for (String valor: data_array_asientos){
+            data_asientos.add(valor);
         }
 
         data_genero.add(0,getResources().getString(R.string.selecciona_genero)); //Add element at 0th index
@@ -176,15 +181,12 @@ public class FacebookLogIn extends Fragment {
                 }
                 if(!ValidateSpinner(edad,getResources().getString(R.string.selecciona_edad))){
                     validationError = true;
-                    //validationErrorMessage.append(getResources().getString(R.string.error_blank_edad));
                 }
                 if(!ValidateSpinner(zonaView,getResources().getString(R.string.selecciona_zona))){
                     validationError = true;
-                    // validationErrorMessage.append(getResources().getString(R.string.error_blank_zona));
                 }
                 if(!ValidateSpinner(asientoView,getResources().getString(R.string.selecciona_asientos))){
                     validationError = true;
-                    // validationErrorMessage.append(getResources().getString(R.string.error_blank_asiento));
                 }
 
                 //validationErrorMessage.append(getResources().getString(R.string.error_end));
@@ -217,9 +219,9 @@ public class FacebookLogIn extends Fragment {
                             customUser.put("facebook_id",facebook_id.getText().toString());
                             customUser.put("locale",locale.getText().toString());
                             customUser.put("link",link.getText().toString());
-                            customUser.put("age_range",edad.getSelectedItem().toString());
+                            customUser.put("age",edad.getSelectedItem().toString());
                             customUser.put("zona", zonaView.getSelectedItem().toString());
-                            customUser.put("asiento", asientoView.getSelectedItem().toString());
+                            customUser.put("grada", asientoView.getSelectedItem().toString());
                             // Call the Parse signup method
                             customUser.saveInBackground(new SaveCallback() {
                                 @Override
@@ -227,15 +229,20 @@ public class FacebookLogIn extends Fragment {
                                     dlg.dismiss();
                                     if (e != null) {
                                         // Show the error message
+                                        //Toast.makeText(LoginSingUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                                         Crouton.makeText(getActivity(), e.getMessage(), Style.ALERT).show();
                                     } else {
-                                        Crouton.makeText(getActivity(), R.string.gracias_por_registrarte, Style.INFO).show();
+
+                                        //Crouton.makeText(LoginSingUpActivity.this, R.string.gracias_por_registrarte, Style.INFO).show();
+                                        Intent myIntent = new Intent(getActivity(), GraciasParticiparActivity.class);
+                                        getActivity().startActivity(myIntent);
                                     }
                                 }
                             });
                         } else {
                             dlg.dismiss();
                             Crouton.makeText(getActivity(),R.string.usuario_existente, Style.ALERT).show();
+                            //Toast.makeText(LoginSingUpActivity.this,R.string.usuario_existente, Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -243,12 +250,6 @@ public class FacebookLogIn extends Fragment {
             }
         });
 
-    }
-
-
-    protected void onDestroyView(View view){
-        super.onDestroyView();
-        Crouton.cancelAllCroutons();
     }
 
 
@@ -274,6 +275,22 @@ public class FacebookLogIn extends Fragment {
             return false;
 
         return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+    }
+
+    public static void showHashKey(Context context) {
+
+        try {
+            PackageInfo info = context.getPackageManager().getPackageInfo(
+                    "com.punkmkt.formula1", PackageManager.GET_SIGNATURES); //Your            package name here
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+
+                Log.i("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+        } catch (NoSuchAlgorithmException e) {
+        }
     }
 
     public final static boolean ValidateSpinner(Spinner s,String s_option){
