@@ -83,7 +83,6 @@ public class ResultadosDetalleActivity extends Activity {
         imagen.setImageUrl(premio.getImagen(), imageLoader);
         nombre.setText(premio.getName());
 
-
         Cache mCache = MyVolleySingleton.getInstance().getRequestQueue().getCache();
         Cache.Entry mEntry = mCache.get(AHZ_PREMIOS_JSON_API_URL);
         if (mEntry != null) {
@@ -92,7 +91,6 @@ public class ResultadosDetalleActivity extends Activity {
                 JSONObject object = new JSONObject(cacheData);
                 JSONObject object2 = object.getJSONObject("data");
                 JSONArray etapa_set = object2.getJSONArray("etapa_set");
-
                 for (int count = 0; count < etapa_set.length(); count++) {
                     JSONObject anEntry = etapa_set.getJSONObject(count);
                     Etapa etapa = new Etapa();
@@ -105,7 +103,6 @@ public class ResultadosDetalleActivity extends Activity {
                     ArrayList<Posicion> array_posiciones = new ArrayList<Posicion>();
                     for (int count2 = 0; count2 < posicion_set.length(); count2++) {
                         JSONObject anSecondEntry = posicion_set.getJSONObject(count2);
-                        //Log.d("volley",anSecondEntry.toString());
                         Posicion posicion = new Posicion();
                         posicion.setId(Integer.parseInt(anSecondEntry.optString("id")));
                         posicion.setPosicion(Integer.parseInt(anSecondEntry.optString("numero_posicion")));
@@ -130,9 +127,7 @@ public class ResultadosDetalleActivity extends Activity {
                         if (anSecondEntry.has("puntos") && !anSecondEntry.optString("puntos").equals("null")) {
                             posicion.setPuntos(anSecondEntry.optString("puntos"));
                         }
-                        //JSONObject anpilot = anSecondEntry.optJSONObject("piloto");
-                        posicion.setPiloto_sobrenombre(anSecondEntry.optString("sobrenombre"));
-                        //JSONObject anEscuderia = anpilot.getJSONObject("escuderia");
+                        posicion.setPiloto_sobrenombre(anSecondEntry.optString("piloto"));
                         posicion.setEscuderia(anSecondEntry.optString("equipo_img"));
                         array_posiciones.add(posicion);
                     }
@@ -341,10 +336,6 @@ public class ResultadosDetalleActivity extends Activity {
 
 
     }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        request.cancel();
-    }
+
 }
 

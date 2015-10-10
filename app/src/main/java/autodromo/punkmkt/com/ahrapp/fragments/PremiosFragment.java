@@ -33,9 +33,7 @@ import autodromo.punkmkt.com.ahrapp.models.Premio;
 import autodromo.punkmkt.com.ahrapp.utils.AuthRequest;
 
 
-/**
- * Created by thespianartist on 23/07/14. (: pufu!!!!!
- */
+
 public class PremiosFragment extends Fragment {
 
     private RecyclerView.Adapter adapter;

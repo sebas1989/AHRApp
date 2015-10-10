@@ -14,6 +14,7 @@ import android.widget.GridView;
 
 import android.support.v4.app.Fragment;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,28 +28,28 @@ import autodromo.punkmkt.com.ahrapp.adapters.CustomGrid;
 public class PassionFragment extends Fragment {
 
     int[] imageId={
-            R.drawable.alonso,
-            R.drawable.bottas,
-            R.drawable.button,
-            R.drawable.checo,
-            R.drawable.ericcson,
-            R.drawable.grosjean,
-            R.drawable.hamilton,
-            R.drawable.hulkenberg,
-            R.drawable.kimi,
-            R.drawable.kvyat,
-            R.drawable.massa,
-            R.drawable.mexico_1,
-            R.drawable.mexico_2,
-            R.drawable.nasr,
-            R.drawable.pastor,
-            R.drawable.ricciardo,
-            R.drawable.rosberg,
-            R.drawable.rossi,
-            R.drawable.sainz,
-            R.drawable.stevens,
-            R.drawable.verstappen,
-            R.drawable.vettel,
+            R.drawable.alonso_bg,
+            R.drawable.bottas_bg,
+            R.drawable.button_bg,
+            R.drawable.checo_bg,
+            R.drawable.ericsson_bg,
+            R.drawable.grosjean_bg,
+            R.drawable.hamilton_bg,
+            R.drawable.hulkenberg_bg,
+            R.drawable.kimi_bg,
+            R.drawable.kvyat_bg,
+            R.drawable.massa_bg,
+            R.drawable.mexico_1_bg,
+            R.drawable.mexico_2_bg,
+            R.drawable.nasr_bg,
+            R.drawable.pastor_bg,
+            R.drawable.ricciardo_bg,
+            R.drawable.roseberd_bg,
+            R.drawable.rossi_bg,
+            R.drawable.sainz_bg,
+            R.drawable.stevens_bg,
+            R.drawable.verstappen_bg,
+            R.drawable.vettel_bg,
     };
 
     ArrayList <Bitmap> bitmaps = new ArrayList<Bitmap>();
@@ -102,7 +103,9 @@ public class PassionFragment extends Fragment {
 
                 Intent detailIntent = new Intent(getActivity(), SinglePassionActivity.class);
                 detailIntent.putExtra("imageId", imageId[position]);
-                detailIntent.putExtra("position", position);
+                Log.d("imageId", Integer.toString(imageId[position]));
+                //Toast.makeText(getActivity().getApxplicationContext(),imageId[position],Toast.LENGTH_SHORT).show();
+
                 startActivity(detailIntent);
 
             }

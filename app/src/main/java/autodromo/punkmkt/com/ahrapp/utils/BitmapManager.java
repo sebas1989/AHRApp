@@ -49,14 +49,14 @@ public class BitmapManager {
         int photoH = bmOptions.outHeight;
 
 		/* Figure out which way needs to be reduced less */
-        int scaleFactor = 1;
+        int scaleFactor = 2;
         if ((targetW > 0) || (targetH > 0)) {
             scaleFactor = Math.min(photoW/targetW, photoH/targetH);
         }
 
 		/* Set bitmap options to scale the image decode target */
         bmOptions.inJustDecodeBounds = false;
-        bmOptions.inSampleSize = scaleFactor;
+        bmOptions.inSampleSize = 2;
         bmOptions.inPurgeable = true;
 
 		/* Decode the JPEG file into a Bitmap */
