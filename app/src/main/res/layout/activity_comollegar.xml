@@ -1,3 +1,4 @@
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,50 +15,107 @@
         android:baselineAligned="false"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:weightSum="3"
         >
 
-        <!--Button
-            android:id="@+id/como_llegar"
-            android:background="@drawable/mapaicon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:adjustViewBounds="true"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:onClick="MostrarMarcadorAhd"/-->
-        <Button
-            android:id="@+id/recoleccion"
-            android:background="@drawable/ticket_bus"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:onClick="MostrarMarcadoresRecoleccion"
-            />
-        <Button
-            android:id="@+id/taxis"
-            android:background="@drawable/train_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:onClick="MostrarMarcadoresTaxis"/>
-        <Button
-            android:id="@+id/estaciones_metro"
-            android:background="@drawable/taxi_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:onClick="MostrarMarcadoresEstacionesMetro"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/recoleccion"
+                    android:background="@drawable/ticket_bus"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:onClick="MostrarMarcadoresRecoleccion"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ticket2ride"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/taxis"
+                    android:background="@drawable/train_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:onClick="MostrarMarcadoresEstacionesMetro"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/metro"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/metro"
+                    android:background="@drawable/taxi_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:onClick="MostrarMarcadoresTaxis"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/metrobus"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal" />
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
     <LinearLayout
         android:layout_below="@+id/container_menu"
@@ -90,3 +148,8 @@
     </LinearLayout>
 
 </RelativeLayout>
+
+
+
+
+

@@ -67,7 +67,7 @@ public class RankingGeneralActivity extends Activity {
                 e.printStackTrace();
             }
         } else {
-            StringRequest request = new AuthRequest(Request.Method.GET, AHZ_RANKING_GENERAL, "utf-8", new Response.Listener<String>() {
+            StringRequest request = new AuthRequest(getApplicationContext(),Request.Method.GET, AHZ_RANKING_GENERAL, "utf-8", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {

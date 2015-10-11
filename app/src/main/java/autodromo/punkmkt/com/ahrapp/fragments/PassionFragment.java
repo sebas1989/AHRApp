@@ -92,6 +92,7 @@ public class PassionFragment extends Fragment {
         bitmaps.add(BitmapFactory.decodeResource(this.getResources(), R.drawable.vettel, options));
 
 
+
         GridView grid = (GridView) getActivity().findViewById(R.id.grid_ecards);
         CustomGrid adapter = new CustomGrid(getActivity(), bitmaps);
             grid.setAdapter(adapter);

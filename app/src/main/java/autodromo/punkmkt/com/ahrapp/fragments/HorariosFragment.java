@@ -1,5 +1,6 @@
 package autodromo.punkmkt.com.ahrapp.fragments;
 
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.facebook.common.util.UriUtil;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +54,13 @@ public class HorariosFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Uri uri = new Uri.Builder()
+                .scheme(UriUtil.LOCAL_RESOURCE_SCHEME) // "res"
+                .path(String.valueOf(R.drawable.horarios))
+                .build();
+        SimpleDraweeView draweeView = (SimpleDraweeView) getActivity().findViewById(R.id.imageView);
+        draweeView.setImageURI(uri);
+
 
         tabla_informacion = (TableLayout) getActivity().findViewById(R.id.tabla_informacion);
         Cache mCache = MyVolleySingleton.getInstance().getRequestQueue().getCache();
@@ -88,7 +98,7 @@ public class HorariosFragment extends Fragment {
             e.printStackTrace();
         }
         } else {
-            StringRequest request = new AuthRequest(Request.Method.GET, AHZ_HORARIOS_JSON_API_URL, "utf-8", new Response.Listener<String>() {
+            StringRequest request = new AuthRequest(getActivity().getApplicationContext(),Request.Method.GET, AHZ_HORARIOS_JSON_API_URL, "utf-8", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {

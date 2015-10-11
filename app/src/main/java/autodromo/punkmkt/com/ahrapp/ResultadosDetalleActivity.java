@@ -149,7 +149,7 @@ public class ResultadosDetalleActivity extends Activity {
                 e.printStackTrace();
             }
         } else {
-            request = new AuthRequest(Request.Method.GET, AHZ_PREMIOS_JSON_API_URL, "utf-8", new Response.Listener<String>() {
+            request = new AuthRequest(getApplicationContext(),Request.Method.GET, AHZ_PREMIOS_JSON_API_URL, "utf-8", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {

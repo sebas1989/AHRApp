@@ -1,3 +1,4 @@
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,50 +14,141 @@
         android:baselineAligned="false"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:weightSum="4"
         >
 
-        <Button
-            android:id="@+id/hoteles"
-            android:background="@drawable/hotel_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:adjustViewBounds="true"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:onClick="MostrarHoteles"/>
-        <Button
-            android:id="@+id/restaurantes"
-            android:background="@drawable/restaurant_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:onClick="MostrarRestaurantes"
-            />
-        <Button
-            android:id="@+id/lugares"
-            android:background="@drawable/city_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:onClick="MostrarAdondeir"/>
-        <Button
-            android:id="@+id/eventos"
-            android:background="@drawable/eventos_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:onClick="MostrarEventos"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/hoteles"
+                    android:background="@drawable/hotel_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center"
+                    android:onClick="MostrarHoteles"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hoteles"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/restaurantes"
+                    android:background="@drawable/restaurant_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:onClick="MostrarRestaurantes"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/restaurantes"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/lugares"
+                    android:background="@drawable/city_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:onClick="MostrarAdondeir"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/adondeir"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/eventos"
+                    android:background="@drawable/eventos_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:onClick="MostrarEventos"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/opc_eventos"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
     <FrameLayout
         android:layout_width="wrap_content"
@@ -68,3 +160,9 @@
     </FrameLayout>
 
 </RelativeLayout>
+
+
+
+
+
+

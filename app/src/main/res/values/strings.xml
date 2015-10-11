@@ -5,6 +5,9 @@
     <string name="parse_client_key">ZJuHuFMu6mYZPP30OkcQxtEjKJ9cpTFVWoq1EBS2</string>
     <string name="facebook_app_id">801692569977560</string>
 
+    <string name="user_api">jon</string>
+    <string name="password_api">jonpunk</string>
+
     <string name="app_name">Autódromo Hermanos Rodriguez</string>
     <string name="hello_world">HOLa Mundo</string>
     <string name="action_settings">Configuraciones</string>
@@ -196,7 +199,7 @@
     <string name="prompt_asiento">Número de asiento</string>
     <string name="prompt_password">Password</string>
     <string name="prompt_password_again">Password Again</string>
-    <string name="sign_up">Registrarse</string>
+    <string name="sign_up">¡ENVIAR Y PARTICIPAR!</string>
     <string name="action_sign_in_register"><b>Sign in</b> or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="action_forgot_password">Recover lost password</string>
@@ -233,13 +236,13 @@
     </string-array>
 
     <string-array name="zonas_arrays">
-        <item>Verde</item>
-        <item>Azul</item>
-        <item>Morada</item>
-        <item>Amarilla</item>
-        <item>Naranja</item>
-        <item>Gris</item>
-        <item>Café</item>
+        <item>VERDE</item>
+        <item>AZUL</item>
+        <item>MORADA</item>
+        <item>AMARILLA</item>
+        <item>NARANJA</item>
+        <item>GRIS</item>
+        <item>CAFÉ</item>
     </string-array>
     <string-array name="asientos_arrays">
         <item>GRANDSTANDS - GRADA 1</item>
@@ -268,4 +271,12 @@
     <string name="datos_registrados">TUS DATOS YA ESTÁN REGISTRDOS</string>
     <string name="caso_seleccionado">EN CASO DE SER SELECCIONADO</string>
     <string name="caso_seleccionado2">TE CONTÁCTAREMOS POR CUALQUIERA \n DE LOS MEDIOS QUE NOS PROPORCIONASTE.</string>
+
+    <string name="hoteles">HOTELES</string>
+    <string name="restaurantes">RESTAURANTES</string>
+    <string name="adondeir">A DÓNDE IR</string>
+    <string name="opc_eventos">EVENTOS</string>
+    <string name="ticket2ride">TICKET2RIDE</string>
+    <string name="metro">METRO</string>
+    <string name="metrobus">METROBUS</string>
 </resources>

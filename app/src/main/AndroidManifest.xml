@@ -40,16 +40,19 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        >
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <activity
             android:name=".BaseActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <meta-data
@@ -85,54 +88,67 @@
             </intent-filter>
         </receiver>
         <activity android:name=".ConfiguracionActivity"
+            android:screenOrientation="portrait"
             android:label="Configuracion principal">
 
         </activity>
         <activity android:name=".SingleNewDetailActivity"
+            android:screenOrientation="portrait"
             android:label="Detalle">
 
         </activity>
-        <activity android:name=".SinglePassionActivity">
+        <activity android:name=".SinglePassionActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".PilotosDetalleActivity">
+        <activity android:name=".PilotosDetalleActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".ResultadosDetalleActivity">
+        <activity android:name=".ResultadosDetalleActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".RankingGeneralActivity">
+        <activity android:name=".RankingGeneralActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".Ciudad">
+
+        <activity android:name=".CiudadMexicoDetalleActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".CiudadMexicoDetalleActivity">
+        <activity android:name=".ComollegarActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".ComollegarActivity">
+        <activity android:name=".ServiciosActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".ServiciosActivity">
+        <activity android:name=".MapActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".MapActivity">
+        <activity android:name=".ZonaDetalleActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".ZonaDetalleActivity">
+        <activity android:name=".SettingsActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".SettingsActivity">
-
-        </activity>
-        <activity android:name=".PoliticasPrivacidadActivity">
+        <activity android:name=".PoliticasPrivacidadActivity"
+            android:screenOrientation="portrait">
 
         </activity>
         <activity android:name=".TerminosServicioActivity"
+            android:screenOrientation="portrait"
             >
 
         </activity>
-        <activity android:name=".GraciasParticiparActivity">
+        <activity android:name=".GraciasParticiparActivity"
+            android:screenOrientation="portrait">
 
         </activity>
         <activity android:name="com.facebook.FacebookActivity"

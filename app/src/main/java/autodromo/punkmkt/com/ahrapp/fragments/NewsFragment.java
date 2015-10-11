@@ -77,7 +77,7 @@ public class NewsFragment extends Fragment {
                 e.printStackTrace();
             }
         } else {
-            StringRequest request = new AuthRequest(Request.Method.GET, AHZ_URL_NOTICIAS, "UTF-8", new Response.Listener<String>() {
+            StringRequest request = new AuthRequest(getActivity().getApplicationContext(),Request.Method.GET, AHZ_URL_NOTICIAS, "UTF-8", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {

@@ -293,7 +293,7 @@ public class HomeFragment extends Fragment {
         } else {
         if (NetworkUtils.haveNetworkConnection(getActivity())) {
 
-            StringRequest request = new AuthRequest(Request.Method.GET, AHZ_LATEST_THREE_NEWS_ENTRIES, "utf-8", new Response.Listener<String>() {
+            StringRequest request = new AuthRequest(getActivity().getApplicationContext(),Request.Method.GET, AHZ_LATEST_THREE_NEWS_ENTRIES, "utf-8", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {
@@ -349,8 +349,27 @@ public class HomeFragment extends Fragment {
 
 
     }
-   private void parseResponse(String response){
 
+
+
+    private void unbindDrawables(View view) {
+        if (view.getBackground() != null) {
+            view.getBackground().setCallback(null);
+        }
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                unbindDrawables(((ViewGroup) view).getChildAt(i));
+            }
+            ((ViewGroup) view).removeAllViews();
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.d("Tag", "FragmentA.onDestroyView() has been called.");
+        unbindDrawables(getActivity().findViewById(R.id.container_fragment));
+        System.gc();
     }
 
 }

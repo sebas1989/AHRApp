@@ -3,6 +3,7 @@ package autodromo.punkmkt.com.ahrapp.utils;
 /**
  * Created by sebastianmendezgiron on 25/09/15.
  */
+import android.content.Context;
 import android.util.Base64;
 
 import com.android.volley.AuthFailureError;
@@ -19,20 +20,23 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
+import autodromo.punkmkt.com.ahrapp.R;
+
 /**
  * Created by germanpunk on 14/09/15.
  */
 public class AuthRequest extends StringRequest {
     private String charset = null;
-    public AuthRequest(int method, String url, String charset, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+    private Context context;
+    public AuthRequest(Context context, int method, String url, String charset, Response.Listener<String> listener, Response.ErrorListener errorListener) {
         super(method, url, listener, errorListener);
         this.charset = charset;
+        this.context = context;
     }
-
 
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
-        return createBasicAuthHeader("jon", "jonpunk");
+        return createBasicAuthHeader(this.context.getResources().getString(R.string.user_api),this.context.getResources().getString(R.string.password_api));
     }
 
     Map<String, String> createBasicAuthHeader(String username, String password) {
@@ -106,6 +110,8 @@ public class AuthRequest extends StringRequest {
 
         return entry;
     }
+
+
 }
 
 

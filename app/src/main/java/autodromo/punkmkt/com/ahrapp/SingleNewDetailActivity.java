@@ -99,7 +99,7 @@ public class SingleNewDetailActivity extends AppCompatActivity {
         else{
         if(NetworkUtils.haveNetworkConnection(this)) {
 
-            StringRequest request = new AuthRequest(Request.Method.GET, AHR_FILTER_SINGLE_NEW, "utf-8", new Response.Listener<String>() {
+            StringRequest request = new AuthRequest(getApplicationContext(),Request.Method.GET, AHR_FILTER_SINGLE_NEW, "utf-8", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {
