@@ -10,6 +10,10 @@
         android:id="@+id/imageView"
         android:layout_width="fill_parent"
         android:layout_height="130.9dp"
+<<<<<<< HEAD
+=======
+        android:background="@drawable/horarios"
+>>>>>>> 65c70cebae4c93b3fa4175eff1e0fd5102b2d2e1
          />
     <LinearLayout
         android:layout_width="fill_parent"

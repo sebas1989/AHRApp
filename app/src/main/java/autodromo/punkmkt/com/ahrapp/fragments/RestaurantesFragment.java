@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.android.volley.Cache;
 import com.android.volley.Request;
@@ -49,10 +50,20 @@ public class RestaurantesFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         //ReclyclerView, Adapter
+        Button res = (Button) getActivity().findViewById(R.id.restaurantes);
+        res.setBackground(getResources().getDrawable(R.drawable.restaurant_icon_hover_96));
+
+        Button hospedaje = (Button) getActivity().findViewById(R.id.hoteles);
+        hospedaje.setBackground(getResources().getDrawable(R.drawable.hotel_icon));
+
+        Button lug = (Button) getActivity().findViewById(R.id.lugares);
+        lug.setBackground(getResources().getDrawable(R.drawable.city_icon));
+
+        Button event = (Button) getActivity().findViewById(R.id.eventos);
+        event.setBackground(getResources().getDrawable(R.drawable.eventos_icon));
 
         RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
-
         adapter = new RestauranteAdapter(restaurantes);
 
 

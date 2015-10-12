@@ -22,9 +22,12 @@ import android.view.View;
 
 import android.widget.Toast;
 
+<<<<<<< HEAD
 //import com.facebook.drawee.backends.pipeline.Fresco;
 
 import com.parse.ParseAnalytics;
+=======
+>>>>>>> 65c70cebae4c93b3fa4175eff1e0fd5102b2d2e1
 
 import autodromo.punkmkt.com.ahrapp.fragments.AutodromoFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.CiudadMexicoActivity;
@@ -52,9 +55,12 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
         //Fresco.initialize(getApplicationContext());
+=======
+>>>>>>> 65c70cebae4c93b3fa4175eff1e0fd5102b2d2e1
         setContentView(R.layout.activity_main);
 
         Intent intent = getIntent();
