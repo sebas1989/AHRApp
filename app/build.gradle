@@ -50,8 +50,5 @@ dependencies {
         exclude group: 'com.google.android', module: 'support-v4'
     }
     compile 'com.jakewharton:disklrucache:2.0.2'
-    compile ('com.facebook.fresco:fresco:0.7.0+') {
-        exclude group: 'com.google.android', module: 'support-v4'
-    }
 
 }

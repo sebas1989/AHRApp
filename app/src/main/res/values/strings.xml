@@ -8,15 +8,12 @@
     <string name="user_api">jon</string>
     <string name="password_api">jonpunk</string>
 
-    <string name="app_name">Autódromo Hermanos Rodriguez</string>
+    <string name="app_name">Autódromo Hermanos Rodríguez</string>
     <string name="hello_world">HOLa Mundo</string>
     <string name="action_settings">Configuraciones</string>
     <string name="title_activity_course_detail">CourseDetailActivity</string>
     <string name="title_activity_maps">Map</string>
 
-    <string name="title_activity_comollegar">ComollegarActivity</string>
-    <string name="title_activity_autodromo">AutodromoActivity</string>
-    <string name="title_activity_ubica_zona">UbicaZonaActivity</string>
     <string name="localiza_tu_zona">LOCALIZA TU ZONA</string>
     <string name="descripcion_ubica_tu_zona_texto">DESCRIPCIÓN ÚBICA TU ZONA</string>
     <string name="como_llegar_mensaje">El evento no contará con estacionamiento, por lo que te recomendamos revisar las mejores rutas de transporte público.</string>
@@ -268,9 +265,9 @@
     <string name="registrate_descripcion">Al registrarte podrás participar para ganar algunos de los artículos exclusivos de los embajadores del Autódromo Hermanos Rodríguez.</string>
     <string name="title_activity_gracias_participar">GraciasParticiparActivity</string>
     <string name="gracias_participar">GRACIAS POR PARTICIPAR</string>
-    <string name="datos_registrados">TUS DATOS YA ESTÁN REGISTRDOS</string>
+    <string name="datos_registrados">TUS DATOS YA ESTÁN REGISTRADOS</string>
     <string name="caso_seleccionado">EN CASO DE SER SELECCIONADO</string>
-    <string name="caso_seleccionado2">TE CONTÁCTAREMOS POR CUALQUIERA \n DE LOS MEDIOS QUE NOS PROPORCIONASTE.</string>
+    <string name="caso_seleccionado2">TE CONTACTAREMOS POR CUALQUIERA \n DE LOS MEDIOS QUE NOS PROPORCIONASTE.</string>
 
     <string name="hoteles">HOTELES</string>
     <string name="restaurantes">RESTAURANTES</string>

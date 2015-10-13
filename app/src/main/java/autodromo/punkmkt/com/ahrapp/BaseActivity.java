@@ -22,7 +22,6 @@ import android.view.View;
 
 import android.widget.Toast;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
 
 import autodromo.punkmkt.com.ahrapp.fragments.AutodromoFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.CiudadMexicoActivity;
@@ -50,7 +49,6 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fresco.initialize(getApplicationContext());
         setContentView(R.layout.activity_main);
 
         Intent intent = getIntent();

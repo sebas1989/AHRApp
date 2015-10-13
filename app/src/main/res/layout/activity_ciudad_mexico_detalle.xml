@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -46,6 +46,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/hoteles"
+                    android:textSize="10dp"
                     android:textColor="@color/white"
                     android:fontFamily="sans-serif-condensed"
                     android:gravity="center_horizontal" />
@@ -81,6 +82,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/restaurantes"
                     android:textColor="@color/white"
+                    android:textSize="10dp"
                     android:fontFamily="sans-serif-condensed"
                     android:gravity="center_horizontal" />
             </LinearLayout>
@@ -112,6 +114,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/adondeir"
+                    android:textSize="10dp"
                     android:textColor="@color/white"
                     android:fontFamily="sans-serif-condensed"
                     android:gravity="center_horizontal" />
@@ -144,6 +147,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/opc_eventos"
+                    android:textSize="10dp"
                     android:textColor="@color/white"
                     android:fontFamily="sans-serif-condensed"
                     android:gravity="center_horizontal" />

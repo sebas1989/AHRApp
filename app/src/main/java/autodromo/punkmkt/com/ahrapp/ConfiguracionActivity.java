@@ -48,7 +48,6 @@ public class ConfiguracionActivity extends Activity{
         myPager = (ViewPager) findViewById(R.id.mytwopanelpager);
         myPager.setAdapter(pageAdapter);
         myPager.setCurrentItem(0);
-
     }
     private int getItem(int i) {
         return myPager.getCurrentItem() + i;

@@ -3,13 +3,16 @@ package autodromo.punkmkt.com.ahrapp;
 /**
  * Created by sebastianmendezgiron on 30/09/15.
  */
+import android.app.ActionBar;
 import android.app.Dialog;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -29,6 +32,7 @@ import autodromo.punkmkt.com.ahrapp.models.Coordenada;
 
 public class ComollegarActivity extends FragmentActivity {
 
+    ActionBar actionBar;
     ArrayList<Coordenada> recolecciones;
     ArrayList<Coordenada> taxis;
     ArrayList<Coordenada> estaciones_metro;
@@ -59,18 +63,15 @@ public class ComollegarActivity extends FragmentActivity {
             googleMap.moveCamera(cameraUpdate);
             // Enabling MyLocation Layer of Google Map
             googleMap.setMyLocationEnabled(true);
-
             //add overlay
             if (googleMap != null) {
                 Marker AHZ = googleMap.addMarker(new MarkerOptions().position(AUTODROMO_HNOZ_RODRIGUEZ)
                         .title("Autodromo Hermanos Rodriguez"));
                 AHZ.showInfoWindow();
-
-
             }
-
             MostrarMarcadoresRecoleccionWitoutView();
         }
+
     }
 
     public void RemoveMarkers(){
@@ -78,20 +79,24 @@ public class ComollegarActivity extends FragmentActivity {
     }
 
     public void MostrarMarcadorAhd(View v) {
-        Log.i("Marcador","MostrarAhd");
         RemoveMarkers();
         MostrarMarcadorAHZ();
-
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(AUTODROMO_HNOZ_RODRIGUEZ, 5);
         googleMap.moveCamera(cameraUpdate);
-
     }
     public void MostrarMarcadoresRecoleccion(View v){
         RemoveMarkers();
         MostrarMarcadoresRecoleccionWitoutView();
-
     }
     public void MostrarMarcadoresRecoleccionWitoutView(){
+
+        Button ticket = (Button) findViewById(R.id.recoleccion);
+        ticket.setBackground(getResources().getDrawable(R.drawable.ticket_icon_hover_96));
+        Button metro = (Button) findViewById(R.id.taxis);
+        metro.setBackground(getResources().getDrawable(R.drawable.train_icon));
+        Button metrobus = (Button) findViewById(R.id.metro);
+        metrobus.setBackground(getResources().getDrawable(R.drawable.taxi_icon));
+
         recolecciones = new ArrayList<Coordenada>();
         recolecciones.add(new Coordenada(19.525688, -99.226925, "Mundo E"));
         recolecciones.add(new Coordenada(19.363066, -99.273070, "Santa Fe"));
@@ -110,15 +115,21 @@ public class ComollegarActivity extends FragmentActivity {
             googleMap.addMarker(options);
             //googleMap.addMarker(new MarkerOptions().position(new LatLng(estacion.getLatitud(), estacion.getLongitud())).title(estacion.getTitulo()));
         }
-
     }
 
     public void MostrarMarcadoresEstacionesMetro(View v){
+        Button metro = (Button) findViewById(R.id.taxis);
+        metro.setBackground(getResources().getDrawable(R.drawable.train_icon_hover_96));
+        Button ticket = (Button) findViewById(R.id.recoleccion);
+        ticket.setBackground(getResources().getDrawable(R.drawable.ticket_bus));
+        Button metrobus = (Button) findViewById(R.id.metro);
+        metrobus.setBackground(getResources().getDrawable(R.drawable.taxi_icon));
+
         RemoveMarkers();
         estaciones_metro = new ArrayList<Coordenada>();
         estaciones_metro.add(new Coordenada(19.407126, -99.082267, "Metro Puebla"));
         estaciones_metro.add(new Coordenada(19.408185, -99.091366, "Metro Ciudad Deportiva"));
-        estaciones_metro.add(new Coordenada(19.408610, -99.103175, "Metro Velodromo"));
+        estaciones_metro.add(new Coordenada(19.408610, -99.103175, "Metro Velódromo"));
         MostrarMarcadorAHZ();
         for(Coordenada estacion : estaciones_metro ){
             MarkerOptions options = new MarkerOptions();
@@ -127,16 +138,22 @@ public class ComollegarActivity extends FragmentActivity {
             options.position(point);
             options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
             googleMap.addMarker(options);
-            //googleMap.addMarker(new MarkerOptions().position(new LatLng(estacion.getLatitud(), estacion.getLongitud())).title(estacion.getTitulo()));
-
         }
     }
 
 
     public void MostrarMarcadoresTaxis(View v){
+
+        Button metrobus = (Button) findViewById(R.id.metro);
+        metrobus.setBackground(getResources().getDrawable(R.drawable.taxi_icon_hover_96));
+        Button metro = (Button) findViewById(R.id.taxis);
+        metro.setBackground(getResources().getDrawable(R.drawable.train_icon));
+        Button ticket = (Button) findViewById(R.id.recoleccion);
+        ticket.setBackground(getResources().getDrawable(R.drawable.ticket_bus));
+
         RemoveMarkers();
         taxis = new ArrayList<Coordenada>();
-        taxis.add(new Coordenada(19.408610, -99.103175, "Upicsa"));
+        taxis.add(new Coordenada(19.393807, -99.090382, "Upiicsa"));
         taxis.add(new Coordenada(19.396575, -99.096079, "Iztacalco"));
         MostrarMarcadorAHZ();
         for(Coordenada taxi : taxis ){
@@ -146,14 +163,12 @@ public class ComollegarActivity extends FragmentActivity {
             options.position(point);
             options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
             googleMap.addMarker(options);
-            //googleMap.addMarker(new MarkerOptions().position(new LatLng(estacion.getLatitud(), estacion.getLongitud())).title(estacion.getTitulo()));
-
         }
     }
 
     public void MostrarMarcadorAHZ(){
         Marker AHZ = googleMap.addMarker(new MarkerOptions().position(AUTODROMO_HNOZ_RODRIGUEZ)
-                .title("Autodromo Hermanos Rodriguez"));
+                .title("Autodromo Hermanos Rodríguez"));
         AHZ.showInfoWindow();
     }
 
