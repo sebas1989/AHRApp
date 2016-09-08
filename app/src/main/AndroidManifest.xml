@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="autodromo.punkmkt.com.ahrapp" >
-
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
     <permission
         android:name="autodromo.punkmkt.com.ahrapp.MAPS_RECEIVE"
         android:protectionLevel="signature" />
@@ -36,13 +38,38 @@
 
 
     <application
-        android:name=".MyVolleySingleton"
+        android:name="autodromo.punkmkt.com.ahrapp.MyVolleySingleton"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         >
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+        <!-- Optionally, register AnalyticsReceiver and AnalyticsService to support background
+         dispatching on non-Google Play devices -->
+        <receiver android:name="com.google.android.gms.analytics.AnalyticsReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.google.android.gms.analytics.AnalyticsService"
+            android:enabled="true"
+            android:exported="false"/>
+
+        <!-- Optionally, register CampaignTrackingReceiver and CampaignTrackingService to enable
+             installation campaign reporting -->
+        <receiver android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
+
+
+
         <activity
             android:name=".BaseActivity"
             android:label="@string/app_name"
@@ -57,8 +84,10 @@
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="@string/google_maps_key" />
-
+            android:value="AIzaSyDfGy-ug8Vx3KVSY5VFPFjNleS8FktTx3g" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
         <service android:name="com.parse.PushService" />
 
         <receiver android:name="com.parse.ParseBroadcastReceiver" >
@@ -88,6 +117,7 @@
             </intent-filter>
         </receiver>
         <activity android:name=".ConfiguracionActivity"
+
             android:screenOrientation="portrait"
             android:label="Configuracion principal">
 
@@ -134,6 +164,15 @@
             android:screenOrientation="portrait">
 
         </activity>
+        <activity android:name=".TutorialTiendaActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".ListaProductosWishList"
+            android:screenOrientation="portrait"
+            >
+
+        </activity>
         <activity android:name=".SettingsActivity"
             android:screenOrientation="portrait">
 
@@ -151,13 +190,20 @@
             android:screenOrientation="portrait">
 
         </activity>
+        <activity android:name=".ServicioDetalleActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <meta-data android:name="com.parse.push.notification_icon" android:resource="@drawable/logo_ahr"/>
+
         <activity android:name="com.facebook.FacebookActivity"
             android:configChanges=
                 "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:label="@string/app_name" />
-
-        <meta-data android:name="com.parse.push.notification_icon" android:resource="@drawable/logo_ahr"/>
+        <provider android:authorities="com.facebook.app.FacebookContentProvider801692569977560"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true" />
     </application>
 
 </manifest>

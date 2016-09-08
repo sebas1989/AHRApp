@@ -1,15 +1,9 @@
 package autodromo.punkmkt.com.ahrapp.fragments;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,24 +11,22 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.SaveCallback;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-
 import autodromo.punkmkt.com.ahrapp.GraciasParticiparActivity;
+import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
 import autodromo.punkmkt.com.ahrapp.R;
 import autodromo.punkmkt.com.ahrapp.adapters.CustomizedSpinnerAdapter;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
@@ -62,15 +54,19 @@ public class FacebookLogIn extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        FacebookSdk.sdkInitialize(getActivity().getApplicationContext());
         View v = inflater.inflate(R.layout.activity_login_sing_up,container,false);
         return v;
 
     }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
 
-        FacebookSdk.sdkInitialize(getActivity());
+        super.onActivityCreated(savedInstanceState);
+        Tracker tracker = ((MyVolleySingleton) getActivity().getApplication()).getTracker(MyVolleySingleton.TrackerName.APP_TRACKER);
+        tracker.setScreenName(getString(R.string.menu_registrate_gana));
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction().add(R.id.fragment_container, new LoginFBFragment()).commit();
         }
@@ -80,7 +76,7 @@ public class FacebookLogIn extends Fragment {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
                         // App code
-                        Log.d("ohhh", loginResult.getAccessToken().toString());
+
                     }
 
                     @Override
@@ -188,7 +184,6 @@ public class FacebookLogIn extends Fragment {
                 if(!ValidateSpinner(asientoView,getResources().getString(R.string.selecciona_asientos))){
                     validationError = true;
                 }
-
                 //validationErrorMessage.append(getResources().getString(R.string.error_end));
 
                 // If there is a validation error, display the error
@@ -277,21 +272,7 @@ public class FacebookLogIn extends Fragment {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }
 
-    public static void showHashKey(Context context) {
 
-        try {
-            PackageInfo info = context.getPackageManager().getPackageInfo(
-                    "com.punkmkt.formula1", PackageManager.GET_SIGNATURES); //Your            package name here
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-
-                Log.i("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-        } catch (NoSuchAlgorithmException e) {
-        }
-    }
 
     public final static boolean ValidateSpinner(Spinner s,String s_option){
         String st =s.getSelectedItem().toString();

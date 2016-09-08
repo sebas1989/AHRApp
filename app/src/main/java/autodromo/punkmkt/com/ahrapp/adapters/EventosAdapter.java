@@ -11,14 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-
 import java.util.List;
-
 import autodromo.punkmkt.com.ahrapp.MapActivity;
 import autodromo.punkmkt.com.ahrapp.R;
 import autodromo.punkmkt.com.ahrapp.models.Evento;
@@ -29,8 +25,8 @@ import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
  */
 public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.EventoViewHolder> {
     private List<Evento> items;
-    ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
     private Context context;
+    ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
 
     public static class EventoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView nombre;
@@ -78,8 +74,9 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.EventoVi
 
     }
 
-    public EventosAdapter(List<Evento> items) {
+    public EventosAdapter(List<Evento> items, Context context) {
         this.items = items;
+        this.context = context;
     }
 
     @Override
@@ -99,7 +96,6 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.EventoVi
             public void onPotato(TextView caller, int i) {
                 Evento evento  = items.get(i);
                 Intent Idetail = new Intent (viewGroup.getContext(), MapActivity.class);
-
                 Idetail.putExtra("id", Integer.toString(evento.getId()));
                 Idetail.putExtra("titulo", evento.getNombre());
                 Idetail.putExtra("ubicacion", evento.getUbicacion());
@@ -110,7 +106,6 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.EventoVi
             public void onTomato(ImageButton callerImage, int i) {
                 Evento evento  = items.get(i);
                 Intent Idetail = new Intent (viewGroup.getContext(), MapActivity.class);
-
                 Idetail.putExtra("id", Integer.toString(evento.getId()));
                 Idetail.putExtra("titulo", evento.getNombre());
                 Idetail.putExtra("ubicacion", evento.getUbicacion());
@@ -130,9 +125,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.EventoVi
                 viewGroup.getContext().startActivity(browserIntent);
             };
         });
-
         return vh;
-
     }
 
     @Override

@@ -3,19 +3,12 @@ package autodromo.punkmkt.com.ahrapp.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
-import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import autodromo.punkmkt.com.ahrapp.R;
 import autodromo.punkmkt.com.ahrapp.ZonaDetalleActivity;
 import autodromo.punkmkt.com.ahrapp.models.Zona;
@@ -25,9 +18,6 @@ import autodromo.punkmkt.com.ahrapp.models.Zona;
  */
 public class ZonasAdapter extends RecyclerView.Adapter<ZonasAdapter.ZonaViewHolder> {
     private List<Zona> items;
-
-    //ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
-    private Context context;
 
     public static class ZonaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView nombre;
@@ -87,7 +77,7 @@ public class ZonasAdapter extends RecyclerView.Adapter<ZonasAdapter.ZonaViewHold
                 viewGroup.getContext().startActivity(Idetail);
             }
 
-            ;
+
 
             public void onTomato(NetworkImageView callerImage, int i) {
                 Zona zona = items.get(i);
@@ -117,11 +107,11 @@ public class ZonasAdapter extends RecyclerView.Adapter<ZonasAdapter.ZonaViewHold
         }else if (i==3){
             viewHolder.nombre.setBackgroundResource(R.color.area_amarilla);
         }else if (i==4){
-            viewHolder.nombre.setBackgroundResource(R.color.area_naranja);
-        }else if (i==5){
             viewHolder.nombre.setBackgroundResource(R.color.grey);
-        }else if (i==6){
+        }else if (i==5){
             viewHolder.nombre.setBackgroundResource(R.color.area_cafe);
+        }else if (i==6){
+            viewHolder.nombre.setBackgroundResource(R.color.area_padro);
         }
     }
 

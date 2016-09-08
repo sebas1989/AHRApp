@@ -4,24 +4,13 @@ package autodromo.punkmkt.com.ahrapp;
  * Created by germanpunk on 02/10/15.
  */
 import android.app.Activity;
-import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.SwitchCompat;
-import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.Switch;
-import android.widget.TextView;
-
-
-import org.w3c.dom.Text;
-
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import autodromo.punkmkt.com.ahrapp.adapters.ConfigurationPageAdapter;
 
 
@@ -30,25 +19,20 @@ import autodromo.punkmkt.com.ahrapp.adapters.ConfigurationPageAdapter;
  */
 public class ConfiguracionActivity extends Activity{
 
-    public SwitchCompat mSwitchGPS = null;
 
-    public SwitchCompat mSwitchGPS2 = null;
-    public SwitchCompat mSwitchGP3S = null;
-    public Context mContext;
     private ViewPager myPager;
-    private View view;
-    private TextView first_next;
-    private ImageButton first_next_image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_configuration_activity);
-
-        ConfigurationPageAdapter pageAdapter = new ConfigurationPageAdapter(this);
+        ConfigurationPageAdapter pageAdapter = new ConfigurationPageAdapter(getResources(),this);
         myPager = (ViewPager) findViewById(R.id.mytwopanelpager);
         myPager.setAdapter(pageAdapter);
         myPager.setCurrentItem(0);
+
     }
+
     private int getItem(int i) {
         return myPager.getCurrentItem() + i;
     }
@@ -58,11 +42,12 @@ public class ConfiguracionActivity extends Activity{
     }
 
     public void BackViewPager(View v){
-        myPager.setCurrentItem(getItem(-1),true);
+        myPager.setCurrentItem(getItem(-1), true);
     }
     public void EndViewPager(View v){
         Intent myIntent = new Intent(ConfiguracionActivity.this, BaseActivity.class);
         ConfiguracionActivity.this.startActivity(myIntent);
+        finish();
     }
 
     static public void onCheckedChanged(Activity activity, boolean isChecked) {
@@ -72,6 +57,34 @@ public class ConfiguracionActivity extends Activity{
             activity.startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS), 100);
         }
     }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        unbindDrawables(findViewById(R.id.container));
+        System.gc();
+    }
+    public void unbindDrawables(View view) {//pass your parent view here
+        try {
+            if (view.getBackground() != null)
+                view.getBackground().setCallback(null);
+
+            if (view instanceof ImageView) {
+                ImageView imageView = (ImageView) view;
+                imageView.setImageBitmap(null);
+            } else if (view instanceof ViewGroup) {
+                ViewGroup viewGroup = (ViewGroup) view;
+                for (int i = 0; i < viewGroup.getChildCount(); i++)
+                    unbindDrawables(viewGroup.getChildAt(i));
+
+                if (!(view instanceof AdapterView))
+                    viewGroup.removeAllViews();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 }

@@ -4,25 +4,34 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="red">#f33100</color>
+    <color name="dialog_bg">#2e2e2e</color>
     <item name="primary" type="color">#000000</item>
     <item name="primary_dark" type="color">#f33100</item>
-    <item name="accent" type="color">#FFFFFF</item>
+    <item name="accent" type="color">#ffffff</item>
 
     <item name="background_tabs" type="color">#f33100</item>
     <!--Zonas-->
-    <item name="area_verde" type="color">#79a925</item>
-    <item name="area_cafe" type="color">#a64d1d</item>
-    <item name="area_amarilla" type="color">#d0b431</item>
-    <item name="area_morada" type="color">#92a1f0</item>
-    <item name="area_naranja" type="color">#db881d</item>
-    <item name="area_azul" type="color">#4b6bc6</item>
+    <item name="area_verde" type="color">#10741f</item>
+    <item name="area_cafe" type="color">#7e6956</item>
+    <item name="area_amarilla" type="color">#e9e26d</item>
+    <item name="area_morada" type="color">#7d5ec8</item>
+    <item name="area_naranja" type="color">#ea9543</item>
+    <item name="area_azul" type="color">#2994c3</item>
+    <item name="area_padro" type="color">#b11588</item>
     <item name="white_transparent" type="color">#BFffffff</item>
-    <item name="black_transparent" type="color">#BF000000</item>
+    <item name="black_transparent" type="color">#bf000000</item>
     <item name="grey" type="color">#999999</item>
     <item name="grey_background" type="color">#eeeeee</item>
     <item name="red_background" type="color">#f33100</item>
     <item name="grey_color_strong" type="color">#858585</item>
-    <item name="grey_color_low" type="color">#73737373</item>
+    <item name="grey_color_low" type="color">#e9e9e9</item>
     <item name="green" type="color">#324F17</item>
+
+    <item name="bg_tienda_tuto" type="color">#222222</item>
+
+    <item name="red_button" type="color">#FF0000</item>
+    <item name="grey_button" type="color">#414141</item>
+    <item name="bg_dialog" type="color">#E6000000</item>
+    <item name="bg_dialogt" type="color">#88000000</item>
 
 </resources>

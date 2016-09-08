@@ -5,28 +5,18 @@ package autodromo.punkmkt.com.ahrapp.adapters;
  */
 import android.content.Context;
 import android.content.Intent;
-
-
 import android.net.Uri;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.List;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
-
 import autodromo.punkmkt.com.ahrapp.MapActivity;
-import autodromo.punkmkt.com.ahrapp.SingleNewDetailActivity;
 import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
 import autodromo.punkmkt.com.ahrapp.models.Hotel;
 import autodromo.punkmkt.com.ahrapp.R;
@@ -36,8 +26,8 @@ import autodromo.punkmkt.com.ahrapp.R;
  */
 public class HospedajeAdapter extends RecyclerView.Adapter<HospedajeAdapter.HospedajeViewHolder> {
     private List<Hotel> items;
-    ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
     private Context context;
+    ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
 
     public static class HospedajeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView nombre;
@@ -86,8 +76,9 @@ public class HospedajeAdapter extends RecyclerView.Adapter<HospedajeAdapter.Hosp
 
     }
 
-    public HospedajeAdapter(List<Hotel> items) {
+    public HospedajeAdapter(List<Hotel> items, Context context) {
         this.items = items;
+        this.context = context;
     }
 
     @Override

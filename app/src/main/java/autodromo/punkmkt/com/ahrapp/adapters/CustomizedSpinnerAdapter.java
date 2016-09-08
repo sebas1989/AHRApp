@@ -4,7 +4,6 @@ package autodromo.punkmkt.com.ahrapp.adapters;
  * Created by sebastianmendezgiron on 02/10/15.
  */
 import android.app.Activity;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +36,6 @@ public class CustomizedSpinnerAdapter extends ArrayAdapter<String> {
         View row = convertView;
         if(row == null)
         {
-            //inflate your customlayout for the textview
             LayoutInflater inflater = context.getLayoutInflater();
             row = inflater.inflate(R.layout.spinner_layout, parent, false);
         }
@@ -46,7 +44,6 @@ public class CustomizedSpinnerAdapter extends ArrayAdapter<String> {
         if(item != null)
         {
             TextView text1 = (TextView) row.findViewById(R.id.textView);
-            //text1.setTextColor(Color.WHITE);
             text1.setText(item);
         }
 

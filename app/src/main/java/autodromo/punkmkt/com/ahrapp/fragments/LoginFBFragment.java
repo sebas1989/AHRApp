@@ -3,20 +3,16 @@ package autodromo.punkmkt.com.ahrapp.fragments;
 /**
  * Created by sebastianmendezgiron on 02/10/15.
  */
-import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -25,11 +21,8 @@ import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-
 import org.json.JSONObject;
-
 import java.util.Arrays;
-
 import autodromo.punkmkt.com.ahrapp.R;
 
 public class LoginFBFragment extends Fragment {
@@ -66,7 +59,6 @@ public class LoginFBFragment extends Fragment {
         link=(TextView)getActivity().findViewById(R.id.link);
         age_range=(TextView)getActivity().findViewById(R.id.age_range);
         loginButton = (LoginButton) view.findViewById(R.id.login_button);
-        //loginButton.setReadPermissions("user_friends");
         loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email"));
         loginButton.setFragment(this);
 
@@ -85,10 +77,8 @@ public class LoginFBFragment extends Fragment {
                         new GraphRequest.Callback() {
                             public void onCompleted(GraphResponse response) {
 
-                                Log.d("Login", response.toString());
                                 try {
                                     JSONObject object = response.getJSONObject();
-                                    Log.d("login",object.toString());
                                     if(object.has("first_name") && !object.optString("first_name").equals("null")){
                                         first_name.setText(object.optString("first_name"));
                                     }

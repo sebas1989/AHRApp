@@ -6,30 +6,22 @@ package autodromo.punkmkt.com.ahrapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
-import com.android.volley.Cache;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-
 import autodromo.punkmkt.com.ahrapp.models.Etapa;
 import autodromo.punkmkt.com.ahrapp.models.Posicion;
 import autodromo.punkmkt.com.ahrapp.models.Premio;
@@ -83,72 +75,7 @@ public class ResultadosDetalleActivity extends Activity {
         imagen.setImageUrl(premio.getImagen(), imageLoader);
         nombre.setText(premio.getName());
 
-        Cache mCache = MyVolleySingleton.getInstance().getRequestQueue().getCache();
-        Cache.Entry mEntry = mCache.get(AHZ_PREMIOS_JSON_API_URL);
-        if (mEntry != null) {
-            try {
-                String cacheData = new String(mEntry.data, "UTF-8");
-                JSONObject object = new JSONObject(cacheData);
-                JSONObject object2 = object.getJSONObject("data");
-                JSONArray etapa_set = object2.getJSONArray("etapa_set");
-                for (int count = 0; count < etapa_set.length(); count++) {
-                    JSONObject anEntry = etapa_set.getJSONObject(count);
-                    Etapa etapa = new Etapa();
-                    etapa.setId(Integer.parseInt(anEntry.optString("id")));
-                    etapa.setNombre(anEntry.optString("nombre"));
-                    etapa.setTipo(anEntry.optString("tipo_etapa"));
-                    Log.d("volley", etapa.getNombre());  //Etapas
-                    etapas.add(etapa);
-                    JSONArray posicion_set = anEntry.getJSONArray("posicion_set");
-                    ArrayList<Posicion> array_posiciones = new ArrayList<Posicion>();
-                    for (int count2 = 0; count2 < posicion_set.length(); count2++) {
-                        JSONObject anSecondEntry = posicion_set.getJSONObject(count2);
-                        Posicion posicion = new Posicion();
-                        posicion.setId(Integer.parseInt(anSecondEntry.optString("id")));
-                        posicion.setPosicion(Integer.parseInt(anSecondEntry.optString("numero_posicion")));
-                        if (anSecondEntry.has("tiempo") && !anSecondEntry.optString("tiempo").equals("null")) {
-                            posicion.setTiempo(anSecondEntry.optString("tiempo"));
-                        }
-                        if (anSecondEntry.has("gap") && !anSecondEntry.optString("gap").equals("null")) {
-                            posicion.setGap(anSecondEntry.optString("gap"));
-                        }
-                        if (anSecondEntry.has("laps") && !anSecondEntry.optString("laps").equals("null")) {
-                            posicion.setLaps(anSecondEntry.optString("laps"));
-                        }
-                        if (anSecondEntry.has("q1") && !anSecondEntry.optString("q1").equals("null")) {
-                            posicion.setQ1(anSecondEntry.optString("q1"));
-                        }
-                        if (anSecondEntry.has("q2") && !anSecondEntry.optString("q2").equals("null")) {
-                            posicion.setQ2(anSecondEntry.optString("q2"));
-                        }
-                        if (anSecondEntry.has("q3") && !anSecondEntry.optString("q3").equals("null")) {
-                            posicion.setQ3(anSecondEntry.optString("q3"));
-                        }
-                        if (anSecondEntry.has("puntos") && !anSecondEntry.optString("puntos").equals("null")) {
-                            posicion.setPuntos(anSecondEntry.optString("puntos"));
-                        }
-                        posicion.setPiloto_sobrenombre(anSecondEntry.optString("piloto"));
-                        posicion.setEscuderia(anSecondEntry.optString("equipo_img"));
-                        array_posiciones.add(posicion);
-                    }
-                    if (etapa.getNombre().equals("P1")) {
-                        posiciones_p1 = array_posiciones;
-                    } else if (etapa.getNombre().equals("P2")) {
-                        posiciones_p2 = array_posiciones;
-                    } else if (etapa.getNombre().equals("P3")) {
-                        posiciones_p3 = array_posiciones;
-                    } else if (etapa.getNombre().equals("Q")) {
-                        posiciones_clasificatoria = array_posiciones;
-                    } else if (etapa.getNombre().equals("R")) {
-                        posiciones_carrera = array_posiciones;
-                    }
-                }
 
-                iniciarpractica("practica1");
-            } catch (UnsupportedEncodingException |JSONException e) {
-                e.printStackTrace();
-            }
-        } else {
             request = new AuthRequest(getApplicationContext(),Request.Method.GET, AHZ_PREMIOS_JSON_API_URL, "utf-8", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -164,7 +91,6 @@ public class ResultadosDetalleActivity extends Activity {
                             etapa.setId(Integer.parseInt(anEntry.optString("id")));
                             etapa.setNombre(anEntry.optString("nombre"));
                             etapa.setTipo(anEntry.optString("tipo_etapa"));
-                            Log.d("volley", etapa.getNombre());  //Etapas
                             etapas.add(etapa);
                             JSONArray posicion_set = anEntry.getJSONArray("posicion_set");
                             ArrayList<Posicion> array_posiciones = new ArrayList<Posicion>();
@@ -196,7 +122,7 @@ public class ResultadosDetalleActivity extends Activity {
                                     posicion.setPuntos(anSecondEntry.optString("puntos"));
                                 }
                                 //JSONObject anpilot = anSecondEntry.optJSONObject("piloto");
-                                posicion.setPiloto_sobrenombre(anSecondEntry.optString("sobrenombre"));
+                                posicion.setPiloto_sobrenombre(anSecondEntry.optString("piloto"));
                                 //JSONObject anEscuderia = anpilot.getJSONObject("escuderia");
                                 posicion.setEscuderia(anSecondEntry.optString("equipo_img"));
                                 array_posiciones.add(posicion);
@@ -223,12 +149,11 @@ public class ResultadosDetalleActivity extends Activity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Log.e("volley", "Error during request");
                     error.printStackTrace();
                 }
             });
             MyVolleySingleton.getInstance().addToRequestQueue(request);
-        }
+
 
         p1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -283,11 +208,11 @@ public class ResultadosDetalleActivity extends Activity {
             copia = posiciones_p3;
         }
         tabla_resultados.removeAllViews();
-        TableRow row = (TableRow) LayoutInflater.from(ResultadosDetalleActivity.this).inflate(R.layout.title_practica1, null);
+        TableRow row = (TableRow) getLayoutInflater().inflate(R.layout.title_practica1, null);
         tabla_resultados.addView(row);
         for(int count=0; count<copia.size();count++){
             Posicion posicion = copia.get(count);
-            TableRow row_pos = (TableRow) LayoutInflater.from(ResultadosDetalleActivity.this).inflate(R.layout.row_practica, null);
+            TableRow row_pos = (TableRow) getLayoutInflater().inflate(R.layout.row_practica, null);
             ((TextView)row_pos.findViewById(R.id.pos)).setText(Integer.toString(posicion.getPosicion()));
             ((TextView)row_pos.findViewById(R.id.piloto)).setText(posicion.getPiloto_sobrenombre());
             ((NetworkImageView)row_pos.findViewById(R.id.escuderia)).setImageUrl(posicion.getEscuderia(), imageLoader);
@@ -302,11 +227,11 @@ public class ResultadosDetalleActivity extends Activity {
         ArrayList<Posicion> copia = new ArrayList<Posicion>();
         copia = posiciones_clasificatoria;
         tabla_resultados.removeAllViews();
-        TableRow row = (TableRow) LayoutInflater.from(ResultadosDetalleActivity.this).inflate(R.layout.title_clasificacion, null);
+        TableRow row = (TableRow) getLayoutInflater().inflate(R.layout.title_clasificacion, null);
         tabla_resultados.addView(row);
         for(int count=0; count<copia.size();count++){
             Posicion posicion = copia.get(count);
-            TableRow row_pos = (TableRow) LayoutInflater.from(ResultadosDetalleActivity.this).inflate(R.layout.row_clasificacion, null);
+            TableRow row_pos = (TableRow) getLayoutInflater().inflate(R.layout.row_clasificacion, null);
             ((TextView)row_pos.findViewById(R.id.pos)).setText(Integer.toString(posicion.getPosicion()));
             ((TextView)row_pos.findViewById(R.id.piloto)).setText(posicion.getPiloto_sobrenombre());
             ((NetworkImageView)row_pos.findViewById(R.id.escuderia)).setImageUrl(posicion.getEscuderia(), imageLoader);
@@ -321,11 +246,11 @@ public class ResultadosDetalleActivity extends Activity {
         ArrayList<Posicion> copia = new ArrayList<Posicion>();
         copia = posiciones_carrera;
         tabla_resultados.removeAllViews();
-        TableRow row = (TableRow) LayoutInflater.from(ResultadosDetalleActivity.this).inflate(R.layout.title_carrera, null);
+        TableRow row = (TableRow) getLayoutInflater().inflate(R.layout.title_carrera, null);
         tabla_resultados.addView(row);
         for(int count=0; count<copia.size();count++){
             Posicion posicion = copia.get(count);
-            TableRow row_pos = (TableRow) LayoutInflater.from(ResultadosDetalleActivity.this).inflate(R.layout.row_carrera, null);
+            TableRow row_pos = (TableRow) getLayoutInflater().inflate(R.layout.row_carrera, null);
             ((TextView)row_pos.findViewById(R.id.pos)).setText(Integer.toString(posicion.getPosicion()));
             ((TextView)row_pos.findViewById(R.id.piloto)).setText(posicion.getPiloto_sobrenombre());
             ((NetworkImageView)row_pos.findViewById(R.id.escuderia)).setImageUrl(posicion.getEscuderia(), imageLoader);

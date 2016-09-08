@@ -10,11 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import java.util.List;
-
 import autodromo.punkmkt.com.ahrapp.R;
 import autodromo.punkmkt.com.ahrapp.ResultadosDetalleActivity;
 import autodromo.punkmkt.com.ahrapp.models.Premio;
@@ -25,8 +23,9 @@ import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
  */
 public class PremiosAdapter extends RecyclerView.Adapter<PremiosAdapter.PremioViewHolder> {
     private List<Premio> items;
-    ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
     private Context context;
+
+    ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
 
     public static class PremioViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView nombre;
@@ -57,8 +56,9 @@ public class PremiosAdapter extends RecyclerView.Adapter<PremiosAdapter.PremioVi
 
     }
 
-    public PremiosAdapter(List<Premio> items) {
+    public PremiosAdapter(List<Premio> items, Context context) {
         this.items = items;
+        this.context = context;
     }
 
     @Override

@@ -11,14 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-
 import java.util.List;
-
 import autodromo.punkmkt.com.ahrapp.MapActivity;
 import autodromo.punkmkt.com.ahrapp.R;
 import autodromo.punkmkt.com.ahrapp.models.Lugar;
@@ -29,8 +25,8 @@ import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
  */
 public class LugaresAdapter extends RecyclerView.Adapter<LugaresAdapter.LugarViewHolder> {
     private List<Lugar> items;
-    ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
     private Context context;
+    ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
 
     public static class LugarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView nombre;
@@ -78,8 +74,9 @@ public class LugaresAdapter extends RecyclerView.Adapter<LugaresAdapter.LugarVie
 
     }
 
-    public LugaresAdapter(List<Lugar> items) {
+    public LugaresAdapter(List<Lugar> items, Context context) {
         this.items = items;
+        this.context = context;
     }
 
     @Override

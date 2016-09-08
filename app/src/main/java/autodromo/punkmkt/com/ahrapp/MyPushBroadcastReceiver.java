@@ -1,16 +1,10 @@
 package autodromo.punkmkt.com.ahrapp;
 
-/**
- * Created by sebastianmendezgiron on 02/10/15.
- */
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-
 import com.parse.ParseAnalytics;
 import com.parse.ParsePushBroadcastReceiver;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 

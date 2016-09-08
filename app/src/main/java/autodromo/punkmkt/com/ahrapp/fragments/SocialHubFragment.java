@@ -6,8 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
 import autodromo.punkmkt.com.ahrapp.R;
 
 
@@ -28,12 +31,12 @@ public class SocialHubFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        Tracker tracker = ((MyVolleySingleton) getActivity().getApplication()).getTracker(MyVolleySingleton.TrackerName.APP_TRACKER);
+        tracker.setScreenName(getString(R.string.menu_social_hub));
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
         mWebView = (WebView) getActivity().findViewById(R.id.socialHubWebView);
 
         mWebView.loadUrl(AHZ_URL_SOCIAL_HUB);
-        //RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view);
-        //recyclerView.setHasFixedSize(true);
 
     }
 

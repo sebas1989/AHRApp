@@ -11,17 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-
 import java.util.List;
-
 import autodromo.punkmkt.com.ahrapp.MapActivity;
 import autodromo.punkmkt.com.ahrapp.R;
-import autodromo.punkmkt.com.ahrapp.models.Hotel;
 import autodromo.punkmkt.com.ahrapp.models.Restaurante;
 import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
 
@@ -30,8 +25,9 @@ import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
  */
 public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.RestauranteViewHolder> {
     private List<Restaurante> items;
-    ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
     private Context context;
+
+    ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
 
     public static class RestauranteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView nombre;
@@ -81,8 +77,9 @@ public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.
 
     }
 
-    public RestauranteAdapter(List<Restaurante> items) {
+    public RestauranteAdapter(List<Restaurante> items, Context context) {
         this.items = items;
+        this.context = context;
     }
 
     @Override

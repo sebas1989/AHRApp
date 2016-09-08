@@ -1,0 +1,155 @@
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sliding_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    sothree:umanoPanelHeight="68dp"
+    sothree:umanoShadowHeight="4dp"
+    sothree:umanoParallaxOffset="100dp"
+    sothree:umanoDragView="@+id/dragView"
+    sothree:umanoOverlay="true"
+    sothree:umanoScrollableView="@+id/list">
+
+    <!-- MAIN CONTENT -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/bg_seller"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@color/white"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_centerInParent="true"/>
+            <ScrollView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bg_seller">
+
+                <TableLayout android:layout_centerHorizontal="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tabla_informacion" >
+
+                </TableLayout>
+
+            </ScrollView>
+        </RelativeLayout>
+    </FrameLayout>
+
+    <!-- SLIDING LAYOUT -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="false"
+        android:id="@+id/dragView">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/verws"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:weightSum="1"
+            android:padding="10dp"
+            android:background="@color/black"
+            android:gravity="center_horizontal|center_vertical"
+            >
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content">
+                <ImageView
+                    android:id="@+id/bgcarrito"
+                    android:layout_width="25dp"
+                    android:layout_height="19dp"
+                    android:background="@drawable/basket_icon"/>
+                <TextView
+                    android:id="@+id/verWishList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ver_wishlist"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="30dp"
+                    android:visibility="visible"
+                    android:layout_alignLeft="@+id/bgcarrito"/>
+
+            </RelativeLayout>
+            <!--ImageView
+                android:id="@+id/up"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/up_arrow_wishlist"/>
+            <ImageView
+                android:id="@+id/donw"
+                android:visibility="gone"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/down_arrow_wishlist"/-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                >
+                <ScrollView
+                    android:id="@+id/wishlist_container"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TableLayout android:id="@+id/tabla_info_wl"
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+
+                        </TableLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tabla_info_wl"
+                            android:padding="20dp"
+                            android:weightSum="100">
+                            <TextView android:id="@+id/total" android:layout_weight="60" android:layout_gravity="center_vertical|left" android:text="TOTAL" android:textSize="18sp" android:textStyle="bold" android:textColor="@color/black"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content" />
+                            <TextView android:id="@+id/sum_total"  android:layout_weight="40" android:layout_gravity="center_vertical" android:text=""  android:textSize="18sp" android:textStyle="bold" android:textColor="@color/red_button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </ScrollView>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

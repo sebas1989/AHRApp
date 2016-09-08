@@ -21,7 +21,9 @@
             android:id="@+id/frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/red"/>
         </FrameLayout>
 
     </LinearLayout>
@@ -36,6 +38,7 @@
         app:headerLayout="@layout/header"
         app:menu="@menu/drawer"
         app:itemTextColor="@color/white"
+
         />
 </android.support.v4.widget.DrawerLayout>
 

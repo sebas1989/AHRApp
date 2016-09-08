@@ -4,39 +4,49 @@ package autodromo.punkmkt.com.ahrapp;
  * Created by sebastianmendezgiron on 19/09/15.
  */
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.format.Time;
-import android.util.Log;
+import android.util.LruCache;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
-import android.widget.Toast;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
+import com.parse.ParseAnalytics;
 
+import java.lang.ref.WeakReference;
 
+import autodromo.punkmkt.com.ahrapp.adapters.TiendaPageAdapter;
 import autodromo.punkmkt.com.ahrapp.fragments.AutodromoFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.CiudadMexicoActivity;
-import autodromo.punkmkt.com.ahrapp.fragments.ContentFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.FacebookLogIn;
 import autodromo.punkmkt.com.ahrapp.fragments.HomeFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.HorariosFragment;
-import autodromo.punkmkt.com.ahrapp.fragments.LoginFBFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.NewsFragment;
+import autodromo.punkmkt.com.ahrapp.fragments.NoticiasFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.PassionFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.PilotosFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.PremiosFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.ResultadosActivity;
-import autodromo.punkmkt.com.ahrapp.fragments.ResultadosFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.SocialHubFragment;
+import autodromo.punkmkt.com.ahrapp.fragments.TiendaFragment;
+import autodromo.punkmkt.com.ahrapp.fragments.TiendaFragmentProducts;
+import autodromo.punkmkt.com.ahrapp.utils.RecyclingBitmapDrawable;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 
 public class BaseActivity extends AppCompatActivity {
@@ -45,14 +55,31 @@ public class BaseActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-
+    static public LruCache<String, Bitmap> mMemoryCache;
+    private static GoogleAnalytics analytics;
+    private static Tracker tracker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ParseAnalytics.trackAppOpenedInBackground(getIntent());
+
         Intent intent = getIntent();
 
+        final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+
+        // Use 1/8th of the available memory for this memory cache.
+        final int cacheSize = maxMemory / 8;
+
+        mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
+            @Override
+            protected int sizeOf(String key, Bitmap bitmap) {
+                // The cache size will be measured in kilobytes rather than
+                // number of items.
+                return bitmap.getByteCount() / 1024;
+            }
+        };
         try{
             String fragmento = intent.getStringExtra("fragmento");
             if(fragmento.equals("noticias")){
@@ -76,18 +103,25 @@ public class BaseActivity extends AppCompatActivity {
                     ft.add(R.id.frame, f1).commit();
                 }
             }
+            else if (fragmento.equals("tiendaRestaurantes")){
+                if (savedInstanceState == null) {
+                    Fragment f1 = new TiendaFragment();
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.add(R.id.frame, f1).commit();
+                }
+            }
         }catch (Exception e){
             if (savedInstanceState == null) {
                 Fragment f1 = new HomeFragment();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                //ft.replace(R.id.frame, f1); // f1_container is your FrameLayout container
                 ft.add(R.id.frame, f1).commit();
-                //ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                //ft.addToBackStack(null);
-                // ft.commit();
+
             }
         }
 
+        ImageView mImageView = (ImageView) findViewById(R.id.profile_image);
+
+        //loadBitmap(R.drawable.logo_ahr, mImageView,150,67);
 
 
         // Initializing Toolbar and setting it as the actionbar
@@ -96,7 +130,6 @@ public class BaseActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
         //Initializing NavigationView
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
-
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -144,7 +177,7 @@ public class BaseActivity extends AppCompatActivity {
 
                     case R.id.noticias:
                         getSupportActionBar().setTitle(getResources().getString(R.string.menu_noticias));
-                        Fragment fN = new NewsFragment();
+                        Fragment fN = new NoticiasFragment();
                         FragmentTransaction ftN = getSupportFragmentManager().beginTransaction();
                         ftN.replace(R.id.frame, fN);
                         ftN.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -191,6 +224,29 @@ public class BaseActivity extends AppCompatActivity {
                         ftM.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                         ftM.addToBackStack(null);
                         ftM.commit();
+                        return true;
+
+                    case R.id.tienda:
+                        getSupportActionBar().setTitle(getResources().getString(R.string.tienda_titulo));
+                        getSupportActionBar().setTitle(getResources().getString(R.string.menu_tienda));
+                        Boolean isFirstRunShop = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                                .getBoolean("isFirstRunShop", true);
+                        //isFirstRunShop = true;
+                        if (isFirstRunShop) {
+                            Intent tiendaIntent = new Intent(getApplicationContext(), TutorialTiendaActivity.class);
+                            tiendaIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            getApplicationContext().startActivity(tiendaIntent);
+                            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                                    .putBoolean("isFirstRunShop", false).commit();
+                        }else{
+                            //Fragment fT = new TiendaFragmentProducts();
+                            Fragment fT = new TiendaFragment();
+                            FragmentTransaction ftT = getSupportFragmentManager().beginTransaction();
+                            ftT.replace(R.id.frame, fT);
+                            ftT.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                            ftT.addToBackStack(null);
+                            ftT.commit();
+                        }
                         return true;
 
                     case R.id.social_hub:
@@ -283,6 +339,148 @@ public class BaseActivity extends AppCompatActivity {
             fm.popBackStack();
         } else {
             super.onBackPressed();
+        }
+    }
+
+    public void addBitmapToMemoryCache(String key, Bitmap bitmap) {
+        if (getBitmapFromMemCache(key) == null) {
+            mMemoryCache.put(key, bitmap);
+        }
+    }
+
+    public Bitmap getBitmapFromMemCache(String key) {
+        return mMemoryCache.get(key);
+    }
+
+
+    public void loadBitmap(int resId, ImageView imageView, int width, int height) {
+        final String imageKey = String.valueOf(resId);
+
+        final Bitmap bitmap = mMemoryCache.get(imageKey);
+        if (bitmap != null) {
+            imageView.setImageBitmap(bitmap);
+        } else {
+            //imageView.setImageResource(R.drawable.descarga);
+            BitmapWorkerTask task = new BitmapWorkerTask(imageView, 100, 100);
+            task.execute(resId);
+        }
+
+
+            new RecyclingBitmapDrawable(getResources(),bitmap);
+    }
+
+    class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
+        private final WeakReference<ImageView> imageViewReference;
+        private int data = 0;
+        private int width;
+        private int height;
+
+        public BitmapWorkerTask(ImageView imageView, int width, int height) {
+            // Use a WeakReference to ensure the ImageView can be garbage collected
+            imageViewReference = new WeakReference<ImageView>(imageView);
+            this.width = width;
+            this.height = height;
+        }
+
+        // Decode image in background.
+        @Override
+        protected Bitmap doInBackground(Integer... params) {
+            final Bitmap bitmap = decodeSampledBitmapFromResource(getResources(), params[0], width,height);
+            addBitmapToMemoryCache(String.valueOf(params[0]), bitmap);
+            return bitmap;
+        }
+
+        // Once complete, see if ImageView is still around and set bitmap.
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            if (imageViewReference != null && bitmap != null) {
+                final ImageView imageView = imageViewReference.get();
+                if (imageView != null) {
+                    imageView.setImageBitmap(bitmap);
+                }
+            }
+        }
+    }
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+                                                         int reqWidth, int reqHeight) {
+
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
+    }
+
+    public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
+    }
+
+    public static boolean cancelPotentialWork(int data, ImageView imageView) {
+        final BitmapWorkerTask bitmapWorkerTask = getBitmapWorkerTask(imageView);
+
+        if (bitmapWorkerTask != null) {
+            final int bitmapData = bitmapWorkerTask.data;
+            // If bitmapData is not yet set or it differs from the new data
+            if (bitmapData == 0 || bitmapData != data) {
+                // Cancel previous task
+                bitmapWorkerTask.cancel(true);
+            } else {
+                // The same work is already in progress
+                return false;
+            }
+        }
+        // No task associated with the ImageView, or an existing task was cancelled
+        return true;
+    }
+
+    private static BitmapWorkerTask getBitmapWorkerTask(ImageView imageView) {
+        if (imageView != null) {
+            final Drawable drawable = imageView.getDrawable();
+            if (drawable instanceof AsyncDrawable) {
+                final AsyncDrawable asyncDrawable = (AsyncDrawable) drawable;
+                return asyncDrawable.getBitmapWorkerTask();
+            }
+        }
+        return null;
+    }
+
+    static class AsyncDrawable extends BitmapDrawable {
+        private final WeakReference<BitmapWorkerTask> bitmapWorkerTaskReference;
+
+        public AsyncDrawable(Resources res, Bitmap bitmap,
+                             BitmapWorkerTask bitmapWorkerTask) {
+            super(res, bitmap);
+            bitmapWorkerTaskReference =
+                    new WeakReference<BitmapWorkerTask>(bitmapWorkerTask);
+        }
+
+        public BitmapWorkerTask getBitmapWorkerTask() {
+            return bitmapWorkerTaskReference.get();
         }
     }
 }

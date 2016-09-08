@@ -45,6 +45,11 @@
             android:icon="@drawable/icon_ciudad_mexico"
             android:title="@string/menu_cd_mexico" />
         <item
+            android:id="@+id/tienda"
+            android:checked="false"
+            android:icon="@drawable/icon_ciudad_mexico"
+            android:title="@string/menu_tienda" />
+        <item
             android:id="@+id/social_hub"
             android:checked="false"
             android:icon="@drawable/icon_social_hub"

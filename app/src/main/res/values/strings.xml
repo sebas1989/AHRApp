@@ -5,10 +5,15 @@
     <string name="parse_client_key">ZJuHuFMu6mYZPP30OkcQxtEjKJ9cpTFVWoq1EBS2</string>
     <string name="facebook_app_id">801692569977560</string>
 
+    <string name="tienda_restaurantes_url_request">http://104.236.3.158:82/api/store/category_products/1/sellers/</string>
+    <string name="user_api_token">a1126926b8c36df18516d31e054d2f8a8074d12f</string>
+
+    <string name="analytics_app_id">UA-41312086-2</string>
+
     <string name="user_api">jon</string>
     <string name="password_api">jonpunk</string>
 
-    <string name="app_name">Autódromo Hermanos Rodríguez</string>
+    <string name="app_name">México GP</string>
     <string name="hello_world">HOLa Mundo</string>
     <string name="action_settings">Configuraciones</string>
     <string name="title_activity_course_detail">CourseDetailActivity</string>
@@ -27,6 +32,7 @@
     <string name="menu_pilotos">PILOTOS</string>
     <string name="menu_pasion">COMPARTE TU PASIÓN</string>
     <string name="menu_cd_mexico">MÉXICO</string>
+    <string name="menu_tienda">TIENDA</string>
     <string name="menu_social_hub">SOCIAL HUB</string>
     <string name="menu_registrate_gana">¡REGÍSTRATE Y GANA!</string>
     <string name="menu_configuraciones">CONFIGURACIONES</string>
@@ -59,10 +65,11 @@
     <string name="noticias">NOTICIAS</string>
     <string name="anterior">ANTERIOR</string>
 
+    <string name="ult_noticias">ÚLTIMAS NOTICIAS</string>
     <string name="drawer_open">Abrir navigation drawer</string>
     <string name="drawer_close">Cerrar navigation drawer</string>
     <!-- NOTIFICACIONES DE EQUIPOS - PANTALLA HOME-->
-    <string name="vive_el_mexicogp">VIVE EL #MÉXICOGP EN:</string>
+    <string name="vive_el_mexicogp">VIVE EL #MexicoGP EN:</string>
 
     <string name="enterate_demuchos_eventos">¿Enterate de muchos eventos más!</string>
     <string name="compartir_usando">Compartir usando...</string>
@@ -240,6 +247,7 @@
         <item>NARANJA</item>
         <item>GRIS</item>
         <item>CAFÉ</item>
+        <item>PADDOCK CLUB</item>
     </string-array>
     <string-array name="asientos_arrays">
         <item>GRANDSTANDS - GRADA 1</item>
@@ -262,7 +270,7 @@
         <item>ADMISIÓN GENERAL - GRADA 6A</item>
         <item>GRADA PLATA - GRADA 6B</item>
     </string-array>
-    <string name="registrate_descripcion">Al registrarte podrás participar para ganar algunos de los artículos exclusivos de los embajadores del Autódromo Hermanos Rodríguez.</string>
+    <string name="registrate_descripcion">Al registrarte podrás participar para ganar algunos de los artículos exclusivos de los embajadores del Autódromo Hermanos Rodríguez. \nFecha límite de registro: 1º de noviembre de 2015.</string>
     <string name="title_activity_gracias_participar">GraciasParticiparActivity</string>
     <string name="gracias_participar">GRACIAS POR PARTICIPAR</string>
     <string name="datos_registrados">TUS DATOS YA ESTÁN REGISTRADOS</string>
@@ -276,4 +284,47 @@
     <string name="ticket2ride">TICKET2RIDE</string>
     <string name="metro">METRO</string>
     <string name="metrobus">METROBUS</string>
+
+
+    <string name="go_to_home">CONTINUAR</string>
+    <string name="ultimas_noticias">ÚLTIMAS NOTICIAS</string>
+    <string name="comparte_tu_pasion_popup">¡COMPARTE TU PASIÓN!</string>
+    <string name="comparte_tu_pasion_">DETALLE COMPARTE TU PASIÓN</string>
+    <string name="comparte_tu_pasion_paso1">1.- Selecciona tu sticker favorito.</string>
+    <string name="comparte_tu_pasion_paso2">2.- Toma una fotografía o selecciónala de tu galería.</string>
+    <string name="comparte_tu_pasion_paso3">3.- Comparte tu foto en tus redes sociales y apoya a tu corredor favorito.</string>
+
+    <string name="servicios">SERVICIOS</string>
+
+    <string name="como_llegar_mapa">COMO LLEGAR MAPA</string>
+
+    <!--Tienda-->
+    <string name="tienda_paso_uno">PASO 1\n</string>
+    <string name="tpuno_instruccion">Selecciona qué quieres comer y tomar \n
+    a través de esta sección.\n\n
+    <b>¡Guarda tu lista para que no se te olvide nada!</b></string>
+    <string name="tienda_footer">TERMINA EL TUTORIAL PARA ACCEDER AL CATÁLOGO</string>
+    <string name="tienda_paso_dos">PASO 2\n</string>
+    <string name="tpuno_instruccion2">¿Ya sabs qué pedir? \n
+        Ubica desde el mapa los puntos más cercanos de venta.\n
+        Ubica tu fila para comprar los tickets de comida/bebida.
+    <b>¡Guarda tu lista para que no se te olvide nada!</b></string>
+    <string name="tuto_tip_dos"><b><font color="red">Tip.</font></b> Recuerda que existen filas diferentes para pagar con tarjeta o en efectivo.</string>
+    <string name="tienda_paso_tres">PASO 3\n</string>
+    <string name="tpuno_instruccion3">¡Recoge tu pedido!</string>
+    <string name="tuto_tip_tres"><b><font color="red">Tip.</font></b> Si pediste de varias marcas deberás dirigirte a la fila de correspondiente en cada caso.</string>
+    <string name="tuto_termina">TERMINA EL TUTORIAL PARA ACCEDER AL CATÁLOGO</string>
+    <string name="tienda_titulo">CATÁLOGO DE PRODUCTOS</string>
+
+    <string name="ver_wishlist">VER WISHLIST</string>
+    <string name="item_name">ARTÍCULO</string>
+    <string name="item_qty">CANTIDAD</string>
+    <string name="item_price">PRECIO</string>
+    <string name="item_elim">    </string>
+    <string name="wishlist_total">TOTAL</string>
+    <string name="eliminar">X</string>
+    <string name="moneda">$</string>
+    <string name="continuar">CONTINUAR</string>
+    <string name="cancelar"> CANCELAR </string>
+    <string name="prod_eliminado">¡PRODUCTO ELIMINADO!</string>
 </resources>

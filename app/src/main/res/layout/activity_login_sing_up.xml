@@ -17,7 +17,7 @@
         android:layout_marginBottom="10dp"
         android:fontFamily="sans-serif-condensed"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:padding="10dp"
         android:background="@color/red_background"

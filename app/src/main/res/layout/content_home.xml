@@ -43,7 +43,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/vive"
-                    android:textSize="42dp"
+                    android:textSize="40dp"
                     android:fontFamily="sans-serif-condensed"
                     android:textColor="@color/white"
                     android:textStyle="bold"
@@ -77,37 +77,75 @@
                 android:weightSum="2"
                 android:padding="10dp">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/quickLinkToPassion"
                     android:layout_width="165dp"
                     android:layout_height="165dp"
-                    android:background="@drawable/home_pasion"
                     android:maxWidth="150dp"
                     android:layout_weight="1"
                     android:layout_marginRight="5dp"
                     android:layout_alignParentLeft="true">
-                </ImageButton>
+                </ImageView>
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/quickLinkToSocialHub"
                     android:layout_width="165dp"
                     android:layout_marginLeft="5dp"
                     android:layout_height="165dp"
-                    android:background="@drawable/home_social_hub"
                     android:maxWidth="150dp"
                     android:layout_weight="1"
                     android:layout_alignParentRight="true">
-                </ImageButton>
+                </ImageView>
 
             </LinearLayout>
 
+            <RelativeLayout
+                android:id="@+id/registrate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:layout_below="@+id/quickLinks">
+
+                <ImageView
+                    android:id="@+id/quickLinkToRegistration"
+                    android:layout_width="fill_parent"
+                    android:layout_height="157dp"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="150dp">
+                </ImageView>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/titulo_noticias"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_below="@+id/registrate">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="24dp"
+                    android:textStyle="bold|italic"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@color/red_background"
+                    android:text="@string/ultimas_noticias"
+
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal" />
+            </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/lastNew"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:layout_below="@+id/quickLinks">
+                android:paddingBottom="10dp"
+                android:layout_below="@+id/titulo_noticias">
                 <RelativeLayout
                     android:id="@+id/container_main_view"
                     android:layout_width="fill_parent"
@@ -289,22 +327,6 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/registrate"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_below="@+id/lastNew">
-
-                <ImageButton
-                    android:id="@+id/quickLinkToRegistration"
-                    android:layout_width="fill_parent"
-                    android:layout_height="157dp"
-                    android:background="@drawable/home_premio"
-                    android:maxWidth="150dp">
-                </ImageButton>
-
-            </RelativeLayout>
         </RelativeLayout>
 
     </ScrollView>

@@ -7,11 +7,10 @@
     <ImageView
         android:id="@+id/grid_image"
         android:layout_width="fill_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:stretchMode="columnWidth"
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
-
         android:gravity="center"/>
 
 </LinearLayout>

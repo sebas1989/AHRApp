@@ -6,16 +6,12 @@ package autodromo.punkmkt.com.ahrapp;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.util.Log;
-
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 
 public class MapActivity extends FragmentActivity {
     GoogleMap googleMap;
@@ -26,7 +22,7 @@ public class MapActivity extends FragmentActivity {
         // Getting reference to the SupportMapFragment
         SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         // Getting GoogleMap object from the fragmentpremios
-        googleMap = fm.getMap();
+        //googleMap = fm.getMap();
         Intent intent = getIntent();
         try {
             String latitud = intent.getStringExtra("latitud_mapa");
@@ -44,7 +40,6 @@ public class MapActivity extends FragmentActivity {
 
         } catch (Throwable e) {
             e.printStackTrace();
-            Log.e("Debug", "Iniciar throwable");
         }
     }
 

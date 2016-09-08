@@ -3,22 +3,12 @@ package autodromo.punkmkt.com.ahrapp;
 /**
  * Created by sebastianmendezgiron on 30/09/15.
  */
-import android.app.ActionBar;
-import android.app.Activity;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-
-import autodromo.punkmkt.com.ahrapp.fragments.CiudadMexicoActivity;
-import autodromo.punkmkt.com.ahrapp.fragments.EventosFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.HospedajeFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.LugaresFragment;
 import autodromo.punkmkt.com.ahrapp.fragments.RestaurantesFragment;
@@ -38,7 +28,7 @@ public class CiudadMexicoDetalleActivity extends AppCompatActivity{
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.container_fragment, f1); // f1_container is your FrameLayout container
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            ft.addToBackStack(null);
+            //ft.addToBackStack(null);
             ft.commit();
         }else if (fragmento.equals("restaurantes")){
             if (savedInstanceState == null) {
@@ -46,7 +36,7 @@ public class CiudadMexicoDetalleActivity extends AppCompatActivity{
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.container_fragment, f1); // f1_container is your FrameLayout container
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.addToBackStack(null);
+                //ft.addToBackStack(null);
                 ft.commit();
             }
         }
@@ -56,21 +46,10 @@ public class CiudadMexicoDetalleActivity extends AppCompatActivity{
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.container_fragment, f1); // f1_container is your FrameLayout container
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.addToBackStack(null);
+                //ft.addToBackStack(null);
                 ft.commit();
             }
-        }
-        else if (fragmento.equals("eventos")){
-            if (savedInstanceState == null) {
-                Fragment f1 = new EventosFragment();
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.container_fragment, f1); // f1_container is your FrameLayout container
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.addToBackStack(null);
-                ft.commit();
-            }
-        }
-        else {
+        }else {
 
         }
     }
@@ -80,7 +59,7 @@ public class CiudadMexicoDetalleActivity extends AppCompatActivity{
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.container_fragment, f);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        ft.addToBackStack(null);
+        //ft.addToBackStack(null);
         ft.commit();
     }
     public void MostrarRestaurantes(View v){
@@ -88,7 +67,7 @@ public class CiudadMexicoDetalleActivity extends AppCompatActivity{
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.container_fragment, f);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        ft.addToBackStack(null);
+        //ft.addToBackStack(null);
         ft.commit();
     }
     public void MostrarAdondeir(View v){
@@ -96,30 +75,7 @@ public class CiudadMexicoDetalleActivity extends AppCompatActivity{
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.container_fragment, f);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        ft.addToBackStack(null);
+        //ft.addToBackStack(null);
         ft.commit();
     }
-    public void MostrarEventos(View v){
-        Fragment f = new EventosFragment();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.container_fragment, f);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        ft.addToBackStack(null);
-        ft.commit();
-    }
-
-
-    @Override
-    public void onBackPressed()
-    {
-        super.onBackPressed();
-        //startActivity(new Intent(CiudadMexicoDetalleActivity.this, BaseActivity.class));
-        Intent i = new Intent(getApplicationContext(), BaseActivity.class);
-        i.putExtra("fragmento", "mexico");
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        getApplicationContext().startActivity(i);
-        finish();
-
-    }
-
 }

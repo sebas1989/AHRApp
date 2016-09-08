@@ -11,10 +11,12 @@ public class Coordenada {
     private Double Latitud;
     private Double Longitud;
     private String Titulo;
-    public Coordenada(Double latitud, Double longitud, String titulo){
+    private String descripcion;
+    public Coordenada(Double latitud, Double longitud, String titulo, String descripcion){
         this.Latitud = latitud;
         this.Longitud = longitud;
         this.Titulo = titulo;
+        this.descripcion = descripcion;
     }
     public Double getLatitud() {
         return Latitud;
@@ -39,5 +41,12 @@ public class Coordenada {
 
     public void setTitulo(String ciudad) {
         Titulo = ciudad;
+    }
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

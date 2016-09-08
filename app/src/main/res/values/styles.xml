@@ -8,8 +8,13 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/black_transparent</item>
-
         <!--item name="statusBarColor">@color/transparent</item-->
         <!-- Customize your theme here. -->
+        <item name="android:windowActionBarOverlay">true</item>
     </style>
+    <style name="NumberPickerTextColorStyle">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>

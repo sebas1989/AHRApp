@@ -2,23 +2,17 @@ package autodromo.punkmkt.com.ahrapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
 import android.widget.TextView;
-
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-
-
 import java.util.List;
 import android.support.v7.widget.RecyclerView;
-
 import autodromo.punkmkt.com.ahrapp.SingleNewDetailActivity;
 import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
-import autodromo.punkmkt.com.ahrapp.models.Noticias;
+import autodromo.punkmkt.com.ahrapp.models.Noticia;
 import autodromo.punkmkt.com.ahrapp.R;
 
 
@@ -27,9 +21,10 @@ import autodromo.punkmkt.com.ahrapp.R;
  */
 public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.NoticiaViewHolder> {
 
-    private List<Noticias> items;
-    ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
+    private List<Noticia> items;
     private Context context;
+
+    ImageLoader imageLoader = MyVolleySingleton.getInstance().getImageLoader();
 
     public static class NoticiaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -72,27 +67,16 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.Notici
         NoticiasAdapter.NoticiaViewHolder vh = new NoticiasAdapter.NoticiaViewHolder(v, new NoticiasAdapter.NoticiaViewHolder.IMyViewHolderClicks() {
 
             public void onPotato(View caller, int i) {
-                Noticias noticia  = items.get(i);
+                Noticia noticia  = items.get(i);
                 Intent Idetail = new Intent (viewGroup.getContext(), getClass());
-
                 Idetail.putExtra("id", Integer.toString(noticia.getId()));
-                /*Idetail.putExtra("nombre", noticia.getTitulo());
-                Idetail.putExtra("imagen", noticia.getImgen_contenido());
-                Idetail.putExtra("subtitulo", noticia.getSubtitulo());
-                Idetail.putExtra("descripcion", noticia.getDescripcion());*/
                 viewGroup.getContext().startActivity(Idetail);
 
             };
             public void onTomato(NetworkImageView callerImage, int i) {
-                Noticias noticia  = items.get(i);
-
+                Noticia noticia  = items.get(i);
                 Intent Idetail = new Intent (viewGroup.getContext(), SingleNewDetailActivity.class);
                 Idetail.putExtra("id", Integer.toString(noticia.getId()));
-                /*Idetail.putExtra("nombre", noticia.getTitulo());
-                Idetail.putExtra("imagen", noticia.getImgen_contenido());
-                Idetail.putExtra("subtitulo", noticia.getSubtitulo());
-                Idetail.putExtra("descripcion", noticia.getDescripcion());*/
-
                 viewGroup.getContext().startActivity(Idetail);
             }
 
@@ -104,8 +88,8 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.Notici
 
     @Override
     public void onBindViewHolder(NoticiaViewHolder noticiaViewHolder, int i) {
-        noticiaViewHolder.imagen.setImageUrl(items.get(i).getImgen_contenido(), imageLoader);
-        noticiaViewHolder.nombre.setText(items.get(i).getTitulo());
+        noticiaViewHolder.imagen.setImageUrl(items.get(i).getThumbnail(), imageLoader);
+        noticiaViewHolder.nombre.setText(items.get(i).getTitle());
         //noticiaViewHolder.descripcion_corta.setText(items.get(i).getDescripcion_corta());
     }
 
@@ -114,8 +98,9 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.Notici
         return items.size();
     }
 
-    public NoticiasAdapter(List<Noticias> items) {
+    public NoticiasAdapter(List<Noticia> items, Context context) {
         this.items = items;
+        this.context = context;
     }
 
 }

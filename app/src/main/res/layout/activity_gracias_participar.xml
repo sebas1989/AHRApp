@@ -54,4 +54,19 @@
         android:layout_below="@+id/caso_seleccionado"
         android:textColor="@color/white"
         android:layout_marginTop="10dp"/>
+
+
+    <TextView
+        android:id="@+id/go_to_home"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/go_to_home"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="italic|bold"
+        android:gravity="right"
+        android:layout_below="@+id/caso_seleccionado2"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"/>
 </RelativeLayout>

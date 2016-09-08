@@ -18,19 +18,22 @@
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/imageView"
             android:layout_width="fill_parent"
-            android:layout_height="200dp"
+            android:layout_height="162dp"
             android:layout_alignParentTop="true"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            android:layout_gravity="top"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_centerInParent="true"
             />
         <RelativeLayout
             android:layout_alignParentBottom="true"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
+            android:layout_width="200dp"
+            android:layout_height="162dp"
             android:background="@color/black_transparent"
             android:orientation="horizontal"
-            android:padding="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             android:id="@+id/container_title_premio"
             android:gravity="top"
             android:layout_alignParentRight="true"
@@ -38,13 +41,13 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="OHHHHHHHH"
+                android:text="OHHHHHHHHOHHHHHHHHOHHHHHHHHOHHHHHHHHOHHHHHHHH"
                 android:id="@+id/name"
                 android:textColor="@color/white"
-                android:textSize="22sp"
+                android:textSize="13sp"
                 android:fontFamily="sans-serif-condensed"
                 android:textStyle="bold"
-                android:maxLength="12"
+                android:textAllCaps="true"
                 android:maxWidth="250dp"
                 android:layout_alignParentLeft="true"
                 android:gravity="left"/>
@@ -53,6 +56,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:id="@+id/container_ubicacion"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_below="@+id/name">
                 <ImageView
                     android:id="@+id/pinicon"
@@ -62,20 +67,19 @@
                     android:layout_below="@+id/name"
                     android:gravity="left"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginTop="13dp"
                     android:layout_marginRight="4dp"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="OHHHHHH"
+                    android:text="OHHHHHHOHHHHHHOHHHHHHOHHHHHHOHHHHHHOHHHHHH"
                     android:textColor="@color/white"
-                    android:maxLength="20"
+                    android:maxLength="60"
                     android:id="@+id/ubicacion"
-                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
                     android:layout_alignParentRight="true"
                     android:gravity="left"
+                    android:textSize="12dp"
                     android:fontFamily="sans-serif-condensed"
                     />
             </LinearLayout>
@@ -84,6 +88,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginBottom="8dp"
                 android:layout_below="@+id/container_ubicacion">
                 <ImageView
                     android:id="@+id/telefonoicon"
@@ -93,24 +98,22 @@
                     android:layout_below="@+id/name"
                     android:gravity="left"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginTop="13dp"
                     android:layout_marginRight="4dp"
                     />
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
                     android:textColor="@color/white"
                     android:maxLength="20"
                     android:id="@+id/telefono"
-                    android:layout_marginTop="10dp"
                     android:clickable="true"
-                    android:layout_marginBottom="10dp"
                     android:onClick="llamarHospedaje"
                     android:fontFamily="sans-serif-condensed"
+                    android:textSize="12dp"
                     />
             </LinearLayout>
             <LinearLayout
+                android:layout_marginBottom="8dp"
                 android:id="@+id/container_sitio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -123,18 +126,16 @@
                     android:src="@drawable/web_site_icon"
                     android:gravity="left"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginTop="13dp"
                     android:layout_marginRight="4dp"
                     />
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:textSize="12dp"
                     android:textColor="@color/white"
                     android:maxLength="20"
                     android:id="@+id/sitiourl"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+
                     android:fontFamily="sans-serif-condensed"
                     />
             </LinearLayout>
@@ -155,6 +156,7 @@
                         android:textColor="@color/white"
                         android:layout_marginLeft="50dp"
                         android:textStyle="bold"
+                        android:textSize="12dp"
                         android:fontFamily="sans-serif-condensed"
                         android:layout_alignParentLeft="true"
                         android:text="VER EN MAPA"/>

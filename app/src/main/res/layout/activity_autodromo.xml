@@ -20,17 +20,15 @@
             android:orientation="vertical"
             android:id="@+id/container_top"
             >
-            <Button
+            <ImageView
                 android:id="@+id/como_llegar"
-                android:background="@drawable/pista_location"
                 android:layout_width="fill_parent"
                 android:layout_height="179dp"
                 android:layout_gravity="center"
                 android:onClick="IniciarActivityEventos"
                 />
-            <Button
+            <ImageView
                 android:id="@+id/ubica_tu_zona"
-                android:background="@drawable/pista_sit"
                 android:layout_width="fill_parent"
                 android:layout_height="179dp"
                 android:layout_gravity="center"
@@ -38,14 +36,25 @@
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:onClick="IniciarUbicaTuZona"
                 />
-            <Button
+            <ImageView
                 android:id="@+id/servicios"
-                android:background="@drawable/pista_servicios"
                 android:layout_width="fill_parent"
                 android:layout_height="179dp"
                 android:layout_gravity="center"
                 android:onClick="iniciarServicios"
                 />
+            <ImageView
+                android:id="@+id/uber"
+                android:layout_width="fill_parent"
+                android:layout_height="179dp"
+                android:layout_gravity="center"
+                android:onClick="IniciarUber"
+                />
+            <!--com.uber.sdk.android.rides.RideRequestButton
+                android:id="@+id/uber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                /-->
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

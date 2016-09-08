@@ -4,7 +4,6 @@ package autodromo.punkmkt.com.ahrapp.fragments;
  * Created by sebastianmendezgiron on 30/09/15.
  */
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,20 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import com.android.volley.Cache;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-
 import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
 import autodromo.punkmkt.com.ahrapp.R;
 import autodromo.punkmkt.com.ahrapp.adapters.EventosAdapter;
@@ -46,8 +41,6 @@ public class EventosFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        Button event = (Button) getActivity().findViewById(R.id.eventos);
-        event.setBackground(getResources().getDrawable(R.drawable.calendar_icon_hover_96));
 
         Button res = (Button) getActivity().findViewById(R.id.restaurantes);
         res.setBackground(getResources().getDrawable(R.drawable.restaurant_icon));
@@ -62,7 +55,7 @@ public class EventosFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
 
-        adapter = new EventosAdapter(eventos);
+        adapter = new EventosAdapter(eventos,getActivity().getApplicationContext());
 
         Cache mCache = MyVolleySingleton.getInstance().getRequestQueue().getCache();
         Cache.Entry mEntry = mCache.get(AHZ_URL_EVENTOS);

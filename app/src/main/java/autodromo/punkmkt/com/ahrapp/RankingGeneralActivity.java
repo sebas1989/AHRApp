@@ -45,28 +45,28 @@ public class RankingGeneralActivity extends Activity {
         tabla_resultados = (TableLayout) findViewById(R.id.tabla_resultados);
 
 
-        Cache mCache = MyVolleySingleton.getInstance().getRequestQueue().getCache();
-        Cache.Entry mEntry = mCache.get(AHZ_RANKING_GENERAL);
-        if (mEntry != null) {
-            try {
-                String cacheData = new String(mEntry.data, "UTF-8");
-                JSONObject object = new JSONObject(cacheData);
-                JSONArray data = object.getJSONArray("data");
-                for (int count = 0; count < data.length(); count++) {
-                    JSONObject anEntry = data.getJSONObject(count);
-                    //Log.d("volley",anSecondEntry.toString());
-                    Posicion posicion = new Posicion();
-                    posicion.setPiloto_sobrenombre(anEntry.optString("piloto"));
-                    posicion.setEscuderia(anEntry.optString("escuderia"));
-                    posicion.setPuntos(anEntry.optString("puntos"));
-                    posiciones_ranking_general.add(posicion);
-                }
-                iniciarranking();
-
-            } catch (UnsupportedEncodingException |JSONException e) {
-                e.printStackTrace();
-            }
-        } else {
+//        Cache mCache = MyVolleySingleton.getInstance().getRequestQueue().getCache();
+//        Cache.Entry mEntry = mCache.get(AHZ_RANKING_GENERAL);
+//        if (mEntry != null) {
+//            try {
+//                String cacheData = new String(mEntry.data, "UTF-8");
+//                JSONObject object = new JSONObject(cacheData);
+//                JSONArray data = object.getJSONArray("data");
+//                for (int count = 0; count < data.length(); count++) {
+//                    JSONObject anEntry = data.getJSONObject(count);
+//                    //Log.d("volley",anSecondEntry.toString());
+//                    Posicion posicion = new Posicion();
+//                    posicion.setPiloto_sobrenombre(anEntry.optString("piloto"));
+//                    posicion.setEscuderia(anEntry.optString("escuderia"));
+//                    posicion.setPuntos(anEntry.optString("puntos"));
+//                    posiciones_ranking_general.add(posicion);
+//                }
+//                iniciarranking();
+//
+//            } catch (UnsupportedEncodingException |JSONException e) {
+//                e.printStackTrace();
+//            }
+//        } else {
             StringRequest request = new AuthRequest(getApplicationContext(),Request.Method.GET, AHZ_RANKING_GENERAL, "utf-8", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -96,7 +96,7 @@ public class RankingGeneralActivity extends Activity {
                 }
             });
             MyVolleySingleton.getInstance().addToRequestQueue(request);
-        }
+       // }
     }
 
 
@@ -105,11 +105,12 @@ public class RankingGeneralActivity extends Activity {
         ArrayList<Posicion> copia = new ArrayList<Posicion>();
         copia = posiciones_ranking_general;
         tabla_resultados.removeAllViews();
-        TableRow row = (TableRow) LayoutInflater.from(RankingGeneralActivity.this).inflate(R.layout.title_ranking_general, null);
+        TableRow row = (TableRow) getLayoutInflater().inflate(R.layout.title_ranking_general, null);
+
         tabla_resultados.addView(row);
         for (int count = 0; count < copia.size(); count++) {
             Posicion posicion = copia.get(count);
-            TableRow row_pos = (TableRow) LayoutInflater.from(RankingGeneralActivity.this).inflate(R.layout.row_ranking_general, null);
+            TableRow row_pos = (TableRow) getLayoutInflater().inflate(R.layout.row_ranking_general, null);
             ((TextView) row_pos.findViewById(R.id.pos)).setText(Integer.toString(count + 1));
             ((TextView) row_pos.findViewById(R.id.piloto)).setText(posicion.getPiloto_sobrenombre());
             ((NetworkImageView) row_pos.findViewById(R.id.escuderia)).setImageUrl(posicion.getEscuderia(), imageLoader);
