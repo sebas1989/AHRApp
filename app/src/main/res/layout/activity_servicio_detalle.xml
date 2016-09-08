@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:textAlignment="center"
+    android:touchscreenBlocksFocus="false">
+
+    <autodromo.punkmkt.com.ahrapp.utils.TouchImageView
+            android:id="@+id/imagen_principal"
+            android:layout_width="fill_parent"
+            android:layout_height="328dp"
+            android:background="@color/white"
+            />
+
+    <ScrollView
+        android:layout_below="@id/imagen_principal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:id="@+id/servicios_listado"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            />
+    </ScrollView>
+
+</RelativeLayout>
