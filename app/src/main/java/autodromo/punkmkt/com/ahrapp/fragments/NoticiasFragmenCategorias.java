@@ -66,6 +66,7 @@ public class NoticiasFragmenCategorias extends Fragment {
             public void onResponse(String response) {
                 try {
                     noticias.clear();
+
                     JSONObject object = new JSONObject(response);
                     JSONArray array_object = object.getJSONArray("results");
                     for (int count = 0; count < array_object.length(); count++) {
@@ -77,8 +78,10 @@ public class NoticiasFragmenCategorias extends Fragment {
                         noticia.setThumbnail(anEntry.optString("thumbnail"));
                         noticia.setPicture(anEntry.optString("picture"));
                         noticias.add(noticia);
+
                     }
                     Log.d("news",noticias.toString());
+
                     masonryAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     e.printStackTrace();

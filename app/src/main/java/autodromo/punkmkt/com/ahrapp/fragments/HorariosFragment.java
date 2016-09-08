@@ -15,16 +15,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-<<<<<<< HEAD
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-=======
-<<<<<<< HEAD
 //import com.facebook.common.util.UriUtil;
 //import com.facebook.drawee.view.SimpleDraweeView;
-=======
->>>>>>> 65c70cebae4c93b3fa4175eff1e0fd5102b2d2e1
->>>>>>> 42f8a828e72bbdb328a7d02191b2ef4db24fa58f
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,30 +50,23 @@ public class HorariosFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-<<<<<<< HEAD
         Tracker tracker = ((MyVolleySingleton) getActivity().getApplication()).getTracker(MyVolleySingleton.TrackerName.APP_TRACKER);
         tracker.setScreenName(getString(R.string.menu_horarios));
         tracker.send(new HitBuilders.ScreenViewBuilder().build());
         ImageView mImageView = (ImageView) getActivity().findViewById(R.id.imageView);
         ((BaseActivity) getActivity()).loadBitmap(R.drawable.horarios, mImageView,375,137);
-=======
-<<<<<<< HEAD
         //Uri uri = new Uri.Builder()
                // .scheme(UriUtil.LOCAL_RESOURCE_SCHEME) // "res"
                // .path(String.valueOf(R.drawable.horarios))
                // .build();
         //SimpleDraweeView draweeView = (SimpleDraweeView) getActivity().findViewById(R.id.imageView);
         //draweeView.setImageURI(uri);
-=======
         /*Uri uri = new Uri.Builder()
                 .scheme(UriUtil.LOCAL_RESOURCE_SCHEME) // "res"
                 .path(String.valueOf(R.drawable.horarios))
                 .build();
         SimpleDraweeView draweeView = (SimpleDraweeView) getActivity().findViewById(R.id.imageView);
         draweeView.setImageURI(uri);*/
->>>>>>> 65c70cebae4c93b3fa4175eff1e0fd5102b2d2e1
-
->>>>>>> 42f8a828e72bbdb328a7d02191b2ef4db24fa58f
 
         tabla_informacion = (TableLayout) getActivity().findViewById(R.id.tabla_informacion);
         Cache mCache = MyVolleySingleton.getInstance().getRequestQueue().getCache();

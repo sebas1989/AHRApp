@@ -65,7 +65,7 @@ public class TiendaFragment extends Fragment {
                 @Override
             public void onResponse(String response) {
                 try {
-
+                    tiendaRestaurantes.clear();
                     JSONArray object = new JSONArray(response);
                     //JSONArray array_object = object.getJSONArray("sellers");
                     for (int count = 0; count < object.length(); count++) {

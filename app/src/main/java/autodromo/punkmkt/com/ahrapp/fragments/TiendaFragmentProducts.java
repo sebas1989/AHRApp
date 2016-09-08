@@ -150,7 +150,7 @@ public class TiendaFragmentProducts extends Fragment{
                 @Override
                 public void onResponse(String response) {
                     try {
-
+                        productos.clear();
                         JSONArray object = new JSONArray(response);
                         for (int count = 0; count < object.length(); count++) {
                             JSONObject anEntry = object.getJSONObject(count);
