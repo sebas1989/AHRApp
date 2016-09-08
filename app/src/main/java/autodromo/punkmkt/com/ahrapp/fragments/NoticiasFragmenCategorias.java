@@ -43,11 +43,20 @@ public class NoticiasFragmenCategorias extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.noticias_categorias_fragments,container,false);
 
+
+
+        return v;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
         Tracker tracker = ((MyVolleySingleton) getActivity().getApplication()).getTracker(MyVolleySingleton.TrackerName.APP_TRACKER);
         tracker.setScreenName(getString(R.string.menu_noticias));
         tracker.send(new HitBuilders.ScreenViewBuilder().build());
 
-        recyclerView = (RecyclerView) v.findViewById(R.id.my_recycler_view);
+        recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         final NoticiaMasonryAdapter masonryAdapter = new NoticiaMasonryAdapter(noticias, getActivity());
@@ -56,6 +65,7 @@ public class NoticiasFragmenCategorias extends Fragment {
             @Override
             public void onResponse(String response) {
                 try {
+                    noticias.clear();
                     JSONObject object = new JSONObject(response);
                     JSONArray array_object = object.getJSONArray("results");
                     for (int count = 0; count < array_object.length(); count++) {
@@ -86,13 +96,6 @@ public class NoticiasFragmenCategorias extends Fragment {
         recyclerView.setAdapter(masonryAdapter);
         SpacesItemDecoration spacesItemDecoration = new SpacesItemDecoration(20);
         recyclerView.addItemDecoration(spacesItemDecoration);
-
-        return v;
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
     }
 
 }

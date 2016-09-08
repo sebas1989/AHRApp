@@ -1,5 +1,7 @@
 package autodromo.punkmkt.com.ahrapp.fragments;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -132,6 +135,26 @@ public class NoticiaFichaIndividual extends Fragment {
             }
         });
 
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    Fragment noticiasFragment = new NoticiasFragment();
+                    android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame, noticiasFragment);
+                    transaction.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                    //Toast.makeText(getActivity(), "Back Pressed", Toast.LENGTH_SHORT).show();
+                    return true;
+                }else {
+                    return false;
+                }
+            }
+        });
+
     }
 
     public void noticiasRelacionadas(){
@@ -189,7 +212,4 @@ public class NoticiaFichaIndividual extends Fragment {
         }
     }
 
-    public void onResume(){
-        super.onResume();
-    }
 }
