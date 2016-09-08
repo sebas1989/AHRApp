@@ -29,7 +29,16 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 import com.parse.ParseAnalytics;
 
+<<<<<<< HEAD
 import java.lang.ref.WeakReference;
+=======
+<<<<<<< HEAD
+//import com.facebook.drawee.backends.pipeline.Fresco;
+
+import com.parse.ParseAnalytics;
+=======
+>>>>>>> 65c70cebae4c93b3fa4175eff1e0fd5102b2d2e1
+>>>>>>> 42f8a828e72bbdb328a7d02191b2ef4db24fa58f
 
 import autodromo.punkmkt.com.ahrapp.adapters.TiendaPageAdapter;
 import autodromo.punkmkt.com.ahrapp.fragments.AutodromoFragment;
@@ -61,6 +70,12 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
+        ParseAnalytics.trackAppOpenedInBackground(getIntent());
+
+        //Fresco.initialize(getApplicationContext());
+=======
+>>>>>>> 65c70cebae4c93b3fa4175eff1e0fd5102b2d2e1
         setContentView(R.layout.activity_main);
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());

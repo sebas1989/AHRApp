@@ -27,6 +27,14 @@ android {
             keyPassword "Formula1Punk2015"
         }
     }
+    signingConfigs {
+        release {
+            storeFile file("my-release-key.keystore")
+            storePassword "cooliris"
+            keyAlias "alias_name"
+            keyPassword "Formula1Punk2015"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -69,6 +77,7 @@ dependencies {
     compile 'com.google.android.gms:play-services:9.2.1'
     compile 'com.google.android.gms:play-services-analytics:7.3.0'
     compile 'com.jakewharton:disklrucache:2.0.2'
+<<<<<<< HEAD
     compile 'com.uber.sdk:rides-android:0.5.2'
     compile 'com.sothree.slidinguppanel:library:3.3.0'
     compile 'com.google.android.gms:play-services-ads:9.2.1'
@@ -80,4 +89,8 @@ dependencies {
 
 def loadSecret(String name) {
     return hasProperty(name) ? getProperty(name) : "MISSING"
+=======
+
+
+>>>>>>> 42f8a828e72bbdb328a7d02191b2ef4db24fa58f
 }
