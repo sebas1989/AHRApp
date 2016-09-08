@@ -233,7 +233,7 @@ public class BaseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.tienda:
-                        getSupportActionBar().setTitle(getResources().getString(R.string.tienda_titulo));
+                        //getSupportActionBar().setTitle(getResources().getString(R.string.tienda_titulo));
                         getSupportActionBar().setTitle(getResources().getString(R.string.menu_tienda));
                         Boolean isFirstRunShop = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                                 .getBoolean("isFirstRunShop", true);

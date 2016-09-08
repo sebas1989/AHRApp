@@ -3,10 +3,12 @@ package autodromo.punkmkt.com.ahrapp.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import autodromo.punkmkt.com.ahrapp.BaseActivity;
 import autodromo.punkmkt.com.ahrapp.MyVolleySingleton;
 import autodromo.punkmkt.com.ahrapp.R;
 import autodromo.punkmkt.com.ahrapp.adapters.TiendaRestauranteAdapter;
@@ -52,7 +55,7 @@ public class TiendaFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Tracker tracker = ((MyVolleySingleton) getActivity().getApplication()).getTracker(MyVolleySingleton.TrackerName.APP_TRACKER);
+        final Tracker tracker = ((MyVolleySingleton) getActivity().getApplication()).getTracker(MyVolleySingleton.TrackerName.APP_TRACKER);
         tracker.setScreenName(getString(R.string.tienda_titulo));
         tracker.send(new HitBuilders.ScreenViewBuilder().build());
 
@@ -97,7 +100,22 @@ public class TiendaFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
-    }
 
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    Intent myIntent = new Intent(getActivity(), BaseActivity.class);
+                    getActivity().startActivity(myIntent);
+                    //Toast.makeText(getActivity(), "Back Pressed", Toast.LENGTH_SHORT).show();
+                    return true;
+                }else {
+                    return false;
+                }
+            }
+        });
+    }
 }
 
